@@ -4,7 +4,9 @@
 	"description": "Static HTML library for NBIM",
 	"main": "index.njk",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "npx @11ty/eleventy --serve",
+		"build": "npx @11ty/eleventy",
+		"test": "npx @11ty/eleventy --dryrun"
 	},
 	"author": "NoA Ignite",
 	"license": "ISC",
