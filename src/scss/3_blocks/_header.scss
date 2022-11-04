@@ -1,0 +1,417 @@
+$fade-transition-time: 600ms;
+$fade-transition-type: cubic-bezier(
+  0.165,
+  0.84,
+  0.44,
+  1
+); // https://easings.net/#easeOutQuart
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+$search-translate-position: 40px;
+$search-transition-time: 400ms;
+$search-transition-type: cubic-bezier(
+  0.165,
+  0.84,
+  0.44,
+  1
+); // https://easings.net/#easeOutQuart
+@keyframes search-input {
+  from {
+    opacity: 0;
+    transform: translateY($search-translate-position);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-proto {
+  width: 100%;
+  min-height: $header-min-height;
+  padding: 24px 30px;
+  background-color: $cl-white;
+  border-bottom: 1px solid $clv-header-border-color;
+  overflow: hidden;
+
+  @include media-breakpoint-down(md) {
+    padding:  24px 30px 0;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+    }
+  }
+
+  &__logo {
+    text-decoration: none;
+    img {
+      width: 222px;
+      height: auto;
+      vertical-align: middle;
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 190px;
+    }
+  }
+
+  &__mobile-wrapper {
+    margin: auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+  }
+
+  ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      margin-right: 30px;
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+      border-bottom-color: transparent;
+      transition: color $transition-time ease, border-bottom-color $transition-time ease;
+      &:hover {
+        color: $cl-blue-2 !important;
+      }
+      &:hover,
+      &.selected-item {
+        border-bottom-color: $cl-blue;
+      }
+      &:last-child {
+        margin: 0;
+      }
+
+      a {
+        text-decoration:  none;
+        transition: color $transition-time ease;
+        font-size: 19px;
+        &:hover {
+          color: $cl-blue-2 !important;
+        }
+      }
+    }
+
+    form {
+      display: inline;
+      position: relative;
+    }
+
+    input[type=submit] {
+      width: 60px;
+      height: 42px;
+      overflow: hidden;
+      border: 0;
+      padding: 0;
+      text-indent: -999px;
+      background: transparent url("#{$path-images}/search-blue.svg") 50% 50% no-repeat;
+      position: absolute;
+      top: -8px;
+      right: 2px;
+      cursor: pointer;
+    }
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      position: absolute;
+      clip: rect(1px, 1px, 1px, 1px);
+      padding:0;
+      border:0;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+
+      li {
+        display: table;
+      }
+
+      .header-proto__search-field {
+        display: block;
+        &:hover {
+          border-color: transparent;
+        }
+      }
+    }
+  }
+
+  &.menu-mobile-active .menu-button--hamburger {
+    background: transparent url("#{$path-images}/close.svg") center center no-repeat;
+  }
+
+  &__search-field {
+    position: relative;
+
+    input:focus ~ label {
+      @include outliner($cl-blue-2);
+    }
+
+    label {
+      cursor: pointer;
+
+      &:after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        background: transparent url("#{$path-images}/search.svg") top center no-repeat;
+      }
+    }
+
+    input[type=text] {
+      &:focus {
+        @include outliner($cl-blue);
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      .menu-button--close {
+        display: none;
+      }
+    }
+  }
+  &.menu-mobile-inactive {
+
+    @include media-breakpoint-up(md) {
+      // Toggle class with js to reveal search field.
+      input[type=text] {
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding:0;
+        border:0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+      }
+
+      .menu-button--close {
+        display: none;
+      }
+    }
+  }
+  &__language-button {
+    border: none;
+    background-color: transparent;
+    padding: 4px 0;
+    position: relative;
+    cursor: pointer;
+    transition: color $transition-time ease;
+    &:hover {
+      color: $cl-blue-2 !important;
+    }
+  }
+  &__language-button::before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    background-color: $cl-black;
+  }
+
+  // Icons
+  .menu-button {
+    width: 18px;
+    min-height: auto;
+    height: 18px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &--hamburger {
+      display: none;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      background: transparent url("#{$path-images}/menu.svg") center center no-repeat;
+
+      @include media-breakpoint-down(md) {
+        display: block;
+      }
+    }
+
+    &--close {
+      background: transparent url("#{$path-images}/close.svg") center center no-repeat;
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+
+    // Hidden unicode icons for accessible reading.
+    &--menu-accessible-icon {
+      position: absolute;
+      left: -999px;
+    }
+  }
+
+  &.search-inactive {
+    input[type=submit] {
+      display: none;
+    }
+  }
+
+  // Reveal search only if header has class search-active.
+  &.search-active {
+    height: 90px;
+    padding: 20px 30px;
+    .header-proto__mobile-wrapper,
+    li:not(.header-proto__search-field),
+    .header-proto__search-field label {
+      display: none;
+    }
+
+    ul {
+      width: 100%;
+      text-align: center;
+
+      li {
+        width: 100%;
+        position: relative;
+      }
+      .header-proto__search-field:hover {
+        border-color: transparent;
+      }
+    }
+
+    .menu-button--close {
+      position: absolute;
+      right: 0;
+      top: 14px;
+    }
+
+    .header-proto__search-field {
+      animation: search-input $search-transition-time $search-transition-type;
+      position: relative;
+
+      &:hover::after {
+        background-color: transparent !important;
+      }
+    }
+
+    .menu-button--close {
+      display: inline-block;
+    }
+  }
+
+  &.search-active input[type=text],
+  &.menu-mobile-active input[type=text] {
+    height: auto;
+    line-height: 42px;
+    width: 500px;
+    padding: 0 13px;
+    border: 0;
+    border: 2px solid $cl-blue;
+    position: static;
+    overflow: visible;
+    color: black;
+    &:focus {
+      outline: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      width: auto;
+    }
+  }
+
+  // Overrides 'EPI friendly css - Basic form input styles' on '_section.scss'
+  form {
+    input[type=submit] {
+      &:hover,
+      &:focus {
+        background-color: $cl-blue-2;
+        background-image: url("#{$path-images}/search-white.svg");
+        color: $cl-white;
+      }
+    }
+  }
+
+  // Reveal mobile menu only if header has class menu-mobile-active.
+  &.menu-mobile-active {
+
+    ul {
+      animation: search-input $search-transition-time $search-transition-type;
+      width: 100%;
+      height: auto;
+      display: block;
+      position: static;
+      overflow: visible;
+      margin-top: 40px;
+
+      li {
+        margin: 0 0 32px 0;
+      }
+    }
+
+    form {
+      width: 100%;
+    }
+
+    label {
+      display: none;
+    }
+
+    input[type=text] {
+      width: calc(100% - 20px);
+      border-color: $cl-blue;
+    }
+
+    input[type=submit] {
+      display: block;
+    }
+
+    .header-proto__language-button::before {
+      display: none;
+    }
+
+    .header-proto__search-field:hover::after,
+    .header-proto__language-button:hover::after {
+      background: transparent !important;
+    }
+  }
+}
+// -------------- Header Search - end ------------- //
+
+// Headroom, this is the thing that animates/hides the header on scroll
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+  position: sticky;
+  z-index: 10;
+  left: 0;
+  top: 0;
+}
+.headroom--pinned {
+  transform: translateY(0%);
+}
+.headroom--unpinned {
+  transform: translateY(-100%);
+}

@@ -1,0 +1,256 @@
+.button {
+  font-size: 19px; // this is crucial to give 'input' and 'button' the right size
+  display: table;
+  border: none;
+  line-height: 46px;
+  text-decoration: none;
+  cursor: pointer; // important for <button/> input type
+  margin: 0 0 5px 0;
+  @extend .font-azo-light;
+
+
+  .before {
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  &--default,
+  &--primary,
+  &--download,
+  &--submit {
+    padding: 0 27px;
+    background-color: $cl-blue-light;
+    transition: background-color $transition-time ease;
+    &:hover,
+    &:active {
+      background-color: $cl-blue;
+    }
+  }
+  &--default {
+    background-color: $cl-gray-2;
+    padding: 0 16px;
+    &:hover,
+    &:active {
+      background-color: $cl-blue-2;
+      color: $cl-white;
+    }
+  }
+  &--primary,
+  &--download {
+    // arrow comes after!
+    .after {
+      position: relative;
+      display: inline-block;
+      top: 1px;
+      margin-left: 6px;
+    }
+  }
+  &--primary {
+    .after {
+      top: 3px;
+      width: 18px;
+      height: 17px;
+      background: url('#{$path-images}/arrow.svg') 0 0 no-repeat;
+    }
+  }
+  &--download {
+    .after {
+      top: 3px;
+      width: 15px;
+      height: 18px;
+      background: url('#{$path-images}/arrow-down.svg') 0 0 no-repeat;
+    }
+  }
+  &--secondary,
+  &--download-secondary,
+  &--toggler,
+  &--backbutton {
+    padding: 0; // important for <button/> input type
+    background-color: transparent; // important for <button/> input type
+    transition: color $transition-time ease;
+    &:hover {
+      color: $cl-blue-2 !important;
+    }
+    .txt {
+      border-bottom: 2px solid $cl-blue-2;
+    }
+  }
+  &--secondary,
+  &--download-secondary,
+  &--backbutton {
+    // arrow comes before!
+    .before {
+      position: relative;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  &--secondary {
+    padding-left: 30px;
+    .before {
+      top: 2px;
+      width: 18px;
+      height: 17px;
+      background: url('#{$path-images}/arrow-cl-blue.svg') 0 0 no-repeat;
+      margin-left: -30px;
+    }
+    &:hover .before {
+      @include animate-icon();
+    }
+  }
+  &--backbutton {
+    .before {
+      top: 2px;
+      width: 18px;
+      height: 17px;
+      background: url('#{$path-images}/arrow-cl-blue.svg') 0 0 no-repeat;
+      // Exersise to the reader:
+      // Get backbutton from design and refactor css.
+      transform: rotate(-180deg);
+    }
+  }
+  &--download-secondary {
+    .before {
+      top: 7px;
+      width: 15px;
+      height: 18px;
+      background: url('#{$path-images}/arrow-down-blue.svg') 0 0 no-repeat;
+    }
+    &:hover .before {
+      @include animate-icon(true);
+    }
+  }
+  &--tertiary {
+    background-color: $cl-blue-2;
+    color: #fff !important;
+    padding: 0px 16px;
+    text-align: center;
+    &:hover {
+      background-color: $cl-blue;
+      transition: background-color $transition-time ease;
+      cursor: pointer;
+    }
+  }
+  &--bordered {
+    background-color: #fff;
+    color: #333333;
+    line-height: 42px;
+    padding: 0 16px;
+    text-align: center;
+    border: 2px solid $cl-blue-2;
+    &:hover {
+      background-color: $cl-blue-light;
+      transition: all $transition-time ease;
+      cursor: pointer;
+    }
+    &--inactive {
+      background-color: #fff;
+      color: #333333;
+      line-height: 42px;
+      padding: 0 16px;
+      text-align: center;
+      border: 2px solid $cl-gray-2;
+      &:hover {
+        background-color: $cl-blue-light;
+        transition: all $transition-time ease;
+        cursor: pointer;
+      }
+    }
+  }
+  &--default {
+    background-color: #D3D3D3;
+    color: #000000;
+    text-align: center;
+  }
+  &:disabled {
+    background-color: $cl-gray-2;
+    color: #000000;
+    cursor: not-allowed;
+  }
+  &--toggler {
+    &.toggler-on,
+    &.toggler-off {
+      background-image: none;
+    }
+    &.toggler-off {
+      .after {
+        position: relative;
+        display: inline-block;
+        margin-left: 6px;
+        top: -2px;
+        width: 14px;
+        height: 7px;
+        background: url('#{$path-images}/chevron-down-blue.svg') 0 0 no-repeat;
+      }
+    }
+    &.toggler-on {
+      .after {
+        position: relative;
+        display: inline-block;
+        margin-left: 6px;
+        top: -2px;
+        width: 14px;
+        height: 7px;
+        background: url('#{$path-images}/chevron-up-blue.svg') 0 0 no-repeat;
+      }
+    }
+    &.has-border {
+      border: 2px solid $cl-blue;
+      padding: 0 15px;
+    }
+    &.toggler-on {
+      .txt-active {
+        display: inline-block;
+      }
+      .txt-inactive {
+        display: none;
+      }
+    }
+    &.toggler-off {
+      .txt-active {
+        display: none;
+      }
+      .txt-inactive {
+        display: inline-block;
+      }
+    }
+  }
+  // Removes the focus ring around an element when a mouse input is detected.
+  [data-whatinput='mouse'] & {
+    outline: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    &--secondary {
+      margin-right: 0;
+    }
+  }
+}
+.button--simple {
+  padding-left: 0.25em;
+}
+.btn--icon-down {
+  display: inline-block;
+  padding: 0.2rem 0.3rem;
+  transform: rotate(90deg);
+}
+.right {
+  float: right;
+}
+
+button {
+  &.clickable.toggler {
+    // Override 'button' styles set by browsers
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: inherit;
+    text-align: left;
+    text-transform: inherit;
+    -webkit-appearance: none;
+  }
+}

@@ -1,0 +1,123 @@
+@import '1_tools/bootstrap-grid-settings';
+
+body {
+  margin: 0;
+  color: $cl-black;
+  position: relative;
+  // Outlines! We only want focus styles to apply when the user is tabbing - not on click
+  // The class below is set on body when user starts tabbing
+  * {
+    outline: none;
+  }
+  &.user-is-tabbing {
+    *:focus {
+      // Give everything a default 'outline'
+      @include outliner($cl-blue-2);
+    }
+    footer {
+      *:focus {
+        // Footer gets a different 'outline'
+        @include outliner($cl-white);
+      }
+    }
+  }
+}
+
+.page-arrow-up {
+  display: none;
+
+  &--visible {
+    width: 76px;
+    height: 76px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 1337;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    span {
+      width: 32px;
+      height: 32px;
+      display: block;
+      background: transparent url('#{$path-images}/arrow-cl-blue-up.svg') no-repeat scroll 0 0;
+      background-size: cover;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+}
+
+.n {
+  display: inline-block;
+  text-align: center;
+
+  &__s {
+    width: 20px;
+  }
+
+  @include media-breakpoint-up(xs) {
+    width: 16px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    width: 27px;
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 36px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 47px;
+  }
+}
+
+
+// $grid-breakpoints: (
+//   // Extra small screen / phone
+//   xs: 0,
+//   // Small screen / phone
+//   sm: 576px,
+//   // Medium screen / tablet
+//   md: 768px,
+//   // Large screen / desktop
+//   lg: 980px,
+//   // Extra large screen / wide desktop
+//   xl: 1276px
+// ) !default;
+
+// Added helper-function instead of this:
+// .m-b-80,
+// .m-b-90,
+// .m-b-100,
+// .m-b-120 {
+//   @include media-breakpoint-down(sm) {
+//     margin-bottom: 60px !important;
+//   }
+// }
+// .m-t-80,
+// .m-t-90,
+// .m-t-100,
+// .m-t-120 {
+//   @include media-breakpoint-down(sm) {
+//     margin-top: 60px !important;
+//   }
+// }

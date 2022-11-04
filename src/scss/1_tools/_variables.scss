@@ -1,0 +1,43 @@
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// Colors (defined for project)
+$cl-white: #fff;
+$cl-black: #333;
+$cl-blue: #4991b8; // Equivalent to rgba(73, 145, 184, 1);
+$cl-blue-light: scale-color(
+	$cl-blue,
+	$lightness: 60%
+); // Equivalent to '#b6d3e3'
+$cl-blue-lighter: scale-color(
+	$cl-blue,
+	$lightness: 80%
+); // Equivalent to '#dbe9f1'
+$cl-blue-lighter-flat: #dbe9f1;
+$cl-blue-table-row: rgb(73, 145, 184);
+$cl-blue-2: #1475a4; // Equivalent to rgba(20, 117, 164, 1);
+$cl-gray: #bebebe;
+$cl-gray-2: #d3d3d3;
+$cl-gray-3: #c7c7c7;
+$cl-gray-light: #f6f6f6;
+$cl-red: #fc1921;
+// Color variables, block-oriented, always based on other colors
+$clv-footer: $cl-blue-2;
+$clv-header-color: $cl-white;
+$clv-header-border-color: $cl-gray-2;
+
+// Units
+$base-font-size: calc(rem-calc(20)); // 20px
+$header-min-height: 90px;
+$article-container-width: 65.2%;
+$padding-top-3x2-aspect-ratio: 66.67%; // 3:2 Aspect Ratio
+$responsive-spacing-top: 40px;
+$transition-time: 0.2s;
+
+// Paths
+$path-fonts: '../fonts';
+$path-images: '../images';
+
+// Grid
+// Check file '_bootstrap-grid-settings.scss'

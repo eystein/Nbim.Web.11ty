@@ -1,0 +1,82 @@
+@import './../1_tools/variables';
+
+$font-fallback: arial, sans-serif;
+
+@mixin font-defaults {
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AzoSansBlack';
+  src: url('#{$path-fonts}/AzoSans-Black-webfont.eot');
+  src: url('#{$path-fonts}/AzoSans-Black-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path-fonts}/AzoSans-Black-webfont.woff') format("woff"), url('#{$path-fonts}/AzoSans-Black-webfont.ttf') format("truetype"), url('#{$path-images}/AzoSans-Black-webfont.svg#AzoSansBlack') format("svg");
+  @include font-defaults();
+}
+// // Unused
+// @font-face {
+//   font-family: 'AzoSansBold';
+//   src: url('#{$path-fonts}/AzoSans-Bold-webfont.eot');
+//   src: url('#{$path-fonts}/AzoSans-Bold-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path-fonts}/AzoSans-Bold-webfont.woff') format("woff"), url('#{$path-fonts}/AzoSans-Bold-webfont.ttf') format("truetype"), url('#{$path-images}/AzoSans-Bold-webfont.svg#AzoSansBold') format("svg");
+//   @include font-defaults();
+// }
+@font-face {
+  font-family: 'AzoSansLight';
+  src: url('#{$path-fonts}/AzoSans-Light-webfont.eot');
+  src: url('#{$path-fonts}/AzoSans-Light-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path-fonts}/AzoSans-Light-webfont.woff') format("woff"), url('#{$path-fonts}/AzoSans-Light-webfont.ttf') format("truetype"), url('#{$path-images}/AzoSans-Light-webfont.svg#AzoSansLight') format("svg");
+  @include font-defaults();
+}
+// @TODO: 'AzoSansLight' set as placeholder. We should buy this variation and replace it
+@font-face {
+  font-family: 'AzoSansLightItalic';
+  src: url('#{$path-fonts}/AzoSans-Light-Italic-webfont.eot');
+  src: url('#{$path-fonts}/AzoSans-Light-Italic-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path-fonts}/AzoSans-Light-Italic-webfont.woff') format("woff"), url('#{$path-fonts}/AzoSans-Light-Italic-webfont.ttf') format("truetype"), url('#{$path-images}/AzoSans-Light-Italic-webfont.svg#AzoSansLightItalic') format("svg");
+  @include font-defaults();
+}
+@font-face {
+  font-family: 'AzoSansMedium';
+  src: url('#{$path-fonts}/AzoSans-Medium-webfont.eot');
+  src: url('#{$path-fonts}/AzoSans-Medium-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path-fonts}/AzoSans-Medium-webfont.woff') format("woff"), url('#{$path-fonts}/AzoSans-Medium-webfont.ttf') format("truetype"), url('#{$path-images}/AzoSans-Medium-webfont.svg#AzoSansMedium') format("svg");
+  @include font-defaults();
+}
+// // Unused
+// @font-face {
+//   font-family: 'AzoSansRegular';
+//   src: url('#{$path-fonts}/AzoSans-Regular-webfont.eot');
+//   src: url('#{$path-fonts}/AzoSans-Regular-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path-fonts}/AzoSans-Regular-webfont.woff') format("woff"), url('#{$path-fonts}/AzoSans-Regular-webfont.ttf') format("truetype"), url('#{$path-images}/AzoSans-Regular-webfont.svg#AzoSansRegular') format("svg");
+//   @include font-defaults();
+// }
+// // Unused
+// @font-face {
+//   font-family: 'AzoSansThin';
+//   src: url('#{$path-fonts}/AzoSans-Thin-webfont.eot');
+//   src: url('#{$path-fonts}/AzoSans-Thin-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path-fonts}/AzoSans-Thin-webfont.woff') format("woff"), url('#{$path-fonts}/AzoSans-Thin-webfont.ttf') format("truetype"), url('#{$path-images}/AzoSans-Thin-webfont.svg#AzoSansThin') format("svg");
+//   @include font-defaults();
+// }
+
+.font-azo-black {
+  font-family: 'AzoSansBlack', $font-fallback;
+}
+// // Unused
+// .font-azo-bold {
+//   font-family: 'AzoSansBold', $font-fallback;
+// }
+.font-azo-light {
+  font-family: 'AzoSansLight', $font-fallback;
+}
+.font-azo-light-italic {
+  font-family: 'AzoSansLightItalic', $font-fallback;
+}
+.font-azo-medium {
+  font-family: 'AzoSansMedium', $font-fallback;
+}
+// // Unused
+// .font-azo-regular {
+//   font-family: 'AzoSansRegular', $font-fallback;
+// }
+// // Unused
+// .font-azo-thin {
+//   font-family: 'AzoSansThin', $font-fallback;
+// }

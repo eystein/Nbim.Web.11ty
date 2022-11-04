@@ -1,0 +1,67 @@
+.docs {
+  // color verifier
+  &--colors {
+    padding-left: 0;
+    .color {
+      position: relative;
+      display: inline-block;
+      height: 100px;
+      width: 100px;
+      margin-bottom: 30px;
+      list-style: none;
+      border: 1px solid $cl-black;
+
+      &.black {
+        background-color: $cl-black;
+      }
+      &.blue {
+        background-color: $cl-blue;
+      }
+      &.blue-2 {
+        background-color: $cl-blue-2;
+      }
+      &.blue-light {
+        background-color: $cl-blue-light;
+      }
+      &.blue-lighter {
+        background-color: $cl-blue-lighter;
+      }
+      &.blue-lighter-flat {
+        background-color: $cl-blue-lighter-flat;
+      }
+      &.blue-table-row {
+        background-color: $cl-blue-table-row;
+      }
+      &.gray {
+        background-color: $cl-gray;
+      }
+      &.gray-2 {
+        background-color: $cl-gray-2;
+      }
+      &.gray-3 {
+        background-color: $cl-gray-3;
+      }
+      &.gray-light {
+        background-color: $cl-gray-light;
+      }
+      &.white {
+        background-color: $cl-white;
+      }
+
+      &__name {
+        position: absolute;
+        bottom: -23px;
+        @extend .font-azo-light-italic;
+        font-size: 12px;
+        line-height: 1;
+        padding: 3px 5px;
+        background-color: $cl-gray-light;
+        border-radius: 8px;
+      }
+    }
+  }
+  &-italic--small {
+    @extend .font-azo-light-italic;
+    font-size: 15px;
+  }
+}
