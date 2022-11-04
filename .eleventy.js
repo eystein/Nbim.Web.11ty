@@ -3,7 +3,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addWatchTarget('./src/scss/');
 	eleventyConfig.addWatchTarget('./src/js/');
 
-	// Copy contents from `./src/src/..` to `docs/assets/...`
+	// Copy contents from `./src/src/..` to `./docs/assets/...`
 	eleventyConfig.addPassthroughCopy({ './src/fonts': './assets/fonts' });
 	eleventyConfig.addPassthroughCopy({ './src/icons': './assets/icons' });
 	eleventyConfig.addPassthroughCopy({ './src/images': './assets/images' });
@@ -24,6 +24,7 @@ module.exports = function (eleventyConfig) {
 			// Path relative to Pages directory
 			includes: '../../src/_includes/_partials',
 			layouts: '../../src/_includes/_layouts',
+			data: '../../src/_data',
 		},
 	};
 };
