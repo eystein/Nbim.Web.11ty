@@ -4,6 +4,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addWatchTarget('./src/js/');
 
 	// Copy contents from `./src/src/..` to `./docs/assets/...`
+	// CSS gets handled by Sass in package.json
 	eleventyConfig.addPassthroughCopy({ './src/fonts': './assets/fonts' });
 	eleventyConfig.addPassthroughCopy({ './src/icons': './assets/icons' });
 	eleventyConfig.addPassthroughCopy({ './src/images': './assets/images' });
