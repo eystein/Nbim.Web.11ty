@@ -3,12 +3,11 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addWatchTarget('./src/scss/');
 	eleventyConfig.addWatchTarget('./src/js/');
 
-	// Copy contents from `./src/..` to `docs/...`
-	// Keeps the same directory structure
-	eleventyConfig.addPassthroughCopy('./src/fonts');
-	eleventyConfig.addPassthroughCopy('./src/icons');
-	eleventyConfig.addPassthroughCopy('./src/images');
-	eleventyConfig.addPassthroughCopy('./src/videos');
+	// Copy contents from `./src/src/..` to `docs/assets/...`
+	eleventyConfig.addPassthroughCopy({ './src/fonts': './assets/fonts' });
+	eleventyConfig.addPassthroughCopy({ './src/icons': './assets/icons' });
+	eleventyConfig.addPassthroughCopy({ './src/images': './assets/images' });
+	eleventyConfig.addPassthroughCopy({ './src/videos': './assets/videos' });
 
 	return {
 		// Set Nunjucks as default
@@ -18,7 +17,7 @@ module.exports = function (eleventyConfig) {
 		templateFormats: ['njk', 'md'],
 		dir: {
 			// Custom paths for
-			input: 'src/content',
+			input: 'src/pages',
 			output: 'docs',
 			includes: 'src/_includes/',
 		},
