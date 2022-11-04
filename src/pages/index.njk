@@ -1,5 +1,5 @@
 ---
-title: Birds
+title: Birds are real
 birds:
   - robin
   - finch
@@ -10,7 +10,7 @@ birds:
 		<h1>{{ title }}</h1>
 		<ul>
 			{% for bird in birds -%}
-			<li>{{ bird }}</li>
+			<li>{{ bird | testFilter }}</li>
 			{% endfor -%}
 		</ul>
 

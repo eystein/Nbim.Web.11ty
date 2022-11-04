@@ -9,6 +9,10 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ './src/images': './assets/images' });
 	eleventyConfig.addPassthroughCopy({ './src/videos': './assets/videos' });
 
+	eleventyConfig.addFilter('testFilter', function (text) {
+		return '***' + text + '***';
+	});
+
 	return {
 		// Set Nunjucks as default
 		dataTemplateEngine: 'njk',
