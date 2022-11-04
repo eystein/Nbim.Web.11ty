@@ -15,11 +15,15 @@ module.exports = function (eleventyConfig) {
 		markdownTemplateEngine: 'njk',
 		htmlTemplateEngine: 'njk',
 		templateFormats: ['njk', 'md'],
+		passthroughFileCopy: true,
 		dir: {
-			// Custom paths for
+			// Custom paths for in- and output
 			input: 'src/pages',
 			output: 'docs',
-			includes: 'src/_includes/',
+			// Specify where partials and layouts are
+			// Path relative to Pages directory
+			includes: '../../src/_includes/_partials',
+			layouts: '../../src/_includes/_layouts',
 		},
 	};
 };
