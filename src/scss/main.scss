@@ -10,11 +10,11 @@
 @import '1_tools/mixins';
 @import '2_base/fonts';
 html {
-  height: 100%;
-  font-size: $base-font-size;
+	height: 100%;
+	font-size: $base-font-size;
 }
 // Very important to normalize those nasty browser defaults!!
-@import '../../node_modules/modern-normalize/modern-normalize.css';
+@import '1_tools//modern-normalize';
 // Import styles
 @import '1_tools/helpers';
 @import '1_tools/bootstrap-grid-settings';
@@ -25,6 +25,7 @@ html {
 @import '2_base/images';
 @import '2_base/radio-buttons';
 @import '2_base/pagination';
+@import '2_base/hr';
 @import '3_blocks/header';
 @import '3_blocks/footer';
 @import '3_blocks/button';
@@ -36,4 +37,4 @@ html {
 @import '3_blocks/table';
 @import '3_blocks/search';
 // Default bootstrap grid. This can be configured, maybe even replaced by another grid.
-@import '../../node_modules/bootstrap-4-grid/scss/grid';
+@import '2_base/grid';
