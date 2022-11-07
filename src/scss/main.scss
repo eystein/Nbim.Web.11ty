@@ -16,8 +16,9 @@ html {
 // Very important to normalize those nasty browser defaults!!
 @import '1_tools//modern-normalize';
 // Import styles
-@import '1_tools/helpers';
 @import '1_tools/bootstrap-grid-settings';
+@import '1_tools/helpers';
+
 @import '1_tools/docs';
 @import '2_base/body';
 @import '2_base/checkboxes';
@@ -37,4 +38,4 @@ html {
 @import '3_blocks/table';
 @import '3_blocks/search';
 // Default bootstrap grid. This can be configured, maybe even replaced by another grid.
-@import '2_base/grid';
+@import '4_grid/grid';

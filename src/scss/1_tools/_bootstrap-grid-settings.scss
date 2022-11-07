@@ -4,16 +4,16 @@
 // adapting to different screen sizes, for use in media queries.
 
 $grid-breakpoints: (
-  // Extra small screen / phone
-  xs: 0,
-  // Small screen / phone
-  sm: 576px,
-  // Medium screen / tablet
-  md: 768px,
-  // Large screen / desktop
-  lg: 980px,
-  // Extra large screen / wide desktop
-  xl: 1276px
+	// Extra small screen / phone
+	xs: 0,
+	// Small screen / phone
+	sm: 576px,
+	// Medium screen / tablet
+	md: 768px,
+	// Large screen / desktop
+	lg: 980px,
+	// Extra large screen / wide desktop
+	xl: 1276px
 ) !default;
 
 // Grid containers
@@ -21,14 +21,14 @@ $grid-breakpoints: (
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-  // Small screen / phone
-  sm: 576px,
-  // Medium screen / tablet
-  md: 768px,
-  // Large screen / desktop
-  lg: 980px,
-  // Extra large screen / wide desktop
-  xl: 1276px
+	// Small screen / phone
+	sm: 576px,
+	// Medium screen / tablet
+	md: 768px,
+	// Large screen / desktop
+	lg: 980px,
+	// Extra large screen / wide desktop
+	xl: 1276px
 ) !default;
 
 // Grid columns
@@ -41,10 +41,10 @@ $grid-gutter-width: 56px !default;
 // We don't want padding on our setup at this width
 // 1276 (xl) + 28 + 28 ('container' padding left + right)
 @media (min-width: 1332px) {
-  .container {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
+	.container {
+		padding-right: 0 !important;
+		padding-left: 0 !important;
+	}
 }
 
 // See https://getbootstrap.com/docs/4.0/layout/grid/#example-usage
@@ -55,28 +55,28 @@ $grid-gutter-width: 56px !default;
 //     // do your thing
 //   }
 // }
-@import '../../../node_modules/bootstrap-4-grid/scss/breakpoints/mixins/breakpoints';
+@import '../4_grid/breakpoints/mixins/breakpoints';
 
 // Make all the stack-able columns responsive on mobile
 .col-md-6 {
-  @include media-breakpoint-between(sm, md) {
-    margin-top: $responsive-spacing-top;
-    &:nth-of-type(1),
-    &:nth-of-type(2) {
-      margin-top: 0;
-    }
-  }
+	@include media-breakpoint-between(sm, md) {
+		margin-top: $responsive-spacing-top;
+		&:nth-of-type(1),
+		&:nth-of-type(2) {
+			margin-top: 0;
+		}
+	}
 }
 
 // .col-12 needs to have priority over .col-6 for correct margins.
 .col-md-6.col-12,
 .col-12 {
-  @include media-breakpoint-between(xs, sm) {
-    margin-top: $responsive-spacing-top;
-    &:first-child {
-      margin-top: 0;
-    }
-  }
+	@include media-breakpoint-between(xs, sm) {
+		margin-top: $responsive-spacing-top;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
 }
 // Reset the above on certain sections
 .section__accordions--lists,
@@ -87,15 +87,16 @@ $grid-gutter-width: 56px !default;
 .section__newsvertical--lists,
 .section__offices--lists,
 .section__reports--lists {
-  .col-12 {
-    @media (max-width: 767px) {
-      margin-top: 0;
-    }
-  }
+	.col-12 {
+		@media (max-width: 767px) {
+			margin-top: 0;
+		}
+	}
 }
 // Responsive spacer
-.m-t-r-sm { // 'm-t-r-sm' = (m)argin (t)op (r)esponsive (sm)
-  @media (max-width: 767px) {
-    margin-top: $responsive-spacing-top !important; // ...because of the reset above
-  }
+.m-t-r-sm {
+	// 'm-t-r-sm' = (m)argin (t)op (r)esponsive (sm)
+	@media (max-width: 767px) {
+		margin-top: $responsive-spacing-top !important; // ...because of the reset above
+	}
 }

@@ -12564,4 +12564,21 @@ html {
   visibility: hidden !important;
 }
 
-/*# sourceMappingURL=main.css.map */
+body {
+  background-color: white !important;
+}
+
+.mce-content-body h1,
+.mce-content-body h2,
+.mce-content-body h3,
+.mce-content-body h4 {
+  font-family: "AzoSansMedium", arial, sans-serif;
+  font-weight: normal;
+}
+.mce-content-body li,
+.mce-content-body p {
+  font-family: "AzoSansLight", arial, sans-serif;
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=edit.css.map */

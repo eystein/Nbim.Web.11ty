@@ -12564,4 +12564,90 @@ html {
   visibility: hidden !important;
 }
 
-/*# sourceMappingURL=main.css.map */
+.no-print,
+.header-proto,
+#menu-mobile,
+footer.footer-proto,
+.toggleTableViewBtn,
+.tableOverlay,
+.section__graph-table__footer__links,
+.nbim-table-container--button,
+.nbim-folded-table--table-overlay {
+  display: none !important;
+}
+
+video,
+.video,
+.nbim-lazy-image {
+  height: 0 !important;
+  padding-top: 0 !important;
+}
+
+.tableContainer .hidden,
+.tableMinimize {
+  height: auto;
+  max-height: auto;
+}
+
+.nbim-table-container table,
+.highchart-table {
+  overflow: visible !important;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+th {
+  font-family: "AzoSansLight";
+}
+
+th,
+td {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 10px;
+  border: solid 1px;
+  text-align: left;
+  color: #333;
+}
+
+table thead tr {
+  background-color: #4991b8 !important;
+}
+table thead th {
+  text-align: left;
+  text-transform: none !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+  color: #fff;
+  word-break: break-all;
+}
+
+.section__share {
+  display: none !important;
+}
+
+*[class*=download] {
+  display: none !important;
+}
+
+/*# sourceMappingURL=print.css.map */
