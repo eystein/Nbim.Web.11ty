@@ -1,0 +1,74 @@
+{#
+Parameters received by this partial:
+
+isBig
+hasArrowDown
+imgAltText
+imgUrl
+headlinePre
+headline
+headlineSub
+breadcrumbs
+#}
+
+
+	<section
+			{% if sectionTop.isBig %}
+				class="section section__top--big"
+			{% else %}
+				class="section section__top"
+			{% endif %}
+	>
+		{% if sectionTop.hasArrowDown %}
+			<button id="nbimScrollDownButton" class="section__top--arrow-down" aria-label="Scroll ned"><span></span></button>
+		{% endif %}
+		<div
+			role="img"
+			aria-label="{% sectionTop.imgAltText | safe %}"
+			class="img"
+			style="background-image: url('{% imgUrl | safe %}')"
+		>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="page-title-wrapper">
+						<div class="page-title">
+							{% if headlinePre %}
+								<p>
+									<span class="page-title__headline--pre">
+										{% headlinePre | safe %}
+									</span>
+								</p>
+							{% endif %}
+							{% if headlineHasCurrency %}
+								<span class="page-title__headline">
+									<span id="liveNavNumber">
+										{% headline | safe %}
+									</span>
+									<span class="currency">NOK</span>
+								</span>
+							{% else %}
+								<h1 class="page-title__headline">
+									{% headline | safe %}
+								</h1>
+							{% endif %}
+							<span class="separator"></span>
+							{% if breadcrumbs %}
+								{% include breadcrumbs
+									breadcrumbs=breadcrumbs
+								%}
+							{% else %}
+								{% if headlineSub %}
+									<div class="page-title__headline--sub">
+										{% headlineSub | safe %}
+									</div>
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+{% endmacro %}

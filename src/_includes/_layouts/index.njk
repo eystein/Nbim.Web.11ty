@@ -1,0 +1,59 @@
+{% extends "../_layouts/_layout.njk" %}
+
+
+
+
+{% block main %}
+	<h1>Includes come here</h1>
+
+{#
+
+	{% set sectionTop = {
+		isBig: true,
+		headlineHasCurrency: true,
+		hasArrowDown: true,
+		imgAltText: 'section-top-oljefondet-imgAltText',
+		imgUrl: 'section-top-oljefondet-imgUrl',
+		headlinePre: 'section-top-oljefondet-headlinePre',
+		headline: 'section-top-oljefondet-headline',
+		headlineSub: 'section-top-oljefondet-headlineSub'
+	} %}
+
+	{% include '../_partials/sections/section-top.njk' %} #}
+
+
+
+	{% from "macros/swatch.macro.njk" import colorPattern %}
+
+	{{
+		colorPattern({
+			colorName: colorSwatch.colorName,
+			colorValue: colorSwatch.colorValue,
+			colorNotes: colorSwatch.colorNotes
+		})
+	}}
+
+
+	{% from '../macros/section-top.njk' import sectionTop %}
+
+  {# {{
+		sectionTop(
+			isBig=true,
+			headlineHasCurrency=true,
+			hasArrowDown=true,
+			imgAltText='',
+			imgUrl='section-top-oljefondet-imgUrl',
+			headlinePre='section-top-oljefondet-headlinePre',
+			headline='section-top-oljefondet-headline',
+			headlineSub='section-top-oljefondet-headlineSub'
+		)
+	}} #}
+
+{% endblock %}
+{% block footer %}
+  {# {% include "base/footer"
+    items=footer-items
+    links=footer-links
+  %} #}
+{% endblock %}
+

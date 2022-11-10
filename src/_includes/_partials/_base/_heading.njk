@@ -1,0 +1,24 @@
+{#
+Parameters received by this partial:
+
+hType
+txt
+classes
+url (optional) #}
+
+
+{%  macro headingType %}{% if hType %}h{% hType | safe %}{% else %}h3{% endif %}{% endmacro %}
+
+{% block theContent %}
+  {% if url %}
+    <a href="{% url | safe %}" title="{% txt | safe %}">
+      {% txt | safe %}
+    </a>
+  {% else %}
+    {% txt | safe %}
+  {% endif %}
+{% endblock %}
+
+<{% include headingType %} class="heading{% if classes %} {% classes | safe %}{% endif %}">
+  {% include theContent | safe %}
+</{% include %}>
