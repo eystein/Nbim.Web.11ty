@@ -1,27 +1,36 @@
 {% extends "../_layouts/_layout.njk" %}
 
-
-
-
 {% block main %}
 	<h1>Includes come here</h1>
 
-{#
+	{% from "macros/sectionTop.macro.njk" import sectionTop %}
 
-	{% set sectionTop = {
-		isBig: true,
-		headlineHasCurrency: true,
-		hasArrowDown: true,
-		imgAltText: 'section-top-oljefondet-imgAltText',
-		imgUrl: 'section-top-oljefondet-imgUrl',
-		headlinePre: 'section-top-oljefondet-headlinePre',
-		headline: 'section-top-oljefondet-headline',
-		headlineSub: 'section-top-oljefondet-headlineSub'
-	} %}
+	{{
+	sectionTop({
+			text: section_top_oljefondet_headline,
+			isBig: true,
+			headlineHasCurrency: true,
+			hasArrowDown: true,
+			imgAltText: section_top_oljefondet_imgAltText,
+			imgUrl: section_top_oljefondet_imgUrl,
+			headlinePre: section_top_oljefondet_headlinePre,
+			headline: section_top_oljefondet_headline,
+			headlineSub: section_top_oljefondet_headlineSub
+		})
+	}}
 
-	{% include '../_partials/sections/section-top.njk' %} #}
-
-
+	{# {{
+		sectionTop({
+			isBig: true,
+			headlineHasCurrency: true,
+			hasArrowDown: true,
+			imgAltText: section_top_oljefondet_imgAltText,
+			imgUrl: section_top_oljefondet_imgUrl,
+			headlinePre: section_top_oljefondet_headlinePre,
+			headline: section_top_oljefondet_headline,
+			headlineSub: section_top_oljefondet_headlineSub
+		})
+	}} #}
 
 	{% from "macros/swatch.macro.njk" import colorPattern %}
 
@@ -32,22 +41,6 @@
 			colorNotes: colorSwatch.colorNotes
 		})
 	}}
-
-
-	{% from '../macros/section-top.njk' import sectionTop %}
-
-  {# {{
-		sectionTop(
-			isBig=true,
-			headlineHasCurrency=true,
-			hasArrowDown=true,
-			imgAltText='',
-			imgUrl='section-top-oljefondet-imgUrl',
-			headlinePre='section-top-oljefondet-headlinePre',
-			headline='section-top-oljefondet-headline',
-			headlineSub='section-top-oljefondet-headlineSub'
-		)
-	}} #}
 
 {% endblock %}
 {% block footer %}

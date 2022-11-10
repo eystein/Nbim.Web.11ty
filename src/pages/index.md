@@ -14,11 +14,11 @@ colorSwatch:
 
 # Section - Oljefondets markedsverdi
 
-section-top-oljefondet-imgUrl: '../../images/Oljefondet_Toppfelt_1.jpg'
-section-top-oljefondet-imgAltText: 'Oljefondets markedsverdi'
-section-top-oljefondet-headlinePre: 'Oljefondets markedsverdi'
-section-top-oljefondet-headline: '8 267 097 776 213'
-section-top-oljefondet-headlineSub: 'For deg og fremtidige generasjoner'
+section_top_oljefondet_imgUrl: '../../images/Oljefondet_Toppfelt_1.jpg'
+section_top_oljefondet_imgAltText: 'Oljefondets markedsverdi'
+section_top_oljefondet_headlinePre: 'Oljefondets markedsverdi'
+section_top_oljefondet_headline: '8 267 097 776 213'
+section_top_oljefondet_headlineSub: 'For deg og fremtidige generasjoner'
 
 # Section - Fondets utvikling
 
