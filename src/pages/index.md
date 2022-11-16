@@ -131,11 +131,11 @@ section-sec-2-investments2-items:
 
 # Section - Hva er Oljefondet
 
-section-split-hva-er-oljefondet-imgUrl: '../../images/oilrig2.jpg'
-section-split-hva-er-oljefondet-imgAltText: 'Hva er Oljefondet?'
-section-split-hva-er-oljefondet-headline: 'Hva er Oljefondet?'
-section-split-hva-er-oljefondet-ingress: 'Olje og gass i Nordsjøen har hatt stor betydning for den økonomiske utviklingen av landet vårt. Men en dag vil oljen ta slutt. Da skal avkastingen på Oljefondet fortsette å komme nåværende og fremtidige generasjoner til gode.'
-section-split-hva-er-oljefondet-links:
+section_split_hva_er_oljefondet_imgUrl: './assets/images/oilrig2.jpg'
+section_split_hva_er_oljefondet_imgAltText: 'Hva er Oljefondet?'
+section_split_hva_er_oljefondet_headline: 'Hva er Oljefondet?'
+section_split_hva_er_oljefondet_ingress: 'Olje og gass i Nordsjøen har hatt stor betydning for den økonomiske utviklingen av landet vårt. Men en dag vil oljen ta slutt. Da skal avkastingen på Oljefondet fortsette å komme nåværende og fremtidige generasjoner til gode.'
+section_split_hva_er_oljefondet_links:
   - txt: 'Oljefondet kort fortalt'
     url: '#a'
   - txt: 'Organisering'

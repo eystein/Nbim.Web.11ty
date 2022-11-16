@@ -1,0 +1,9 @@
+{%- macro image(params) -%}
+  <img
+    src="./assets/images/loadingpixel.png"
+    alt="{{ params.imgAltText | safe }}"
+    data-lazy="{{ params.imgUrl | safe }}"
+    class="nbim-lazy-image{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.hasBorder %} has-border{% endif %}"
+  />
+
+{%- endmacro -%}

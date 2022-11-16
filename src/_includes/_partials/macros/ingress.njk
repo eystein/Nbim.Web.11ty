@@ -1,0 +1,28 @@
+{%- macro theClassesOverrided() -%}
+	{% if params.isBig %} ingress-is-big{% else %}{% if params.isLead %} ingress-is-lead{% endif %}{% endif %} {{ params.marginOverrides | safe }}
+{%- endmacro -%}
+
+{%- macro theClasses() -%}
+	{% if params.isBig %} ingress-is-big m-b-60{% else %}{% if params.isLead %} ingress-is-lead m-b-22{% else %} m-b-10{% endif %}{% endif %}
+{%- endmacro -%}
+
+{%- macro ingress(params) -%}
+
+{#
+Parameters received by this partial:
+
+isBig (means the ingress is not a 'story') gives ingress margin bottom 'm-b-50'
+isLead (means the ingress is not a 'story') gives ingress margin bottom 'm-b-22'
+classes
+marginOverrides
+txt
+links (optional, when passed it means we're on a
+       'item-calendar', 'item-calendar2' or 'item-newsvertical' section item)
+#}
+
+<div class="ingress{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.marginOverrides %}{{ theClassesOverrided() }}{% else %}{{ theClasses() }}{% endif %}">
+  <p>{{ params.txt | safe }}</p>
+	aaljhlpo
+</div>
+
+{%- endmacro -%}

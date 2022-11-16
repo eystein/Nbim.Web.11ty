@@ -1,0 +1,58 @@
+{%- macro video(params) -%}
+
+{#
+Parameters received by this partial:
+
+video
+  isBackground
+  isMuted
+  noControls
+  videoUrl (examples below)
+
+videoURL:
+  '../../videos/norway.mp4'
+  'https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761'
+  'https://youtu.be/Scxs7L0vhZ4' #}
+
+
+{% if params.video %}
+  {% if params.video.isBackground %}
+    {{!-- Video is muted & autoplays, placed after major DOM elements for performance & has an image fallback --}}
+    {{!-- https://codepen.io/mattgrosswork/pen/jrdwK --}}
+    <div class="video {% if classes %} {{ classes | safe }}{% endif %}">
+      <video
+        class="video--background"
+        src="{{ params.video.videoUrl }}"
+        autoplay
+        loop
+        muted
+        plays-inline
+        height="auto"
+      >
+      </video>
+    </div>
+  {% elif %}
+    {% if params.video.noControls %}
+        <div class="video video--button">
+          <video
+            class="{% if params.classes %} {{ params.classes | safe }}{% if %}"
+            src="{{ params.video.videoUrl }}"
+            height="auto"
+            {% if params.video.isMuted %} muted="true"{% endif %}
+            onclick="this.paused?this.play():this.pause()"
+          ></video>
+        </div>
+    {% else %}
+        <video
+          class="video{% if params.classes %} {{ params.classes | safe }}{% endif %}"
+          src="{{ params.video.videoUrl }}"
+          height="auto"
+          {% if not params.video.noControls %} controls="true" controlslist="nodownload"{% endif %}
+          {% if params.video.isMuted %} muted="true"{% endif %}
+        ></video>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+
+{%- endmacro -%}

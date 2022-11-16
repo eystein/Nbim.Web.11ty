@@ -1,0 +1,65 @@
+{%- macro button(params) -%}
+
+{#
+Parameters received by this partial:
+
+id
+type [primary, secondary, download, backbutton]
+isButton [true, false] (shows a 'button' input instead of an 'anchor tag')
+isEmail [true, false] (prepends a 'mailto:' within the 'anchor tag's 'href')
+hasToggler
+toggleStatus (only used on prototype, it will eventually be set dynamically)
+url
+txt
+txtActive
+txtInactive
+classes
+btnType #}
+
+
+{{#*inline "theClasses"}}
+  {{#if type}}
+    class="button button--{{{ type }}}{{#if classes}} {{{ classes }}}{{/if}}{{#if hasToggler}} toggler toggler-{{{ toggleStatus }}}{{/if}}"
+  {{else}}
+    class="button button--primary{{#if classes}} {{{ classes }}}{{/if}}"
+  {{/if}}
+{{/inline}}
+
+{{#if isButton}}
+  {{#if id}}
+    <button
+    {{#if btnType}}
+      type="{{{ btnType }}}"
+    {{/if}}
+    {{> theClasses }}
+    id="{{{id}}}"
+    >
+  {{ else }}
+  <button
+  {{#if btnType}}
+    type="{{{ btnType }}}"
+  {{/if}}
+  {{> theClasses }}
+  name="{{{name}}}"
+  >
+  {{/if}}
+    <span class="before"></span>
+    {{#if txtActive}}
+      <span class="txt-active">{{{ txtActive }}}</span>
+      <span class="txt-inactive">{{{ txtInactive }}}</span>
+    {{else}}
+      <span>{{{ txt }}}</span>
+    {{/if}}
+    <span class="after"></span>
+  </button>
+{{else}}
+  <a href="{{#if isEmail}}mailto:{{/if}}{{{ url }}}" title="{{{ txt }}}"
+    {{> theClasses }}
+  >
+    <span class="before"></span>
+    <span class="txt">{{{ txt }}}</span>
+    <span class="after"></span>
+  </a>
+{{/if}}
+
+{%- endmacro -%}
