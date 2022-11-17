@@ -1,8 +1,8 @@
 import Highcharts from 'highcharts';
 import lazyScript from './lazyScript';
 import {
-    // the chart initiator
-    renderChart,
+	// the chart initiator
+	renderChart,
 } from './nbimCharts';
 import nbimToggler from './nbimToggler';
 
