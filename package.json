@@ -12,7 +12,8 @@
 		"build:eleventy": "npx @11ty/eleventy",
 		"dev": "npm-run-all build:sass --parallel watch:*",
 		"build": "npm-run-all build:*",
-		"test": "npx @11ty/eleventy --dryrun"
+		"test": "npx @11ty/eleventy --dryrun",
+		"webpack": "npx webpack"
 	},
 	"author": "NoA Ignite",
 	"license": "ISC",
