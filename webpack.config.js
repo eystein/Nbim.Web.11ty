@@ -2,7 +2,7 @@ const path = require('path');
 
 // For the static site
 const siteConfig = {
-	mode: production,
+	mode: 'production',
 	entry: {
 		main: './src/js/main.js',
 		print: './src/js/print.js',
@@ -18,7 +18,7 @@ const siteConfig = {
 
 // For the NPM package
 const packageConfig = {
-	mode: production,
+	mode: 'production',
 	entry: {
 		main: './src/js/main.js',
 		print: './src/js/print.js',
