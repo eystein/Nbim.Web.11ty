@@ -1,7 +1,8 @@
 const path = require('path');
 
-module.exports = {
-	mode: 'production',
+// For the static site
+const siteConfig = {
+	mode: production,
 	entry: {
 		main: './src/js/main.js',
 		print: './src/js/print.js',
@@ -12,6 +13,23 @@ module.exports = {
 		filename: 'assets/js/11ty-[name].js',
 		path: path.resolve(__dirname, './docs'),
 		publicPath: '/docs/',
-		
+	},
+}
+
+// For the NPM package
+const packageConfig = {
+	mode: production,
+	entry: {
+		main: './src/js/main.js',
+		print: './src/js/print.js',
+		edit: './src/js/edit.js',
+		sync: './src/js/sync.js',
+	},
+	output: {
+		filename: 'js/11ty-[name].js',
+		path: path.resolve(__dirname, './static'),
+		publicPath: '/static/',
 	},
 };
+
+module.exports = [siteConfig, packageConfig]
