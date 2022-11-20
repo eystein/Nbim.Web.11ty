@@ -12,5 +12,6 @@ module.exports = {
 		filename: 'assets/js/11ty-[name].js',
 		path: path.resolve(__dirname, './docs'),
 		publicPath: '/docs/',
+		
 	},
 };

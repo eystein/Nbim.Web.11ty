@@ -6,7 +6,7 @@
 	"scripts": {
 		"watch:sass": "sass --watch --update --style=expanded src/scss:docs/assets/css",
 		"build:sass": "sass --no-source-map --style=compressed src/scss:static/css",
-		"watch:js": "terser src/js/* -o docs/assets/js/main.js --source-map",
+		"watch:js": "webpack",
 		"build:js": "terser src/js/* -o static/js/main.min.js",
 		"watch:eleventy": "npx @11ty/eleventy --serve",
 		"build:eleventy": "npx @11ty/eleventy",
