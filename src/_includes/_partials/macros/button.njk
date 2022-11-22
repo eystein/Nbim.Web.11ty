@@ -17,49 +17,57 @@ classes
 btnType #}
 
 
-{{#*inline "theClasses"}}
-  {{#if type}}
-    class="button button--{{{ type }}}{{#if classes}} {{{ classes }}}{{/if}}{{#if hasToggler}} toggler toggler-{{{ toggleStatus }}}{{/if}}"
-  {{else}}
-    class="button button--primary{{#if classes}} {{{ classes }}}{{/if}}"
-  {{/if}}
-{{/inline}}
+{% macro theClasses(params) %}
+  {% if params.type %}
+    class="button button--{{ params.type | safe }}{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.hasToggler %} toggler toggler-{{ params.toggleStatus | safe }}{% endif %}"
+  {% else %}
+    class="button button--primary{% if params.classes %} {{ params.classes | safe }}{% endif %}"
+  {% endif %}
+{% endmacro %}
 
-{{#if isButton}}
-  {{#if id}}
+{% if params.isButton %}
+  {% if params.id %}
     <button
-    {{#if btnType}}
-      type="{{{ btnType }}}"
-    {{/if}}
-    {{> theClasses }}
-    id="{{{id}}}"
+    {% if params.btnType %}
+      type="{{ params.btnType | safe }}"
+    {% endif %}
+    {{
+			theClasses({
+				id: "{{ params.id | safe }}"
+			}) 
+		}}
     >
-  {{ else }}
+  {% else %}
   <button
-  {{#if btnType}}
-    type="{{{ btnType }}}"
-  {{/if}}
-  {{> theClasses }}
-  name="{{{name}}}"
+  {% if params.btnType %}
+    type="{{ params.btnType | safe }}"
+  {% endif %}
+  {{
+		theClasses({
+			name: "{{ params.name | safe }}"
+		})
+	}}
   >
-  {{/if}}
+  {% endif %}
     <span class="before"></span>
-    {{#if txtActive}}
-      <span class="txt-active">{{{ txtActive }}}</span>
-      <span class="txt-inactive">{{{ txtInactive }}}</span>
-    {{else}}
-      <span>{{{ txt }}}</span>
-    {{/if}}
+    {% if params.txtActive %}
+      <span class="txt-active">{{  params.txtActive | safe }}</span>
+      <span class="txt-inactive">{{  params.txtInactive | safe }}</span>
+    {% else %}
+      <span>{{ params.txt | safe }}</span>
+    {% endif %}
     <span class="after"></span>
   </button>
-{{else}}
-  <a href="{{#if isEmail}}mailto:{{/if}}{{{ url }}}" title="{{{ txt }}}"
-    {{> theClasses }}
-  >
+{% else %}
+  <a href="{% if params.isEmail %}mailto:{% endif %}{{ params.url | safe }}" title="{{ params.txt }}"
+    {{
+			theClasses() 
+		}}
+  	>
     <span class="before"></span>
-    <span class="txt">{{{ txt }}}</span>
+    <span class="txt">{{ params.txt | safe }}</span>
     <span class="after"></span>
   </a>
-{{/if}}
+{% endif %}
 
 {%- endmacro -%}

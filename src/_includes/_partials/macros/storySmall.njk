@@ -1,44 +1,53 @@
-{{!--
+{%- macro storySmall(params) -%}
+
+{# 
 Parameters received by this partial:
 
 headline
 ingress
 links
-ingressMargin
---}}
+ingressMargin  
+#}
 
-{{#if number}}
+
+
+{% if params.number %}
   <div class="number__wrapper m-b-22">
     <h3>
       <span class="number--number-header m-b-5">
-        {{{ number }}}
+        {{ params.number | safe }}
       </span>
       <span class="m-b-2">
-          {{{ headline }}}
+          {{ params.headline | safe }}
       </span>
     </h3>
   </div>
-{{else}}
+{% else %}
   <h3 class="m-b-2">
-    {{{ headline }}}
+    {{ params.headline | safe }}
   </h3>
-{{/if}}
-{{#if ingress}}
-  {{> ingress
-    txt=ingress
-    marginOverrides=ingressMargin
+{% endif %}
+{% if params.ingress %}
+  {{
+		ingress({
+			txt: ingress,
+			marginOverrides: ingressMargin
+		})    
   }}
-{{/if}}
-{{#if links}}
+{% endif %}
+{% if params.links %}
   <div class="row">
     <div class="col-12">
-      {{#each links}}
-        {{> button
-          type='secondary'
-          url=url
-          txt=txt
+      {% for link in params.links %}
+        {{
+					button({
+						type: 'secondary',
+						url: url,
+						txt: txt
+					})          
         }}
-      {{/each}}
+      {% endfor %}
     </div>
   </div>
-{{/if}}
+{% endif %}
+{%- endmacro -%}
