@@ -6,49 +6,14 @@ txt
 classes
 url (optional) #}
 
-
-{# {% block headingType %}
-	{% if hType %}h{% hType | safe %}{% else %}h3{% endif %}
-{% endblock %} #}
-
-{# {% block theContent %}
-  {% if url %}
-    <a href="{% url | safe %}" title="{% txt | safe %}">
-      {% txt | safe %}
-    </a>
-  {% else %}
-    {% txt | safe %}
-  {% endif %}
-{% endblock %} #}
-
-{%- macro heading(hType, txt, classes, url) -%}
-	<{% if hType %}h{% hType | safe %}{% else %}h3{% endif %}>
-		{% if url %}
-			<a href="{% url | safe %}" title="{% txt | safe %}">
-				{% txt | safe %}
+{%- macro heading(params) -%}
+	<{% if params.hType %}h{{ params.hType | safe }}{% else %}h3{% endif %}>
+		{% if params.url %}
+			<a href="{{ params.url | safe }}" title="{{ params.txt | safe }}">
+				{{ params.txt | safe }}
 			</a>
 		{% else %}
-			{% txt | safe %}
+			{{ params.txt | safe }}
 		{% endif %}
-	</{% if hType %}h{% hType | safe %}{% else %}h3{% endif %}>
+	</{% if params.hType %}h{{ params.hType | safe }}{% else %}h3{% endif %}>
 {%- endmacro -%}
-{# 
-<{{
-	headingType({
-		hType: params.hType
-	})
-}} class="heading">
-	{{
-		theContent({
-			url: params.url,
-			txt: params.txt
-		})
-	}}
-</{{
-	headingType({
-		hType: params.hType
-	})
-}}>
-
-
- #}
