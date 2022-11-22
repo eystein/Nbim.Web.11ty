@@ -11,12 +11,15 @@ isOneThird
 isOneFourth
 quote 
 #}
-{% from "base/heading.njk" import heading %}
+{% from "_base/_heading.njk" import heading %}
 {% from "macros/ingress.njk" import ingress %}
 {% from "macros/quote.njk" import quote %}
 
 {% macro responsive(params) %}
-	{% if params.isThreeFourths %} col-md-9{% endif %}{% if params.isOneHalf %} col-md-6{% endif %}{% if params.isOneThird %} col-md-4{% endif %}{% if params.isOneFourth %} col-md-3{% endif %}
+	{% if params.isThreeFourths %} col-md-9{% endif %}
+	{% if params.isOneHalf %} col-md-6{% endif %}
+	{% if params.isOneThird %} col-md-4{% endif %}
+	{% if params.isOneFourth %} col-md-3{% endif %}
 {% endmacro %}
 
 {% macro headlineSpacing(params) %}

@@ -57,7 +57,6 @@ quote
       <div class="col-12 col-md-6 order-2{% if params.pictureToLeft %} order-md-1{% endif %}{% if params.quote %} d-flex align-items-center{% endif %}">
         {% if params.quote %}
           <div>
-						story  include with div
             {% from "macros/story.njk" import story %}
 						{{
 							story({
@@ -69,7 +68,6 @@ quote
 						}}
           </div>
         {% else %}
-				story  include
 					{% from "macros/story.njk" import story %}
           {{
 						story({

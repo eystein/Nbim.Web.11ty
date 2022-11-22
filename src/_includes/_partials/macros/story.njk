@@ -18,14 +18,12 @@ quote
 {% if params.headline %}
   <h2 class="section--headline{% if not params.number %} m-b-10{% endif %}">
     {{ params.headline | safe }}
-		headline
   </h2>
 {% endif %}
 {% if params.number %}
 </div>
 {% endif %}
 {% if params.ingress %}
-	Ingress
 	{% from "macros/ingress.njk" import ingress %}
   {{
 		ingress({

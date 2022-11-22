@@ -16,9 +16,8 @@ quote #}
 {% from "macros/button.njk" import button %}
 
 <section class="section {% if params.isAlt %}section--alt {% endif %}section__sec-3">
-  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}" >
-    {# TODO #}
-		{{ 			
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+		{{
 			sectionContentTop({
 				isBig: true,
 				isThreeFourths: true,
@@ -31,8 +30,7 @@ quote #}
       {% if params.hasMoreThanThreeItems %}
         {% for item in params.items %}
           <div class="col-12 col-lg-4 section__sec-3--item m-b-30">
-            {% if params.imgUrl %}
-							{# TODO #}
+            {% if params.imgUrl %}							
               {{ 
 								image({
 									imgAltText: imgAltText,
@@ -41,7 +39,7 @@ quote #}
 								})                
               }}
             {% endif %}
-						{# TODO #}
+						
             {{ 
 							storySmall({
 								headline: headline,
@@ -57,7 +55,7 @@ quote #}
         {% for item in params.items %}
           <div class="col-12 col-lg-4 m-b-{% if links %}20{% else %}10{% endif %}">
             {% if params.imgUrl %}
-						{# TODO #}
+						
               {{ 
 								image({
 									imgAltText: imgAltText,
@@ -66,7 +64,7 @@ quote #}
 								})                
               }}
             {% endif %}
-						{# TODO #}
+						
             {{ 
 							storySmall({
 								headline: headline,
@@ -84,7 +82,7 @@ quote #}
       <div class="row m-t-2">
         <div class="col-12">
           {% for link in params.links %}
-						{# TODO #}
+						
             {{
 							button({
 								type: 'secondary',
