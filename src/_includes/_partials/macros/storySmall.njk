@@ -1,0 +1,44 @@
+{{!--
+Parameters received by this partial:
+
+headline
+ingress
+links
+ingressMargin
+--}}
+
+{{#if number}}
+  <div class="number__wrapper m-b-22">
+    <h3>
+      <span class="number--number-header m-b-5">
+        {{{ number }}}
+      </span>
+      <span class="m-b-2">
+          {{{ headline }}}
+      </span>
+    </h3>
+  </div>
+{{else}}
+  <h3 class="m-b-2">
+    {{{ headline }}}
+  </h3>
+{{/if}}
+{{#if ingress}}
+  {{> ingress
+    txt=ingress
+    marginOverrides=ingressMargin
+  }}
+{{/if}}
+{{#if links}}
+  <div class="row">
+    <div class="col-12">
+      {{#each links}}
+        {{> button
+          type='secondary'
+          url=url
+          txt=txt
+        }}
+      {{/each}}
+    </div>
+  </div>
+{{/if}}
