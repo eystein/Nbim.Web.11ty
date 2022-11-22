@@ -1,0 +1,48 @@
+{# 
+Parameters received by this partial:
+
+headline
+ingress
+isBig (if 'true', it's passed further to 'ingress' to give it 'm-b-50')
+isLead (if 'true', it's passed further to 'ingress' to give it 'm-b-30')
+isOneHalf
+isOneThird
+isOneFourth
+quote #}
+
+
+{{#*inline "responsive"}}{{#if isThreeFourths}} col-md-9{{/if}}{{#if isOneHalf}} col-md-6{{/if}}{{#if isOneThird}} col-md-4{{/if}}{{#if isOneFourth}} col-md-3{{/if}}{{/inline}}
+
+{{#*inline "headlineSpacing"}}{{#if ingress}} m-b-10{{else}}{{#if isLead}} m-b-22{{else}} m-b-40{{/if}}{{/if}}{{/inline}}
+
+{{#if headline}}
+  <div class="row">
+    <div class="col-12 heading-spacing{{> headlineSpacing}}">
+      {{> base/heading
+        txt=headline
+        hType='2'
+        classes='section--headline' 
+      }}
+    </div>
+  </div>
+{{/if}}
+{{#if ingress}}
+  <div class="row">
+    <div class="col-12{{> responsive}}">
+      {{> ingress
+        txt=ingress
+        isBig=isBig
+        isLead=isLead
+      }}
+    </div>
+  </div>
+{{/if}}
+{{#if quote}}
+  <div class="row">
+    <div class="col-12 col-lg-6 m-b-20">
+      {{> quote
+        txt=quote
+      }}
+    </div>
+  </div>
+{{/if}}
