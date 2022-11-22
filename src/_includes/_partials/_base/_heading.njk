@@ -7,7 +7,7 @@ classes
 url (optional) #}
 
 {%- macro heading(params) -%}
-	<{% if params.hType %}h{{ params.hType | safe }}{% else %}h3{% endif %}>
+	<{% if params.hType %}h{{ params.hType | safe }}{% else %}h3{% endif %} class="heading{% if params.classes %} {{ params.classes | safe}}{% endif %}">
 		{% if params.url %}
 			<a href="{{ params.url | safe }}" title="{{ params.txt | safe }}">
 				{{ params.txt | safe }}
