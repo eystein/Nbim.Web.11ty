@@ -93,11 +93,11 @@ section-wide-split-development-items:
 
 # Section - Slik er fondet investert
 
-section-sec-3-investments-headline: 'Slik er fondet investert'
-section-sec-3-investments-links:
+section_sec_3_investments_headline: 'Slik er fondet investert'
+section_sec_3_investments_links:
   - txt: 'Hvordan fondet er investert'
     url: 'slik-er-fondet-investert.html'
-section-sec-3-investments-items:
+section_sec_3_investments_items:
   - number: '72'
     headline: 'Land'
     ingress: 'Oljefondet er at av verdens største fond. Investeringene er fordelt på de fleste markeder, land og valutaer for å ta del i global vekst og verdiskapning, og sikre god risikospredning.'

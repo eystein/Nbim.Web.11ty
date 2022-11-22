@@ -1,0 +1,102 @@
+{%- macro sectionSec3(params) -%}
+{# 
+Parameters received by this partial:
+
+isAlt
+isShort
+spacingTop [ie. '2', '5', '10', '15', '17', '20', '22', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+items
+links
+hasMoreThanThreeItems
+quote #}
+{% from "macros/sectionContentTop.njk" import sectionContentTop %}
+{% from "macros/image.njk" import image %}
+{% from "macros/storySmall.njk" import storySmall %}
+{% from "macros/button.njk" import button %}
+
+<section class="section {% if params.isAlt %}section--alt {% endif %}section__sec-3">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}" >
+    {# TODO #}
+		{{ 			
+			sectionContentTop({
+				isBig: true,
+				isThreeFourths: true,
+				headline: headline,
+				ingress: ingress,
+				quote: quote
+			})
+    }}
+    <div class="row">
+      {% if params.hasMoreThanThreeItems %}
+        {% for item in params.items %}
+          <div class="col-12 col-lg-4 section__sec-3--item m-b-30">
+            {% if params.imgUrl %}
+							{# TODO #}
+              {{ 
+								image({
+									imgAltText: imgAltText,
+									imgUrl: imgUrl,
+									classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-20'
+								})                
+              }}
+            {% endif %}
+						{# TODO #}
+            {{ 
+							storySmall({
+								headline: headline,
+              	ingress: ingress,
+								links: links,
+								url: url,
+								ingressMargin: 'm-b-22'
+							})              
+            }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for item in params.items %}
+          <div class="col-12 col-lg-4 m-b-{% if links %}20{% else %}10{% endif %}">
+            {% if params.imgUrl %}
+						{# TODO #}
+              {{ 
+								image({
+									imgAltText: imgAltText,
+									imgUrl: imgUrl,
+									classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-20'
+								})                
+              }}
+            {% endif %}
+						{# TODO #}
+            {{ 
+							storySmall({
+								headline: headline,
+								ingress: ingress,
+								links: links,
+								url: url,
+								ingressMargin: 'm-b-22'
+							})              
+            }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% if params.links %}
+      <div class="row m-t-2">
+        <div class="col-12">
+          {% for link in params.links %}
+						{# TODO #}
+            {{
+							button({
+								type: 'secondary',
+								url: url,
+								txt: txt
+							})              
+            }}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{%- endmacro -%}

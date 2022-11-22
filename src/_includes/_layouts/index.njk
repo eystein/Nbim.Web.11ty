@@ -1,7 +1,6 @@
 {% extends "../_layouts/_layout.njk" %}
 
 {% block main %}
-	<h1>Includes come here</h1>
 
 	{% from "macros/sectionTop.macro.njk" import sectionTop %}
 	{{
@@ -35,6 +34,16 @@
 		links: section_split_hva_er_oljefondet_links
 	})
 }}
+
+{% from "macros/section-sec-3.njk" import sectionSec3 %}
+  {{ 
+		sectionSec3({
+			isAlt: true,
+			headline: section_sec_3_investments_headline,
+			links: section_sec_3_investments_links,
+			items: section_sec_3_investments_items
+		})
+  }}
 
 
 	{% from "macros/swatch.macro.njk" import colorPattern %}
