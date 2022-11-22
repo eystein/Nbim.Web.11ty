@@ -45,14 +45,17 @@
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <ul class="footer-proto__list">
-          {# <li class="footer-proto__list--item__heading">
-            {{> base/heading
-              txt='Innsikt'
-              hType='2'
-              classes='footer-proto__heading bold-text'
-              url=''
-            }}
-          </li> #}
+					
+          <li class="footer-proto__list--item__heading">
+           {{ 
+							heading({
+								txt: 'Innsikt',
+								hType: '2',
+								classes: 'footer-proto__heading bold-text',
+								url: ''
+							})
+						}}
+          </li>
           <li class="footer-proto__list--item">
             <a>Diskusjonsnotater</a>
           </li>
@@ -84,14 +87,16 @@
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <ul class="footer-proto__list">
-          {# <li class="footer-proto__list--item__heading">
-            {{> base/heading
-              txt='Ansvarlig forvaltning'
-              hType='2'
-              classes='footer-proto__heading bold-text'
-              url=''
-            }}
-          </li> #}
+          <li class="footer-proto__list--item__heading">
+						 {{ 
+							heading({
+								txt: 'Ansvarlig forvaltning',
+								hType: '2',
+								classes: 'footer-proto__heading bold-text',
+								url: ''
+							})
+						}}
+          </li>
           <li class="footer-proto__list--item">
             <a>Utelukkelser og nedsalg</a>
           </li>
@@ -108,14 +113,22 @@
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <ul class="footer-proto__list">
-          {# <li class="footer-proto__list--item__heading">
-            {{> base/heading
+          <li class="footer-proto__list--item__heading">
+						 {{ 
+							heading({
+								txt: 'Organisering',
+								hType: '2',
+								classes: 'footer-proto__heading bold-text',
+								url: ''
+							})
+						}}
+            {# {{> base/heading
               txt='Organisering'
               hType='2'
               classes='footer-proto__heading bold-text'
               url='/organisering.html'
-            }}
-          </li> #}
+            }} #}
+          </li>
           <li class="footer-proto__list--item">
             <a>Styringsmodellen</a>
           </li>
