@@ -18,38 +18,43 @@ btnType #}
 
 
 {% macro theClasses(params) %}
-  {% if params.type %}
-    class="button button--{{ params.type | safe }}{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.hasToggler %} toggler toggler-{{ params.toggleStatus | safe }}{% endif %}"
+  {% if params.type %}class="button button--{{ params.type | safe }}
+		{% if params.classes %} {{ params.classes | safe }}{% endif %}
+		{% if params.hasToggler %} toggler toggler-{{ params.toggleStatus | safe }}
+	{% endif %}"
   {% else %}
-    class="button button--primary{% if params.classes %} {{ params.classes | safe }}{% endif %}"
+    class="button button--primary
+		{% if params.classes %}
+			{{ params.classes | safe }}
+		{% endif %}"
   {% endif %}
 {% endmacro %}
 
 {% if params.isButton %}
   {% if params.id %}
     <button
-    {% if params.btnType %}
-      type="{{ params.btnType | safe }}"
-    {% endif %}
-    {{
-			theClasses({
-				id: "{{ params.id | safe }}"
-			}) 
-		}}
+			{% if params.btnType %}
+				type="{{ params.btnType | safe }}"
+			{% endif %}
+			{{
+				theClasses({
+					id: "{{ params.id | safe }}"
+				}) 
+			}}
     >
   {% else %}
   <button
-  {% if params.btnType %}
-    type="{{ params.btnType | safe }}"
+		{% if params.btnType %}
+			type="{{ params.btnType | safe }}"
+		{% endif %}
+		{{
+			theClasses({
+				name: "{{ params.name | safe }}"
+			})
+		}}
+	>
   {% endif %}
-  {{
-		theClasses({
-			name: "{{ params.name | safe }}"
-		})
-	}}
-  >
-  {% endif %}
-    <span class="before"></span>
+  	<span class="before"></span>
     {% if params.txtActive %}
       <span class="txt-active">{{  params.txtActive | safe }}</span>
       <span class="txt-inactive">{{  params.txtInactive | safe }}</span>
@@ -61,7 +66,7 @@ btnType #}
 {% else %}
   <a href="{% if params.isEmail %}mailto:{% endif %}{{ params.url | safe }}" title="{{ params.txt }}"
     {{
-			theClasses() 
+			theClasses(params) 
 		}}
   	>
     <span class="before"></span>

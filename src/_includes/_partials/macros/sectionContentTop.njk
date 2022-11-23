@@ -31,7 +31,7 @@ quote
     <div class="col-12 heading-spacing{{ headlineSpacing(params) }}">
       {{ 
 				heading({
-					txt: headline,
+					txt: params.headline,
 					hType: '2',
 					classes: 'section--headline' 
 				})        
@@ -44,7 +44,7 @@ quote
     <div class="col-12{{ responsive(params) }}">
       {{ 
 				ingress({
-					txt: ingress,
+					txt: params.ingress,
 					isBig: isBig,
 					isLead: isLead
 				})        
@@ -57,7 +57,7 @@ quote
     <div class="col-12 col-lg-6 m-b-20">
       {{
 				quote({
-					txt: quote
+					txt: params.quote
 				})        
       }}
     </div>

@@ -9,7 +9,8 @@ links
 ingressMargin  
 #}
 
-
+{% from "macros/button.njk" import button %}
+{% from "macros/ingress.njk" import ingress %}
 
 {% if params.number %}
   <div class="number__wrapper m-b-22">
@@ -30,8 +31,8 @@ ingressMargin
 {% if params.ingress %}
   {{
 		ingress({
-			txt: ingress,
-			marginOverrides: ingressMargin
+			txt: params.ingress,
+			marginOverrides: params.ingressMargin
 		})    
   }}
 {% endif %}
@@ -42,8 +43,8 @@ ingressMargin
         {{
 					button({
 						type: 'secondary',
-						url: url,
-						txt: txt
+						url: link.url,
+						txt: link.txt
 					})          
         }}
       {% endfor %}

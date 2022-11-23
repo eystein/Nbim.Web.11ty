@@ -19,7 +19,7 @@ txt
 links (optional, when passed it means we're on a 'item-calendar', 'item-calendar2' or 'item-newsvertical' section item)
 #}
 
-<div class="ingress{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.marginOverrides %}{{ theClassesOverrided() }}{% else %}{{ theClasses() }}{% endif %}">
+<div class="ingress{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.marginOverrides %}{{ theClassesOverrided(params) }}{% else %}{{ theClasses(params ) }}{% endif %}">
   <p>{{ params.txt | safe }}</p>
 </div>
 

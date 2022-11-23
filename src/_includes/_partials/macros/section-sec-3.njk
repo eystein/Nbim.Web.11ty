@@ -21,20 +21,20 @@ quote #}
 			sectionContentTop({
 				isBig: true,
 				isThreeFourths: true,
-				headline: headline,
-				ingress: ingress,
-				quote: quote
+				headline: params.headline,
+				ingress: params.ingress,
+				quote: params.quote
 			})
     }}
     <div class="row">
       {% if params.hasMoreThanThreeItems %}
         {% for item in params.items %}
           <div class="col-12 col-lg-4 section__sec-3--item m-b-30">
-            {% if params.imgUrl %}							
+            {% if item.imgUrl %}							
               {{ 
 								image({
-									imgAltText: imgAltText,
-									imgUrl: imgUrl,
+									imgAltText: item.imgAltText,
+									imgUrl: item.imgUrl,
 									classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-20'
 								})                
               }}
@@ -42,10 +42,11 @@ quote #}
 						
             {{ 
 							storySmall({
-								headline: headline,
-              	ingress: ingress,
-								links: links,
-								url: url,
+								headline: item.headline,
+              	ingress: item.ingress,
+								links: item.links,
+								url: item.url,
+								number: item.number,
 								ingressMargin: 'm-b-22'
 							})              
             }}
@@ -53,13 +54,12 @@ quote #}
         {% endfor %}
       {% else %}
         {% for item in params.items %}
-          <div class="col-12 col-lg-4 m-b-{% if links %}20{% else %}10{% endif %}">
-            {% if params.imgUrl %}
-						
+          <div class="col-12 col-lg-4 m-b-{% if item.links %}20{% else %}10{% endif %}">
+            {% if item.imgUrl %}						
               {{ 
 								image({
-									imgAltText: imgAltText,
-									imgUrl: imgUrl,
+									imgAltText: item.imgAltText,
+									imgUrl: item.imgUrl,
 									classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-20'
 								})                
               }}
@@ -67,10 +67,11 @@ quote #}
 						
             {{ 
 							storySmall({
-								headline: headline,
-								ingress: ingress,
-								links: links,
-								url: url,
+								headline: item.headline,
+								ingress: item.ingress,
+								links: item.links,
+								url: item.url,
+								number: item.number,
 								ingressMargin: 'm-b-22'
 							})              
             }}
@@ -86,8 +87,8 @@ quote #}
             {{
 							button({
 								type: 'secondary',
-								url: url,
-								txt: txt
+								url: link.url,
+								txt: link.txt
 							})              
             }}
           {% endfor %}
