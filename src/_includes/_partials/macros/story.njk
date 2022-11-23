@@ -9,6 +9,11 @@ links
 quote
  #}
 
+ {% from "macros/ingress.njk" import ingress %}
+ {% from "macros/quote.njk" import quote %}
+ {% from "macros/button.njk" import button %}
+
+
 {% if params.number %}
 <div class="number__wrapper m-b-30">
   <div class="number--number m-b-10">
@@ -23,8 +28,7 @@ quote
 {% if params.number %}
 </div>
 {% endif %}
-{% if params.ingress %}
-	{% from "macros/ingress.njk" import ingress %}
+{% if params.ingress %}	
   {{
 		ingress({
 			txt: params.ingress,
@@ -34,8 +38,7 @@ quote
 {% endif %}
 {% if params.quote %}
   <div class="row">
-    <div class="col-12">
-			{% from "macros/quote.njk" import quote %}
+    <div class="col-12">			
       {{
 				quote({
 					txt: params.quote
@@ -45,29 +48,31 @@ quote
   </div>
 {% endif %}
 
-{# {% if params.links %}
+{% if params.links %}
   <div class="row">
     <div class="col-12">
-			LInks?
       {% for link in params.links %}
-        {% if params.download %}
-          {{> button
-            type='download-secondary'
-            url=url
-            txt=txt
+        {% if link.download %}
+          {{
+						button({
+							type: 'download-secondary',
+							url: link.url,
+							txt: link.txt
+						})            
           }}
-					button download secondary
-        {% else %}
-				button  secondary
-          {{> button
-            type='secondary'
-            url=url
-            txt=txt
+        {% else %}				
+          {{
+						button({
+							type: 'secondary',
+							url: link.url,
+							txt: link.txt
+						})
+            
           }}
         {% endif %}
       {% endfor %}
     </div>
   </div>
-{% endif %} #}
+{% endif %}
 
 {%- endmacro -%}

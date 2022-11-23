@@ -15,29 +15,34 @@ links
 quote
  #}
 
+{% from "macros/image.njk" import image %}
+{% from "macros/video.njk" import video %}
+{% from "macros/story.njk" import story %}
 
-
-{# {{#*inline "theImage"}}
-  {{> image
-    imgAltText=imgAltText
-    imgUrl=imgUrl
-    classes='aspect aspect__ratio-16-9--sm aspect__ratio-1-1--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl section__split--image'
+{%- macro theImage(params) -%}
+  {{
+		image({
+			imgAltText: params.imgAltText,
+			imgUrl: params.imgUrl,
+			classes: 'aspect aspect__ratio-16-9--sm aspect__ratio-1-1--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl section__split--image'
+		})    
   }}
-{{/inline}}
+{%- endmacro -%}
 
-{{#*inline "theVideo"}}
-  {{> video
-    video=video
+{%- macro theVideo(params) -%}
+  {{
+		video({
+			video: params.video
+		})    
   }}
-{{/inline}} #}
+{%- endmacro -%}
 
-{# {{!-- Note that 'section__split-50-50' has no effect on styles, it's just a reference --}} #}
+{# Note that 'section__split-50-50' has no effect on styles, it's just a reference #}
 <section class="section {% if params.isAlt %}section--alt{% endif %} {% if params.quote %}section--quote{% endif %} section__split section__split-50-50">
 	<div class="container {% if params.spacingTop %}m-t-{{ params.spacingTop | safe }}{% elif params.isShort %} m-b-80{% else %} m-t-80{% endif %}">
     <div class="row">
       <div class="col-12 col-md-6 order-1{% if params.pictureToLeft %} order-md-2{% endif %}">
         {% if params.imgUrl %}
-					{% from "macros/image.njk" import image %}
 					{{
 						image({
 							imgAltText: params.imgAltText,
@@ -45,10 +50,9 @@ quote
 							classes: 'aspect aspect__ratio-16-9--sm aspect__ratio-1-1--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl section__split--image'
 						})
 					}}
-        {% elif params.video %}
-					{% from "macros/video.njk" import video %}
+        {% elif params.video %}					
 					{{
-						image({
+						video({
 							video: params.video
 						})
 					}}
@@ -56,8 +60,7 @@ quote
       </div>
       <div class="col-12 col-md-6 order-2{% if params.pictureToLeft %} order-md-1{% endif %}{% if params.quote %} d-flex align-items-center{% endif %}">
         {% if params.quote %}
-          <div>
-            {% from "macros/story.njk" import story %}
+          <div>            
 						{{
 							story({
 								headline: params.headline,
@@ -67,8 +70,7 @@ quote
 							})
 						}}
           </div>
-        {% else %}
-					{% from "macros/story.njk" import story %}
+        {% else %}					
           {{
 						story({
 							headline: params.headline,

@@ -1,10 +1,11 @@
+{% from "../_base/_heading.njk" import heading %}
+
 <footer class="footer-proto">
   <div class="container m-t-80">
     <div class="row">
       <div class="col-12 col-md-6 col-xl-3">
         <ul class="footer-proto__list">
           <li class="footer-proto__list--item__heading">
-						{% from "../_base/_heading.njk" import heading %}
             {{ 
 							heading({
 								txt: 'Oljefondet',
@@ -45,7 +46,6 @@
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <ul class="footer-proto__list">
-					
           <li class="footer-proto__list--item__heading">
            {{ 
 							heading({
@@ -122,12 +122,6 @@
 								url: ''
 							})
 						}}
-            {# {{> base/heading
-              txt='Organisering'
-              hType='2'
-              classes='footer-proto__heading bold-text'
-              url='/organisering.html'
-            }} #}
           </li>
           <li class="footer-proto__list--item">
             <a>Styringsmodellen</a>

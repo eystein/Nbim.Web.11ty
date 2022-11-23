@@ -1,8 +1,13 @@
 {% extends "../_layouts/_layout.njk" %}
 
+{% from "macros/sectionTop.macro.njk" import sectionTop %}
+{% from "macros/sectionSplit.njk" import sectionSplit %}
+{% from "macros/section-sec-3.njk" import sectionSec3 %}
+{% from "macros/section-sec-2.njk" import sectionSec2 %}
+
+
 {% block main %}
 
-	{% from "macros/sectionTop.macro.njk" import sectionTop %}
 	{{
 		sectionTop({
 			text: section_top_oljefondet_headline,
@@ -16,8 +21,7 @@
 			headlineSub: section_top_oljefondet_headlineSub
 		})
 	}}
-
-	{% from "macros/sectionSplit.njk" import sectionSplit %}
+	
 	{{
 		sectionSplit({
 			isAlt: false,
@@ -34,8 +38,7 @@
 			links: section_split_hva_er_oljefondet_links
 		})
 	}}
-
-	{% from "macros/section-sec-3.njk" import sectionSec3 %}
+	
 	{{ 
 		sectionSec3({
 			isAlt: true,
@@ -44,14 +47,14 @@
 			items: section_sec_3_investments_items
 		})
 	}}
+	
+	{{
+		sectionSec2({
+			isAlt: true,
+			spacingTop: '0',
+			items: section_sec_2_investments2_items
+		})
 
-	{% from "macros/section-sec-2.njk" import sectionSec2 %}
-	  {{
-			sectionSec2({
-				isAlt: true,
-				spacingTop: '0',
-				items: section_sec_2_investments2_items
-			})
 
   }}
 
