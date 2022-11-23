@@ -111,7 +111,7 @@ section_sec_3_investments_items:
         url: 'https://www.nbim.no/no/fondet/beholdningene/beholdninger-per-31.12.2017/?fullsize=true'
     ingress: 'Den største delen av fondet er investert i aksjer, som er eierandeler i selskaper. En del er investert i rentepapirer, som er utlån til stater og selskaper. En mindre del er investert i eiendom.'
 
-section-sec-2-investments2-items:
+section_sec_2_investments2_items:
   - imgUrl: '../../images/Ikon_globus_med_graf.svg'
     imgAltText: 'Søk i alle selskapene'
     headline: 'Søk i alle selskapene'

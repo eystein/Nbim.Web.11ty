@@ -45,6 +45,16 @@
 		})
 	}}
 
+	{% from "macros/section-sec-2.njk" import sectionSec2 %}
+	  {{
+			sectionSec2({
+				isAlt: true,
+				spacingTop: '0',
+				items: section_sec_2_investments2_items
+			})
+
+  }}
+
 
 	{% from "macros/swatch.macro.njk" import colorPattern %}
 

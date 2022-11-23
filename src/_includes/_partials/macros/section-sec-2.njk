@@ -1,0 +1,141 @@
+{%- macro sectionSec2(params) -%}
+
+{{!--
+Parameters received by this partial:
+
+isAlt
+isShort
+isCard (if columns should have opposite background color)
+spacingTop [ie. '2', '5', '10', '15', '17', '20', '22', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+imageUrl
+imageAltText
+ingress (if 'imageUrl' is defined at the section level, it will override 'ingress')
+items
+links
+quote
+
+For the sake of convenience while setting up a 'col-x' section,
+the ['imageUrl' or 'ingress'] logic is meant to be appliable in any of the
+'col-x' sections, but in the prototype context, it's used only within 'sec-2'.
+--}}
+
+{{#*inline "responsive"}}{{#if isOneHalf}} col-md-6{{/if}}{{#if isOneThird}} col-md-4{{/if}}{{#if isOneFourth}} col-md-3{{/if}}{{/inline}}
+
+{{#*inline "headlineSpacing"}}{{#if ingress}} m-b-10{{else}} m-b-40{{/if}}{{/inline}}
+
+<section {{#if id}}id={{id}} {{/if}}class="section {{#if isAlt}}section--alt {{/if}}section__sec-2">
+  <div class="container m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
+    {{#if headline}}
+      <div class="row">
+        <div class="col-12 heading-spacing{{> headlineSpacing}}">
+          {{> base/heading
+            txt=headline
+            hType='2'
+            classes='section--headline'
+          }}
+        </div>
+      </div>
+    {{/if}}
+    {{#if quote}}
+      <div class="row">
+        <div class="col-12 col-lg-6 m-b-20">
+          {{> quote
+            txt=quote
+          }}
+        </div>
+      </div>
+    {{/if}}
+    {{#if imgUrl}}
+      {{> image
+        imgAltText=imgAltText
+        imgUrl=imgUrl
+        classes='aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+      }}
+    {{else}}
+      {{#if ingress}}
+        <div class="row">
+          <div class="col-12{{> responsive}}">
+            {{> ingress
+              txt=ingress
+              isBig=isBig
+              isLead=isLead
+            }}
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+    <div class="row">
+      {{#each items}}
+        <div class="col-12 {{#if isCard}}col-lg-6{{else}}col-md-6{{/if}} m-b-{{#if links}}20{{else}}10{{/if}}">
+          {{#if isCard}}
+            <div class="card__column">
+              {{> storySmall
+                headline=headline
+                ingress=ingress
+              }}
+              {{#if imgUrl}}
+                {{> image
+                  imgAltText=imgAltText
+                  imgUrl=imgUrl
+                  classes='aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+                }}
+              {{/if}}
+              {{#if cardLinks}}
+                <div class="row">
+                  <div class="col-12">
+                    {{#each cardLinks}}
+                      {{> button
+                        type='secondary'
+                        url=url
+                        txt=txt
+                      }}
+                    {{/each}}
+                  </div>
+                </div>
+              {{/if}}
+            </div>
+          {{else}}
+            {{#if imgUrl}}
+              {{> image
+                imgAltText=imgAltText
+                imgUrl=imgUrl
+                classes='aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+              }}
+            {{/if}}
+            {{#if links}}
+              {{> storySmall
+                headline=headline
+                ingress=ingress
+                links=links
+                ingressMargin='m-b-22'
+              }}
+            {{else}}
+              {{> storySmall
+                headline=headline
+                ingress=ingress
+                links=links
+              }}
+            {{/if}}
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+    {{#if links}}
+      <div class="row m-t-2">
+        <div class="col-12">
+          {{#each links}}
+            {{> button
+              type='secondary'
+              url=url
+              txt=txt
+            }}
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</section>
+
+
+{%- endmacro -%}
