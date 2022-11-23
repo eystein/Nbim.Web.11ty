@@ -14,7 +14,7 @@ colorSwatch:
 
 # Section - Oljefondets markedsverdi
 
-section_top_oljefondet_imgUrl: '../../images/Oljefondet_Toppfelt_1.jpg'
+section_top_oljefondet_imgUrl: './assets/images/Oljefondet_Toppfelt_1.jpg'
 section_top_oljefondet_imgAltText: 'Oljefondets markedsverdi'
 section_top_oljefondet_headlinePre: 'Oljefondets markedsverdi'
 section_top_oljefondet_headline: '8 267 097 776 213'
@@ -42,7 +42,7 @@ section-wide-development-chart:
     id: 'theFundsDevelopmentUSDChart'
     value: 'Dollar'
     series: null
-section-wide-development-imgUrl: '../../images/graph.svg'
+section-wide-development-imgUrl: './assets/images/graph.svg'
 section-wide-development-imgAltText: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
 section-wide-development-headline: 'Fondets utvikling'
 section-wide-development-ingressTop: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
@@ -75,7 +75,7 @@ section-wide-split-development-chart:
     id: 'theFundsDevelopmentUSDChart'
     value: 'Dollar'
     series: null
-section-wide-split-development-imgUrl: '../../images/graph.svg'
+section-wide-split-development-imgUrl: './assets/images/graph.svg'
 section-wide-split-development-imgAltText: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
 section-wide-split-development-headline: 'Fondets utvikling'
 section-wide-split-development-ingressTop: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
@@ -112,7 +112,7 @@ section_sec_3_investments_items:
     ingress: 'Den største delen av fondet er investert i aksjer, som er eierandeler i selskaper. En del er investert i rentepapirer, som er utlån til stater og selskaper. En mindre del er investert i eiendom.'
 
 section_sec_2_investments2_items:
-  - imgUrl: '../../images/Ikon_globus_med_graf.svg'
+  - imgUrl: './assets/images/Ikon_globus_med_graf.svg'
     imgAltText: 'Søk i alle selskapene'
     headline: 'Søk i alle selskapene'
     ingress: 'Lurer du på noe om et spesifikt selskap? Vi har historisk og detaljert informasjon om alle Oljefondts investeringer fordelt på områder, bransjer og industrier. Tallene oppdateres hvert år.'
@@ -120,7 +120,7 @@ section_sec_2_investments2_items:
     cardLinks:
       - txt: 'Se alle investeringene'
         url: 'https://www.nbim.no/no/fondet/beholdningene/beholdninger-per-31.12.2017/?fullsize=true'
-  - imgUrl: '../../images/Ikon_ansvarlig_investering.svg'
+  - imgUrl: './assets/images/Ikon_ansvarlig_investering.svg'
     imgAltText: 'Vi forvalter fondet ansvarlig'
     headline: 'Vi forvalter fondet ansvarlig'
     ingress: 'For at Oljefondet skal vare lenge etter at vi som lever nå er borte, er vi avhengige av en bærekraftig utvikling i verden. Bærekraft er lønnsomt, og ansvarlig forvaltning sikrer langsiktig vekst.'

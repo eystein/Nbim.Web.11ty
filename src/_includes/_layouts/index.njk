@@ -55,16 +55,5 @@
 
   }}
 
-
-	{% from "macros/swatch.macro.njk" import colorPattern %}
-
-	{{
-		colorPattern({
-			colorName: colorSwatch.colorName,
-			colorValue: colorSwatch.colorValue,
-			colorNotes: colorSwatch.colorNotes
-		})
-	}}
-
 {% endblock %}
 
