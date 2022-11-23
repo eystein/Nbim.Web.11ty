@@ -1,6 +1,6 @@
 {%- macro sectionSec2(params) -%}
 
-{{!--
+{# 
 Parameters received by this partial:
 
 isAlt
@@ -17,123 +17,162 @@ quote
 
 For the sake of convenience while setting up a 'col-x' section,
 the ['imageUrl' or 'ingress'] logic is meant to be appliable in any of the
-'col-x' sections, but in the prototype context, it's used only within 'sec-2'.
---}}
+'col-x' sections, but in the prototype context, it's used only within 'sec-2'. #}
 
-{{#*inline "responsive"}}{{#if isOneHalf}} col-md-6{{/if}}{{#if isOneThird}} col-md-4{{/if}}{{#if isOneFourth}} col-md-3{{/if}}{{/inline}}
+{% from "_base/_heading.njk" import heading %}
+{% from "macros/quote.njk" import quote %}
+{% from "macros/image.njk" import image %}
+{% from "macros/ingress.njk" import ingress %}
+{% from "macros/storySmall.njk" import storySmall %}
+{% from "macros/button.njk" import button %}
+{% from "macros/ingress.njk" import ingress %}
 
-{{#*inline "headlineSpacing"}}{{#if ingress}} m-b-10{{else}} m-b-40{{/if}}{{/inline}}
+{%- macro responsive(params) -%}
+	{% if params.isOneHalf %} col-md-6{% endif %}
+	{% if params.isOneThird %} col-md-4{% endif %}
+	{% if params.isOneFourth %} col-md-3{% endif %}
+{%- endmacro -%}
 
-<section {{#if id}}id={{id}} {{/if}}class="section {{#if isAlt}}section--alt {{/if}}section__sec-2">
-  <div class="container m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
-    {{#if headline}}
+{%- macro headlineSpacing(params) -%}
+	{% if params.ingress %} m-b-10{% else %} m-b-40{% endif %}
+{%- endmacro -%}
+
+<section {% if params.id %}id={{ params.id }} {% endif %}class="section {% if params.isAlt %}section--alt {% endif %}section__sec-2">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {% if params.headline %}
       <div class="row">
-        <div class="col-12 heading-spacing{{> headlineSpacing}}">
-          {{> base/heading
-            txt=headline
-            hType='2'
-            classes='section--headline'
+        <div class="col-12 heading-spacing{{
+						headlineSpacing(params)
+					}}">
+          {{
+						heading({
+							txt: params.headline,
+							hType: '2',
+							classes: 'section--headline'
+						})
           }}
         </div>
       </div>
-    {{/if}}
-    {{#if quote}}
+    {% endif %}
+    {%if params.quote %}
       <div class="row">
         <div class="col-12 col-lg-6 m-b-20">
-          {{> quote
-            txt=quote
+          {{
+						quote({
+							txt: params.quote
+						})            
           }}
         </div>
       </div>
-    {{/if}}
-    {{#if imgUrl}}
-      {{> image
-        imgAltText=imgAltText
-        imgUrl=imgUrl
-        classes='aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+    {% endif %}
+    {% if params.imgUrl %}
+      {{
+				image({
+					imgAltText: imgAltText,
+					imgUrl: imgUrl,
+					classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+				})        
       }}
-    {{else}}
-      {{#if ingress}}
+    {% else %}
+      {% if params.ingress %}
         <div class="row">
-          <div class="col-12{{> responsive}}">
-            {{> ingress
-              txt=ingress
-              isBig=isBig
-              isLead=isLead
+          <div class="col-12{{
+							responsive() 
+						}}">
+            {{
+							ingress({
+								txt: params.ingress,
+								isBig: params.isBig,
+								isLead: params.isLead
+							})              
             }}
           </div>
         </div>
-      {{/if}}
-    {{/if}}
+      {% endif %}
+    {% endif %}
     <div class="row">
-      {{#each items}}
-        <div class="col-12 {{#if isCard}}col-lg-6{{else}}col-md-6{{/if}} m-b-{{#if links}}20{{else}}10{{/if}}">
-          {{#if isCard}}
+      {% for item in params.items %}
+        <div class="col-12 {% if item.isCard %}col-lg-6{% else %}col-md-6{% endif %} m-b-{% if item.links %}20{% else %}10{% endif %}">
+          {% if item.isCard %}
             <div class="card__column">
-              {{> storySmall
-                headline=headline
-                ingress=ingress
+              {{
+								storySmall({
+									headline: item.headline,
+                	ingress: item.ingress
+								})                
               }}
-              {{#if imgUrl}}
-                {{> image
-                  imgAltText=imgAltText
-                  imgUrl=imgUrl
-                  classes='aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+              {% if item.imgUrl %}
+                {{
+									image({
+										imgAltText: item.imgAltText,
+										imgUrl: item.imgUrl,
+										classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+									})                  
                 }}
-              {{/if}}
-              {{#if cardLinks}}
+              {% endif %}
+              {% if item.cardLinks %}
                 <div class="row">
                   <div class="col-12">
-                    {{#each cardLinks}}
-                      {{> button
-                        type='secondary'
-                        url=url
-                        txt=txt
+                    {% for link in item.cardLinks %}
+                      {{
+												button({
+													type: 'secondary',
+													url: link.url,
+													txt: link.txt
+												})                        
                       }}
-                    {{/each}}
+                    {% endfor %}
                   </div>
                 </div>
-              {{/if}}
+              {% endif %}
             </div>
-          {{else}}
-            {{#if imgUrl}}
-              {{> image
-                imgAltText=imgAltText
-                imgUrl=imgUrl
-                classes='aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+          {% else %}
+            {% if item.imgUrl %}
+              {{
+								image({
+									imgAltText: imgAltText,
+									imgUrl: imgUrl,
+									classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+								})                
               }}
-            {{/if}}
-            {{#if links}}
-              {{> storySmall
-                headline=headline
-                ingress=ingress
-                links=links
-                ingressMargin='m-b-22'
+            {% endif %}
+            {% if item.links %}
+              {{
+								storySmall({
+									headline: item.headline,
+									ingress: item.ingress,
+									links: item.links,
+									ingressMargin: 'm-b-22'
+								})                
               }}
-            {{else}}
-              {{> storySmall
-                headline=headline
-                ingress=ingress
-                links=links
+            {% else %}
+              {{
+								storySmall({
+									headline: item.headline,
+									ingress: item.ingress,
+									links: item.links
+								})                
               }}
-            {{/if}}
-          {{/if}}
+            {% endif %}
+          {% endif %}
         </div>
-      {{/each}}
+      {% endfor %}
     </div>
-    {{#if links}}
+    {% if params.links %}
       <div class="row m-t-2">
         <div class="col-12">
-          {{#each links}}
-            {{> button
-              type='secondary'
-              url=url
-              txt=txt
+          {% for link in params.links %}
+            {{
+							button({
+								type: 'secondary',
+								url: link.url,
+								txt: link.txt
+							})              
             }}
-          {{/each}}
+          {% endfor %}
         </div>
       </div>
-    {{/if}}
+    {% endif %}
   </div>
 </section>
 
