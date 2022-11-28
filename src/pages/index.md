@@ -161,8 +161,8 @@ section-timeline-oljefondet-history-links:
 
 # Section - Nyheter
 
-section-news-home-headline: 'Nyheter'
-section-news-home-items:
+section_news_home_headline: 'Nyheter'
+section_news_home_items:
   - title: 'Støtte til aksjonærforslag om rapportering av metanutslipp'
     date: '8. mai 2018'
     ingress: 'Vi forventer at selskaper involvert i aktiviteter som leder til klimagassutslipp, inkludert metan, har en strategi for overgangen til et energisystem med lavere utslipp, samt overvåker og rapporterer om utslipp.'
@@ -175,7 +175,7 @@ section-news-home-items:
     date: '27. april 2018'
     ingress: 'Statens pensjonsfond utland fikk i første kvartal 2018 en avkastning på -1,5 prosent, tilsvarende -171 milliarder kroner.'
     url: '#b'
-section-news-home-links:
+section_news_home_links:
   - txt: 'Se flere nyheter'
     url: '#a'
   - txt: 'Abonner på informasjon'

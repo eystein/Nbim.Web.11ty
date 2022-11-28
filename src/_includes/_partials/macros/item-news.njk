@@ -1,0 +1,39 @@
+{%- macro itemNews(params) -%}
+
+{# 
+Parameters received by this partial:
+
+title
+date
+url
+ #}
+
+{% from "_base/_heading.njk" import heading %}
+{% from "macros/ingress.njk" import ingress %}
+
+  {% if params.title %}
+    {{
+			heading({
+				txt: params.title,
+				hType: '3',
+				classes: 'section__news--title m-b-10',
+				url: params.url
+			})      
+    }}
+  {% endif %}
+  {% if params.date %}
+    <div class="section__news--date m-b-5">
+      {{ params.date | safe }}
+    </div>
+  {% endif %}
+  {% if params.ingress %}
+    {{
+			ingress({
+				txt: params.ingress,
+				marginOverrides: 'm-b-22'
+			})
+    }}
+  {% endif %}
+
+
+{%- endmacro -%}
