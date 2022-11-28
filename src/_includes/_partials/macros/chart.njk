@@ -1,0 +1,296 @@
+{{!--
+Parameters received by this partial:
+
+chart
+  type
+  optionsYAxis
+  showFilter
+  buttonHeader
+  buttonActiveText
+  buttonsInactive
+  extras
+    status
+    showAsTableTextOff
+    showAsTableTextOn
+    downloadXLSText
+  sourceText
+  id1
+    id
+    value
+    series
+    options
+  id2
+    id
+    value
+    series
+    options
+--}}
+
+{{#if chart.id2.id }}
+  <div class="m-b-20">
+    <div class="radio-button-group">
+      <fieldset>
+        <legend class="visually-hidden">Currency</legend>
+        <label for="currency-{{{ chart.id1.id }}}" class="radio-button">
+          <input
+            id="currency-{{{ chart.id1.id }}}"
+            type="radio" name="currency"
+            value="{{{ chart.id1.value }}}"
+            checked
+          />
+          <i class="radio-button__indicator"></i>
+          {{{ chart.id1.value }}}
+        </label>
+        <label for="currency-{{{ chart.id2.id }}}" class="radio-button">
+          <input
+            id="currency-{{{ chart.id2.id }}}"
+            type="radio" name="currency"
+            value="{{{ chart.id2.value }}}"
+          />
+          <i class="radio-button__indicator"></i>
+          {{{ chart.id2.value }}}
+        </label>
+      </fieldset>
+    </div>
+  </div>
+{{/if}}
+
+<div id="{{{ chart.id1.id }}}" class="chartContainer{{#if classes}} {{{ classes }}}{{/if}}" styles="height: {{#if chart.height}}{{{ chart.height }}}{{else}}600{{/if}}px"></div>
+{{#if chart.showFilter }}
+  <div id="{{{ chart.id1.id }}}__buttons"></div>
+{{/if}}
+
+{{#if chart.id2.id }}
+  <div id="{{{ chart.id2.id }}}" class="chartContainer{{#if classes}} {{{ classes }}}{{/if}} hide" styles="height: {{#if chart.height}}{{{ chart.height }}}{{else}}600{{/if}}px"></div>
+  {{#if chart.showFilter }}
+    <div id="{{{ chart.id2.id }}}__buttons"></div>
+  {{/if}}
+{{/if}}
+
+{{#if chart.sourceText }}
+  <div id="{{{ chart.id1.id }}}__source-text">{{{ chart.sourceText }}}</div>
+  {{#if chart.id2.id }}
+    <div id="{{{ chart.id2.id }}}__source-text" class="hide">{{{ chart.sourceText }}}</div>
+  {{/if}}
+{{/if}}
+
+{{#if chart.extras.status }}
+  <div id="{{{ chart.id1.id }}}__extras" class="m-t-30"></div>
+  {{#if chart.id2.id }}
+    <div id="{{{ chart.id2.id }}}__extras" class="m-t-30 hide"></div>
+  {{/if}}
+{{/if}}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+      function waitForResources() {
+        // Use a timeout id to identify your process and purge it when it's no longer needed
+        let timeoutID;
+        // Check if all needed resources are defined, in this case by checking their type
+        if (
+          typeof renderChart === 'function'
+        ) {
+          // We no longer need to wait, purge the timeout id
+          window.clearTimeout(timeoutID);
+          // All needed resources are defined
+          renderChart({
+            height: '{{{ chart.height }}}',
+            buttonActiveText: '{{{ chart.buttonActiveText }}}',
+            buttonHeader: '{{{ chart.buttonHeader }}}',
+            buttonsInactive: '{{{ chart.buttonsInactive }}}',
+            id1: {
+              id: '{{{ chart.id1.id }}}',
+              series: '{{{ chart.id1.series }}}',
+              options: '{{{ chart.id1.options }}}',
+            },
+            id2: {
+              id: '{{{ chart.id2.id }}}',
+              series: '{{{ chart.id2.series }}}',
+              options: '{{{ chart.id2.options }}}',
+            },
+            optionsYAxis: '{{{ chart.optionsYAxis }}}',
+            extras: {
+              status: '{{{ chart.extras.status }}}',
+              showAsTableTextOff: '{{{ chart.extras.showAsTableTextOff }}}',
+              showAsTableTextOn: '{{{ chart.extras.showAsTableTextOn }}}',
+              downloadXLSText: '{{{ chart.extras.downloadXLSText }}}',
+            },
+            type: '{{{ chart.type }}}',
+          });
+        } else {
+          // All (or some) needed resources are undefined, try again in 0.25 secs
+          timeoutID = window.setTimeout(waitForResources, 250);
+          if (typeof renderChart !== 'function') {
+            console.warn('[waitForResources] renderChart is not defined');
+          }
+        }
+      };
+      waitForResources();
+  });
+
+  /*
+
+  EKSEMPLER PÅ DATA VI FORVENTER OG FORMATTERING
+
+  // The 'options' object should be passed when we want to override default option values.
+  // Some sensible values are set by default for each chart type.
+
+  const options = {
+    legend: {
+      enabled: false
+    }
+  }
+
+  // The 'buttonsInactive' object should be passed with the values for each filter button.
+  // 'text' represents the text on the filter button.
+  // 'value' represents the number of years the timeline will be sliced to.
+
+  const buttonsInactive = [
+    {
+      text: 'Siste år',
+      value: '2',
+    },
+    {
+      text: '5 år',
+      value: '6',
+    },
+    {
+      text: '10 år',
+      value: '11',
+    },
+    {
+      text: '15 år',
+      value: '16',
+    },
+  ];
+
+  // The 'series' array is an array of objects that contain the data passed to
+  // both 'x' and 'y' axis. The formatting may vary for each chart type.
+
+  const series = [
+    {
+      name: 'Equity investments',
+      data: [
+        [Date.UTC(1998, 11, 31), 70],
+        [Date.UTC(1999, 11, 31), 94],
+        [Date.UTC(2000, 11, 31), 153],
+        [Date.UTC(2001, 11, 31), 246],
+        [Date.UTC(2002, 11, 31), 231],
+        [Date.UTC(2003, 11, 31), 361],
+        [Date.UTC(2004, 11, 31), 416],
+        [Date.UTC(2005, 11, 31), 582],
+        [Date.UTC(2006, 11, 31), 726],
+        [Date.UTC(2007, 11, 31), 958],
+        [Date.UTC(2008, 11, 31), 1129],
+        [Date.UTC(2009, 11, 31), 1644],
+        [Date.UTC(2010, 11, 31), 1891],
+        [Date.UTC(2011, 11, 31), 1945],
+        [Date.UTC(2012, 11, 31), 2336],
+        [Date.UTC(2013, 11, 31), 3107],
+        [Date.UTC(2014, 11, 31), 3940],
+        [Date.UTC(2015, 11, 31), 4572],
+        [Date.UTC(2016, 11, 31), 4692],
+        [Date.UTC(2017, 11, 31), 5653],
+        [Date.UTC(2018, 11, 31), 5477],
+        [Date.UTC(2019, 11, 31), 6186],
+      ],
+      color: '#2c7399',
+      showInLegend: true,
+      index: 3,
+    },
+    {
+      name: 'Fixed-income investments',
+      data: [
+        [Date.UTC(1998, 11, 31), 102],
+        [Date.UTC(1999, 11, 31), 129],
+        [Date.UTC(2000, 11, 31), 227],
+        [Date.UTC(2001, 11, 31), 363],
+        [Date.UTC(2002, 11, 31), 378],
+        [Date.UTC(2003, 11, 31), 484],
+        [Date.UTC(2004, 11, 31), 600],
+        [Date.UTC(2005, 11, 31), 817],
+        [Date.UTC(2006, 11, 31), 1058],
+        [Date.UTC(2007, 11, 31), 1061],
+        [Date.UTC(2008, 11, 31), 1146],
+        [Date.UTC(2009, 11, 31), 996],
+        [Date.UTC(2010, 11, 31), 1186],
+        [Date.UTC(2011, 11, 31), 1356],
+        [Date.UTC(2012, 11, 31), 1455],
+        [Date.UTC(2013, 11, 31), 1879],
+        [Date.UTC(2014, 11, 31), 2350],
+        [Date.UTC(2015, 11, 31), 2668],
+        [Date.UTC(2016, 11, 31), 2577],
+        [Date.UTC(2017, 11, 31), 2616],
+        [Date.UTC(2018, 11, 31), 2533],
+        [Date.UTC(2019, 11, 31), 2505],
+      ],
+      color: '#7bb6ce',
+      showInLegend: true,
+      index: 2,
+    },
+    {
+      name: 'Real estate investments',
+      data: [
+        [Date.UTC(1998, 11, 31), 0],
+        [Date.UTC(1999, 11, 31), 0],
+        [Date.UTC(2000, 11, 31), 0],
+        [Date.UTC(2001, 11, 31), 0],
+        [Date.UTC(2002, 11, 31), 0],
+        [Date.UTC(2003, 11, 31), 0],
+        [Date.UTC(2004, 11, 31), 0],
+        [Date.UTC(2005, 11, 31), 0],
+        [Date.UTC(2006, 11, 31), 0],
+        [Date.UTC(2007, 11, 31), 0],
+        [Date.UTC(2008, 11, 31), 0],
+        [Date.UTC(2009, 11, 31), 0],
+        [Date.UTC(2010, 11, 31), 0],
+        [Date.UTC(2011, 11, 31), 11],
+        [Date.UTC(2012, 11, 31), 25],
+        [Date.UTC(2013, 11, 31), 52],
+        [Date.UTC(2014, 11, 31), 141],
+        [Date.UTC(2015, 11, 31), 235],
+        [Date.UTC(2016, 11, 31), 242],
+        [Date.UTC(2017, 11, 31), 219],
+        [Date.UTC(2018, 11, 31), 246],
+        [Date.UTC(2019, 11, 31), 247],
+      ],
+      color: '#a4acb1',
+      showInLegend: true,
+      index: 1,
+    },
+    {
+      name: 'Total market value',
+      data: [
+        [Date.UTC(1998, 11, 31), 172],
+        [Date.UTC(1999, 11, 31), 222],
+        [Date.UTC(2000, 11, 31), 386],
+        [Date.UTC(2001, 11, 31), 614],
+        [Date.UTC(2002, 11, 31), 609],
+        [Date.UTC(2003, 11, 31), 845],
+        [Date.UTC(2004, 11, 31), 1016],
+        [Date.UTC(2005, 11, 31), 1399],
+        [Date.UTC(2006, 11, 31), 1784],
+        [Date.UTC(2007, 11, 31), 2019],
+        [Date.UTC(2008, 11, 31), 2275],
+        [Date.UTC(2009, 11, 31), 2640],
+        [Date.UTC(2010, 11, 31), 3077],
+        [Date.UTC(2011, 11, 31), 3312],
+        [Date.UTC(2012, 11, 31), 3816],
+        [Date.UTC(2013, 11, 31), 5038],
+        [Date.UTC(2014, 11, 31), 6431],
+        [Date.UTC(2015, 11, 31), 7475],
+        [Date.UTC(2016, 11, 31), 7510],
+        [Date.UTC(2017, 11, 31), 8488],
+        [Date.UTC(2018, 11, 31), 8256],
+        [Date.UTC(2019, 11, 31), 8938],
+      ],
+      color: '#643264',
+      showInLegend: true,
+      type: 'line',
+      index: 4,
+    },
+  ];
+
+  */
+
+</script>

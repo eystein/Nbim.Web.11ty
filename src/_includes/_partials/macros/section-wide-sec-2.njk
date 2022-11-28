@@ -18,7 +18,7 @@ quote
 #}
 
 {% from "macros/sectionContentTop.njk" import sectionContentTop %}
-
+{% from "macros/chart.njk" import chart %}
 {% from "macros/image.njk" import image %}
 {% from "macros/storySmall.njk" import storySmall %}
 {% from "macros/button.njk" import button %}
@@ -40,7 +40,23 @@ quote
 						quote: params.quote
 					})          
         }}
-      
+				{% if params.chart %}
+          {{
+						chart({
+							chart: params.chart,
+            	classes: 'm-b-80'
+						})            
+          }}
+        {% else %}
+          {{
+						image({
+							isInline: true,
+							imgAltText: params.imgAltText,
+							imgUrl: params.imgUrl,
+							classes: 'm-b-40'
+						})            
+          }}
+        {% endif %}
       </div>
     </div>
     <div class="row">
