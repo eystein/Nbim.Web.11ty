@@ -39,7 +39,9 @@ quote
 
 {# Note that 'section__split-50-50' has no effect on styles, it's just a reference #}
 <section class="section {% if params.isAlt %}section--alt{% endif %} {% if params.quote %}section--quote{% endif %} section__split section__split-50-50">
-	<div class="container {% if params.spacingTop %}m-t-{{ params.spacingTop | safe }}{% elif params.isShort %} m-b-80{% else %} m-t-80{% endif %}">
+	<div class="container 
+		{% if params.spacingTop %}m-t-{{ params.spacingTop | safe }}{% else %}m-t-80{% endif %}
+		{% if not params.isShort %} m-b-80{% endif %}">
     <div class="row">
       <div class="col-12 col-md-6 order-1{% if params.pictureToLeft %} order-md-2{% endif %}">
         {% if params.imgUrl %}
