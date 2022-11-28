@@ -143,9 +143,9 @@ section_split_hva_er_oljefondet_links:
 
 # Section - Oljefondets historie
 
-section-timeline-oljefondet-history-headline: 'Oljefondets historie'
-section-timeline-oljefondet-history-ingress: 'Oljefondet er en viktig del av Norges økonomi, og vårt formål er å få verdiene til å vare.'
-section-timeline-oljefondet-history-items:
+section_timeline_oljefondet_history_headline: 'Oljefondets historie'
+section_timeline_oljefondet_history_ingress: 'Oljefondet er en viktig del av Norges økonomi, og vårt formål er å få verdiene til å vare.'
+section_timeline_oljefondet_history_items:
   - year: '1969'
     txt: 'Vi oppdager olje i Nordsjøen'
   - year: '1990'

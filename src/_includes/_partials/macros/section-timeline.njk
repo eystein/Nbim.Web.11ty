@@ -1,0 +1,64 @@
+{%- macro sectionTimeline(params) -%}
+
+{#
+Parameters received by this partial:
+
+isAlt
+isShort
+spacingTop [ie. '2', '5', '10', '15', '17', '20', '22', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+ingress
+items
+links
+#}
+
+{% from "macros/sectionContentTop.njk" import sectionContentTop %}
+{% from "macros/button.njk" import button %}
+
+<section class="section {% if params.isAlt %}section--alt {% endif %}section__timeline">
+  <div class="container m-t-{% if spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {{
+			sectionContentTop({
+				isBig: true,
+				isThreeFourths: true,
+				headline: params.headline,
+				ingress: params.ingress
+			})      
+    }}
+    <div class="row">
+      <div class="col-12">
+        <ul class="section__timeline--items">
+          <div>
+          {% for item in params.items %}
+            <li class="section__timeline--item">
+              <div class="section__timeline--item__year m-b-40">
+                {{ item.year | safe }}
+              </div>
+              <div class="section__timeline--item__txt">
+                {{ item.txt | safe }}}
+              </div>
+            </li>
+          {% endfor %}
+          </div>
+        </ul>
+      </div>
+    </div>
+    {% if params.links %}
+      <div class="row">
+        <div class="col-12">
+          {% for link in params.links %}
+            {{
+							button({
+								type: 'secondary',
+								url: link.url,
+								txt: link.txt
+							})              
+            }}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{%- endmacro -%}

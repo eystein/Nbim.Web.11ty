@@ -5,6 +5,7 @@
 {% from "macros/section-sec-3.njk" import sectionSec3 %}
 {% from "macros/section-sec-2.njk" import sectionSec2 %}
 {% from "macros/section-wide-sec-2.njk" import sectionWideSec2 %}
+{% from "macros/section-timeline.njk" import sectionTimeline %}
 
 
 {% block main %}
@@ -66,6 +67,16 @@
 			items: section_wide_split_development_items,
 			links: section_wide_split_development_links
 		})    
+  }}
+
+	{{
+		sectionTimeline({
+			isAlt: true,
+			headline: section_timeline_oljefondet_history_headline,
+			items: section_timeline_oljefondet_history_items,
+			links: section_timeline_oljefondet_history_links
+		})
+    
   }}
 
 {% endblock %}
