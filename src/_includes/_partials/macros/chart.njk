@@ -1,4 +1,6 @@
-{{!--
+{%- macro chart(params) -%}
+
+{#
 Parameters received by this partial:
 
 chart
@@ -24,62 +26,62 @@ chart
     value
     series
     options
---}}
+#}
 
-{{#if chart.id2.id }}
+{% if params.chart.id2.id %}
   <div class="m-b-20">
     <div class="radio-button-group">
       <fieldset>
         <legend class="visually-hidden">Currency</legend>
-        <label for="currency-{{{ chart.id1.id }}}" class="radio-button">
+        <label for="currency-{{ params.chart.id1.id | safe }}" class="radio-button">
           <input
-            id="currency-{{{ chart.id1.id }}}"
+            id="currency-{{ params.chart.id1.id | safe }}"
             type="radio" name="currency"
-            value="{{{ chart.id1.value }}}"
+            value="{{ params.chart.id1.value | safe }}"
             checked
           />
           <i class="radio-button__indicator"></i>
-          {{{ chart.id1.value }}}
+          {{ params.chart.id1.value | safe }}
         </label>
-        <label for="currency-{{{ chart.id2.id }}}" class="radio-button">
+        <label for="currency-{{ params.chart.id2.id | safe }}" class="radio-button">
           <input
-            id="currency-{{{ chart.id2.id }}}"
+            id="currency-{{ params.chart.id2.id | safe }}"
             type="radio" name="currency"
-            value="{{{ chart.id2.value }}}"
+            value="{{ params.chart.id2.value | safe }}"
           />
           <i class="radio-button__indicator"></i>
-          {{{ chart.id2.value }}}
+          {{ params.chart.id2.value | safe }}
         </label>
       </fieldset>
     </div>
   </div>
-{{/if}}
+{% endif %}
 
-<div id="{{{ chart.id1.id }}}" class="chartContainer{{#if classes}} {{{ classes }}}{{/if}}" styles="height: {{#if chart.height}}{{{ chart.height }}}{{else}}600{{/if}}px"></div>
-{{#if chart.showFilter }}
-  <div id="{{{ chart.id1.id }}}__buttons"></div>
-{{/if}}
+<div id="{{ params.chart.id1.id | safe }}" class="chartContainer{% if params.classes %} {{ params.classes | safe }}{% endif %}" styles="height: {% if params.chart.height %}{{ params.chart.height | safe }}{% else %}600{% endif %}px"></div>
+{% if params.chart.showFilter %}
+  <div id="{{ params.chart.id1.id | safe }}__buttons"></div>
+{% endif %}
 
-{{#if chart.id2.id }}
-  <div id="{{{ chart.id2.id }}}" class="chartContainer{{#if classes}} {{{ classes }}}{{/if}} hide" styles="height: {{#if chart.height}}{{{ chart.height }}}{{else}}600{{/if}}px"></div>
-  {{#if chart.showFilter }}
-    <div id="{{{ chart.id2.id }}}__buttons"></div>
-  {{/if}}
-{{/if}}
+{% if params.chart.id2.id %}
+  <div id="{{ params.chart.id2.id | safe }}" class="chartContainer{% if params.classes %} {{ params.classes | safe }}{% endif %} hide" styles="height: {% if params.chart.height %}{{ params.chart.height | safe }}{% else %}600{% endif %}px"></div>
+  {% if params.chart.showFilter %}
+    <div id="{{ params.chart.id2.id | safe}}__buttons"></div>
+  {% endif %}
+{% endif %}
 
-{{#if chart.sourceText }}
-  <div id="{{{ chart.id1.id }}}__source-text">{{{ chart.sourceText }}}</div>
-  {{#if chart.id2.id }}
-    <div id="{{{ chart.id2.id }}}__source-text" class="hide">{{{ chart.sourceText }}}</div>
-  {{/if}}
-{{/if}}
+{% if params.chart.sourceText %}
+  <div id="{{ params.chart.id1.id | safe }}__source-text">{{ params.chart.sourceText | safe }}</div>
+  {% if params.chart.id2.id %}
+    <div id="{{ params.chart.id2.id | safe }}__source-text" class="hide">{{ params.chart.sourceText | safe }}</div>
+  {% endif %}
+{% endif %}
 
-{{#if chart.extras.status }}
-  <div id="{{{ chart.id1.id }}}__extras" class="m-t-30"></div>
-  {{#if chart.id2.id }}
-    <div id="{{{ chart.id2.id }}}__extras" class="m-t-30 hide"></div>
-  {{/if}}
-{{/if}}
+{% if params.chart.extras.status %}
+  <div id="{{ params.chart.id1.id | safe }}__extras" class="m-t-30"></div>
+  {% if params.chart.id2.id %}
+    <div id="{{ params.chart.id2.id | safe }}__extras" class="m-t-30 hide"></div>
+  {% endif %}
+{% endif %}
 
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {
@@ -94,28 +96,28 @@ chart
           window.clearTimeout(timeoutID);
           // All needed resources are defined
           renderChart({
-            height: '{{{ chart.height }}}',
-            buttonActiveText: '{{{ chart.buttonActiveText }}}',
-            buttonHeader: '{{{ chart.buttonHeader }}}',
-            buttonsInactive: '{{{ chart.buttonsInactive }}}',
+            height: '{{ params.chart.height | safe }}',
+            buttonActiveText: '{{ params.chart.buttonActiveText | safe }}',
+            buttonHeader: '{{ params.chart.buttonHeader | safe }}',
+            buttonsInactive: '{{ params.chart.buttonsInactive | safe }}',
             id1: {
-              id: '{{{ chart.id1.id }}}',
-              series: '{{{ chart.id1.series }}}',
-              options: '{{{ chart.id1.options }}}',
+              id: '{{ params.chart.id1.id | safe }}',
+              series: '{{ params.chart.id1.series | safe }}',
+              options: '{{ params.chart.id1.options | safe }}',
             },
             id2: {
-              id: '{{{ chart.id2.id }}}',
-              series: '{{{ chart.id2.series }}}',
-              options: '{{{ chart.id2.options }}}',
+              id: '{{ params.chart.id2.id | safe }}',
+              series: '{{ params.chart.id2.series | safe }}',
+              options: '{{ params.chart.id2.options | safe }}',
             },
-            optionsYAxis: '{{{ chart.optionsYAxis }}}',
+            optionsYAxis: '{{ params.chart.optionsYAxis | safe }}',
             extras: {
-              status: '{{{ chart.extras.status }}}',
-              showAsTableTextOff: '{{{ chart.extras.showAsTableTextOff }}}',
-              showAsTableTextOn: '{{{ chart.extras.showAsTableTextOn }}}',
-              downloadXLSText: '{{{ chart.extras.downloadXLSText }}}',
+              status: '{{ params.chart.extras.status | safe }}',
+              showAsTableTextOff: '{{ params.chart.extras.showAsTableTextOff | safe }}',
+              showAsTableTextOn: '{{ params.chart.extras.showAsTableTextOn | safe }}',
+              downloadXLSText: '{{ params.chart.extras.downloadXLSText | safe }}',
             },
-            type: '{{{ chart.type }}}',
+            type: '{{ params.chart.type | safe }}',
           });
         } else {
           // All (or some) needed resources are undefined, try again in 0.25 secs
@@ -131,7 +133,7 @@ chart
   /*
 
   EKSEMPLER PÅ DATA VI FORVENTER OG FORMATTERING
-
+ 
   // The 'options' object should be passed when we want to override default option values.
   // Some sensible values are set by default for each chart type.
 
@@ -291,6 +293,8 @@ chart
     },
   ];
 
-  */
+*/
 
 </script>
+
+{%- endmacro -%}

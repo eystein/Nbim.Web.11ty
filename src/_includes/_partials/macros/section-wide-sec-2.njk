@@ -24,7 +24,7 @@ quote
 {% from "macros/button.njk" import button %}
 
 <section class="section {% if params.isAlt %}section--alt {% endif %}section__wide">
-  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}m-t-80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
     <div class="row">
       <div class="col-12">
         {% if params.headlinePre %}
