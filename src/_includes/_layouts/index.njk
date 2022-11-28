@@ -4,6 +4,7 @@
 {% from "macros/sectionSplit.njk" import sectionSplit %}
 {% from "macros/section-sec-3.njk" import sectionSec3 %}
 {% from "macros/section-sec-2.njk" import sectionSec2 %}
+{% from "macros/section-wide-sec-2.njk" import sectionWideSec2 %}
 
 
 {% block main %}
@@ -57,13 +58,13 @@
 
 	{{
 		sectionWideSec2({
-			chart: section-wide-split-development-chart,
-			imgAltText: section-wide-split-development-imgAltText,
-			imgUrl: section-wide-split-development-imgUrl,
-			headline: section-wide-split-development-headline,
-			ingressTop: section-wide-split-development-ingressTop,
-			items: section-wide-split-development-items,
-			links: section-wide-split-development-links
+			chart: section_wide_split_development_chart,
+			imgAltText: section_wide_split_development_imgAltText,
+			imgUrl: section_wide_split_development_imgUrl,
+			headline: section_wide_split_development_headline,
+			ingressTop: section_wide_split_development_ingressTop,
+			items: section_wide_split_development_items,
+			links: section_wide_split_development_links
 		})    
   }}
 

@@ -55,7 +55,7 @@ section-wide-development-links:
 
 # Section - Fondets utvikling (2 columns)
 
-section-wide-split-development-chart:
+section_wide_split_development_chart:
   height: '600'
   type: 'area'
   showFilter: false
@@ -75,11 +75,11 @@ section-wide-split-development-chart:
     id: 'theFundsDevelopmentUSDChart'
     value: 'Dollar'
     series: null
-section-wide-split-development-imgUrl: './assets/images/graph.svg'
-section-wide-split-development-imgAltText: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
-section-wide-split-development-headline: 'Fondets utvikling'
-section-wide-split-development-ingressTop: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
-section-wide-split-development-items:
+section_wide_split_development_imgUrl: './assets/images/graph.svg'
+section_wide_split_development_imgAltText: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
+section_wide_split_development_headline: 'Fondets utvikling'
+section_wide_split_development_ingressTop: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
+section_wide_split_development_items:
   - headline: 'Markedsverdien'
     ingress: 'En langsiktig og forsvarlig forvaltning av Oljefondet bidrar til at både nåværende og fremtidige generasjoner kan ta del i Norges oljerikdom.'
     links:
