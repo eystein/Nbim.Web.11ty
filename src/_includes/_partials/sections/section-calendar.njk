@@ -1,0 +1,44 @@
+{{!--
+Parameters received by this partial:
+
+isAlt
+isShort
+spacingTop [ie. '2', '5', '10', '15', '20', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+ingress
+items
+--}}
+
+<section class="section {{#if isAlt}}section--alt {{/if}}section__calendar">
+  <div class="container m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
+    {{> sectionContentTop
+      isBig=true
+      isThreeFourths=true
+      headline=headline
+      ingress=ingress
+    }}
+    <div class="row">
+      <div class="col-12">
+        <ul class="section__calendar--list m-b-40">
+          {{#each items}}
+            {{> sections/item-calendar
+              name=name
+              date=date
+              ingress=ingress
+              url=url
+            }}
+          {{/each}}
+        </ul>
+        {{#each links}}
+          <div class="m-t-15">
+            {{> button
+              type='secondary'
+              url=url
+              txt=txt
+            }}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>

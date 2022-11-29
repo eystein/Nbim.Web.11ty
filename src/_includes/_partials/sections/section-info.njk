@@ -1,0 +1,42 @@
+{{!--
+Parameters received by this partial:
+
+isAlt
+isCentered
+isShort
+spacingTop [ie. '2', '5', '10', '15', '20', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+ingress
+isArticle
+--}}
+
+{{#*inline "theContent"}}
+  {{> sectionContentTop
+    isLead=true
+    headline=headline
+    ingress=ingress
+  }}
+  {{#each links}}
+    {{> button
+      type='secondary'
+      url=url
+      txt=txt
+    }}
+  {{/each}}
+{{/inline}}
+
+{{#if isArticle}}
+  <div class="m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
+    {{>theContent}}
+  </div>
+{{else}}
+  <section class="section {{#if isAlt}}section--alt {{/if}}section__info{{#if isCentered}} centered{{/if}}">
+    <div class="container m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
+      <div class="row">
+        <div class="col-12 col-md-8 section__info--wrapper">
+          {{>theContent}}
+        </div>
+      </div>
+    </div>
+  </section>
+{{/if}}

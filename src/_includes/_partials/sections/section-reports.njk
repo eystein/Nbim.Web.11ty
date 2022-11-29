@@ -1,0 +1,83 @@
+{%- macro sectionReports(params) -%}
+
+{# 
+Parameters received by this partial:
+
+isAlt
+isShort
+spacingTop [ie. '2', '5', '10', '15', '17', '20', '22', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+ingress
+items
+isWrappedContent
+id
+ #}
+
+{% from "sections/section-content-top.njk" import sectionContentTop %}
+{% from "_base/_heading.njk" import heading %}
+{% from "sections/item-reports.njk" import itemReports %}
+{% from "macro/button.njk" import button %}
+
+{% if not params.isWrappedContent %}
+  <section class="section {% if params.isAlt %}section--alt {% endif %}section__reports">
+{% endif %}
+    <div id="{% if params.id %}{{ params.id | safe }}{% endif %}" class="{% if not params.isWrappedContent %}container{% endif %} m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+      {{
+				sectionContentTop({
+					isBig: true,
+					isThreeFourths: true,
+					headline: params.headline,
+					ingress: params.ingress
+				})        
+      }}
+
+      {% for item in params.items %}
+        <div class="row{% if item.trigger %} {{ item.trigger | safe }}{% else %}{% if item.links %} m-b-70{% endif %}{% endif %}">
+          <div class="col-12">
+            {% if item.title %}
+              {{
+								heading({
+									txt: item.title,
+									hType: '3',
+									classes: 'section__reports--lists__title'
+								})                
+              }}
+            {% endif %}
+            <div class="section__reports--lists">
+              <div class="row section__reports--list m-t-30">
+                {% for item in params.items %}
+                  {{
+										itemReports({
+											name: item.name,
+											date: item.date,
+											url: item.url,
+											urlDownload: item.urlDownload
+										})                    
+                  }}
+                {% endfor %}
+              </div>
+              {% if params.links %}
+                <div class="section__reports--lists__links-wrapper">
+                  {% for link in params.links %}
+                    {{
+											button({
+												type: 'secondary',
+												txt: link.txt,
+												url: link.url
+											})
+                      
+                    }}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+{% if not params.isWrappedContent %}
+  </section>
+{% endif %}
+
+
+{%- endmacro -%}
