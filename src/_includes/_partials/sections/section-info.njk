@@ -1,4 +1,6 @@
-{{!--
+{%- macro sectionInfo(params) -%}
+
+{# 
 Parameters received by this partial:
 
 isAlt
@@ -7,36 +9,57 @@ isShort
 spacingTop [ie. '2', '5', '10', '15', '20', '30', '40', '50', '60', '70', '80', '90', '100']
 headline
 ingress
-isArticle
---}}
+isArticle 
+#}
 
-{{#*inline "theContent"}}
-  {{> sectionContentTop
-    isLead=true
-    headline=headline
-    ingress=ingress
+{% from "sections/section-content-top.njk" import sectionContentTop %}
+{% from "macros/button.njk" import button %}
+
+{% macro theContent(params) %}
+  {{
+		sectionContentTop({
+			isLead: true,
+			headline: params.headline,
+			ingress: params.ingress
+		})
   }}
-  {{#each links}}
-    {{> button
-      type='secondary'
-      url=url
-      txt=txt
+  {% for link in params.links %}
+    {{
+			button({
+				type: 'secondary',
+				url: link.url,
+				txt: link.txt
+			})      
     }}
-  {{/each}}
-{{/inline}}
+  {% endfor %}
+{% endmacro %}
 
-{{#if isArticle}}
-  <div class="m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
-    {{>theContent}}
+{% if params.isArticle %}
+  <div class="m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {{
+			theContent({
+				headline: params.headline,
+				ingress:params.ingress,
+				links: params.links
+			})
+		}}
   </div>
-{{else}}
-  <section class="section {{#if isAlt}}section--alt {{/if}}section__info{{#if isCentered}} centered{{/if}}">
-    <div class="container m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
+{% else %}
+  <section class="section {% if params.isAlt %}section--alt {% endif %}section__info{% if params.isCentered %} centered{% endif %}">
+    <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
       <div class="row">
         <div class="col-12 col-md-8 section__info--wrapper">
-          {{>theContent}}
+          {{
+						theContent({
+							headline: params.headline,
+							ingress:params.ingress,
+							links: params.links
+						})
+					}}
         </div>
       </div>
     </div>
   </section>
-{{/if}}
+{% endif %}
+
+{%- endmacro -%}
