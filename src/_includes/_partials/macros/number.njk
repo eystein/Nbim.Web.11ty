@@ -1,0 +1,23 @@
+{%- macro number(params) -%}
+
+{# 
+Parameters received by this partial:
+num
+txt 
+#}
+
+
+<div class="number__wrapper m-b-20">
+  <h3>
+    <span class="number--number-header m-b-5">
+      {{ params.num | safe }}
+    </span>
+    {% if params.txt %}
+      <span class="number--text">
+        {{ params.txt | safe }}
+      </span>
+    {% endif %}
+  </h3>
+</div>
+
+{%- endmacro -%}

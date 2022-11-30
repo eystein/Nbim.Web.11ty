@@ -1,4 +1,6 @@
-{{!--
+{%- macro sectionCalendar(params) -%}
+
+{# 
 Parameters received by this partial:
 
 isAlt
@@ -6,39 +8,53 @@ isShort
 spacingTop [ie. '2', '5', '10', '15', '20', '30', '40', '50', '60', '70', '80', '90', '100']
 headline
 ingress
-items
---}}
+items 
+#}
 
-<section class="section {{#if isAlt}}section--alt {{/if}}section__calendar">
-  <div class="container m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
-    {{> sectionContentTop
-      isBig=true
-      isThreeFourths=true
-      headline=headline
-      ingress=ingress
+{% from "sections/section-content-top.njk" import sectionContentTop %}
+{% from "sections/item-calendar.njk" import itemCalendar %}
+{% from "macros/button.njk" import button %}
+
+<section class="section {% if params.isAlt %}section--alt {% endif %}section__calendar">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {{
+			sectionContentTop({
+				isBig: true,
+				isThreeFourths: true,
+				headline: params.headline,
+				ingress: params.ingress
+			})      
     }}
     <div class="row">
       <div class="col-12">
         <ul class="section__calendar--list m-b-40">
-          {{#each items}}
-            {{> sections/item-calendar
-              name=name
-              date=date
-              ingress=ingress
-              url=url
+          {% for item in params.items %}
+            {{
+							itemCalendar({
+								title: item.title,
+								day: item.date.day,
+								month: item.date.month,
+								ingress: item.ingress,
+								url: item.url,
+								isFullWidth: false
+							})              
             }}
-          {{/each}}
+          {% endfor %}
         </ul>
-        {{#each links}}
+        {% for link in params.links %}
           <div class="m-t-15">
-            {{> button
-              type='secondary'
-              url=url
-              txt=txt
+            {{
+							button({
+								type: 'secondary',
+								url: link.url,
+								txt: link.txt
+							})              
             }}
           </div>
-        {{/each}}
+        {% endfor %}
       </div>
     </div>
   </div>
 </section>
+
+{%- endmacro -%}
