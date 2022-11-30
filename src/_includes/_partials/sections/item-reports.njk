@@ -12,7 +12,10 @@ fileSize
 fileExtension 
 #}
 
-{% block downloadTxt %}
+{% from "macros/button.njk" import button %}
+{% from "macros/image.njk" import image %}
+
+{% macro downloadTxt(params) %}
   {% if params.fileSize and params.fileExtension %}
     <span class="txt">Last ned rapport ({{ params.fileSize | safe }}, {{ params.fileExtension | safe }})</span>
   {% else %}
@@ -23,7 +26,7 @@ fileExtension
       <span class="txt">Last ned rapport ({{ params.fileExtension | safe }})</span>
     {% endif %}
   {% endif %}
-{% endblock %}
+{% endmacro %}
 
 <div
   class="col-12 col-sm-6 col-lg-4 col-xl-3 section__reports--list__item has-image"
@@ -40,30 +43,37 @@ fileExtension
     </a>
   </div>
   <div>
-    <h4>{{{ name }}}</h4>
-    <div class="section__reports--list__item--date">{{{ date }}}</div>
+    <h4>{{ params.name | safe }}</h4>
+    <div class="section__reports--list__item--date">{{ params.date | safe }}</div>
   </div>
-  {{#if url}}
+  {% if params.url %}
     <div class="m-b-5">
-      {{> button
-        type='secondary'
-        txt='Les sammendrag'
-        url=url
+      {{
+				button({
+					type: 'secondary',
+					txt: 'Les sammendrag',
+					url: params.url
+				})        
       }}
     </div>
-  {{/if}}
-  {{#if urlDownload}}
+  {% endif %}
+  {% if params.urlDownload %}
     <div>
       <a
-        href={{{ urlDownload }}}
+        href={{ params.urlDownload | safe }}
         class="button button--download-secondary"
       >
         <span class="before"></span>
-        {{> downloadTxt }}
+        {{
+					downloadTxt({
+						fileSize: params.fileSize,
+						fileExtension: params.fileExtension
+					}) 
+				}}
         <span class="after"></span>
       </a>
     </div>
-  {{/if}}
+  {% endif %}
 </div>
 
 

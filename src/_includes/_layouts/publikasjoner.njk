@@ -2,7 +2,7 @@
 
 {% from "sections/section-top.njk"      import sectionTop %}
 {% from "sections/section-wide.njk"     import sectionWide %}
-{# {% from "sections/section-reports.njk"  import sectionReports %} #}
+{% from "sections/section-reports.njk"  import sectionReports %}
 {# {% from "sections/section-calendar.njk" import sectionCalendar %}
 {% from "sections/section-lists.njk"    import sectionLists %}
 {% from "sections/section-info.njk"     import sectionInfo %} #}
@@ -32,13 +32,13 @@
 		})
   }}
 
-  {# {{
+  {{
 		sectionReports({
 			headline: section_reports_rapporter_headline,
 			ingress: section_reports_rapporter_ingress,
 			items: section_reports_rapporter_items
 		})
-  }} #}
+  }}
 {# 
   {{
 		sectionCalendar({

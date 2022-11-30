@@ -16,7 +16,7 @@ id
 {% from "sections/section-content-top.njk" import sectionContentTop %}
 {% from "_base/_heading.njk" import heading %}
 {% from "sections/item-reports.njk" import itemReports %}
-{% from "macro/button.njk" import button %}
+{% from "macros/button.njk" import button %}
 
 {% if not params.isWrappedContent %}
   <section class="section {% if params.isAlt %}section--alt {% endif %}section__reports">
@@ -45,27 +45,29 @@ id
             {% endif %}
             <div class="section__reports--lists">
               <div class="row section__reports--list m-t-30">
-                {% for item in params.items %}
+                {% for item in item.items %}
                   {{
 										itemReports({
 											name: item.name,
 											date: item.date,
 											url: item.url,
-											urlDownload: item.urlDownload
+											urlDownload: item.urlDownload,
+											img: item.img,
+											fileSize: item.fileSize,
+											fileExtension: item.fileExtension
 										})                    
                   }}
                 {% endfor %}
               </div>
-              {% if params.links %}
+              {% if item.links %}
                 <div class="section__reports--lists__links-wrapper">
-                  {% for link in params.links %}
+                  {% for link in item.links %}
                     {{
 											button({
 												type: 'secondary',
 												txt: link.txt,
 												url: link.url
-											})
-                      
+											})                      
                     }}
                   {% endfor %}
                 </div>

@@ -1,6 +1,6 @@
 {%- macro image(params) -%}
 
-	{% if params.inlineImage %}
+	{% if params.isInline %}
 		<img
 			src="./assets/images/loadingpixel.png"
 			alt="{{ params.imgAltText | safe }}"
