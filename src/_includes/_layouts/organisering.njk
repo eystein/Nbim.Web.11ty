@@ -4,6 +4,7 @@
 {% from "sections/section-split.njk"      import sectionSplit %}
 {% from "sections/section-sec-4.njk"      import sectionSec4 %}
 {% from "sections/section-offices.njk"    import sectionOffices %}
+{% from "sections/section-contact.njk"    import sectionContact %}
 
 {% block main %}
   {{
@@ -66,12 +67,16 @@
 			links: section_split_jobbe_i_oljefondet_links
 		})    
   }}
-  {# {{> sections/section-contact
-    headline=section-contact-kontakt-headline
-    ingress=section-contact-kontakt-ingress
-    form=section-contact-kontakt-form
-    links=section-contact-kontakt-links
-  }} #}
+	
+  {{
+		sectionContact({
+			headline: section_contact_kontakt_headline,
+			ingress: section_contact_kontakt_ingress,
+			form: section_contact_kontakt_form,
+			links: section_contact_kontakt_links
+		})    
+  }}
+
   {# {{> sections/section-persons
     isAlt=true
     id=section-contacts-pressekontakter-id
