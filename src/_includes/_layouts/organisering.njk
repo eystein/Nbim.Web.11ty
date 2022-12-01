@@ -2,6 +2,7 @@
 
 {% from "sections/section-top.njk"        import sectionTop %}
 {% from "sections/section-split.njk"      import sectionSplit %}
+{% from "sections/section-sec-4.njk"      import sectionSec4 %}
 
 {% block main %}
   {{
@@ -13,11 +14,14 @@
 		})    
   }}
 
-  {# {{> sections/section-sec-4
-    headline=section-sec-4-hvem-bestemmer-hva-headline
-    items=section-sec-4-hvem-bestemmer-hva-items
-    links=section-sec-4-hvem-bestemmer-hva-links
-  }} #}
+  {{
+		sectionSec4({
+			headline: section_sec_4_hvem_bestemmer_hva_headline,
+			items: section_sec_4_hvem_bestemmer_hva_items,
+			links: section_sec_4_hvem_bestemmer_hva_links
+		})    
+  }}
+	
   {{
 		sectionSplit({
 			isAlt: true,
