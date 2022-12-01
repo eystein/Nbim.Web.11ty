@@ -43,7 +43,7 @@ section_sec_4_hvem_bestemmer_hva_links:
 
 # Section - Om Norges Bank Investment Management
 
-section_split_investment_management_imgUrl: '/assets/images/long_term_growth.png'
+section_split_investment_management_imgUrl: '/assets/images/long-term-growth.png'
 section_split_investment_management_imgAltText: 'Om Norges Bank Investment Management'
 section_split_investment_management_headline: 'Om Norges Bank Investment Management'
 section_split_investment_management_ingress: 'Norges Bank Investment Management er en enhet i Norges Bank som forvalter Oljefondet. Oppgaven er å sikre høyest mulig avkastning på fondet.'
