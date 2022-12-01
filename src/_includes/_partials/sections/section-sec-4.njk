@@ -1,4 +1,6 @@
-{{!--
+{%- macro sectionSec4(params) -%}
+
+{# 
 Parameters received by this partial:
 
 isAlt
@@ -8,49 +10,63 @@ headline
 ingress
 links
 items
-quote
---}}
+quote 
+#}
+{% from "sections/section-content-top.njk" import sectionContentTop %}
+{% from "macros/image.njk" import image %}
+{% from "macros/button.njk" import button %}
+{% from "macros/storySmall.njk" import storySmall %}
 
-<section class="section {{#if isAlt}}section--alt {{/if}}section__sec-4">
-  <div class="container m-t-{{#if spacingTop}}{{{ spacingTop }}}{{else}}80{{/if}}{{#unless isShort}} m-b-80{{/unless}}">
-    {{> sectionContentTop
-      isBig=true
-      isThreeFourths=true
-      headline=headline
-      ingress=ingress
-      quote=quote
+<section class="section {% if params.isAlt %}section--alt {% endif %}section__sec-4">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {{
+			sectionContentTop({
+				isBig: true,
+				isThreeFourths: true,
+				headline: params.headline,
+				ingress: params.ingress,
+				quote: params.quote
+			})      
     }}
     <div class="row">
-      {{#each items}}
-        <div class="col-12 col-md-6 col-lg-3 m-b-{{#if links}}20{{else}}10{{/if}}">
-          {{#if imgUrl}}
-            {{> image
-              imgAltText=imgAltText
-              imgUrl=imgUrl
-              classes='aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+      {% for item in params.items %}
+        <div class="col-12 col-md-6 col-lg-3 m-b-{% if item.links %}20{% else %}10{% endif %}">
+          {% if item.imgUrl %}
+            {{
+							image({
+								imgAltText: item.imgAltText,
+								imgUrl: item.imgUrl,
+								classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+							})              
             }}
-          {{/if}}
-          {{> storySmall
-            headline=headline
-            ingress=ingress
-            links=links
-            url=url
+          {% endif %}
+          {{
+						storySmall({
+							headline: item.headline,
+							ingress: item.ingress,
+							links: item.links,
+							url: item.url
+						})            
           }}
         </div>
-      {{/each}}
+      {% endfor %}
     </div>
-    {{#if links}}
+    {% if params.links %}
       <div class="row m-t-2">
         <div class="col-12">
-          {{#each links}}
-            {{> button
-              type='secondary'
-              url=url
-              txt=txt
+          {% for link in params.links %}
+            {{
+							button({
+								type: 'secondary',
+								url: link.url,
+								txt: link.txt
+							})              
             }}
-          {{/each}}
+          {% endfor %}
         </div>
       </div>
-    {{/if}}
+    {% endif %}
   </div>
 </section>
+
+{%- endmacro -%}
