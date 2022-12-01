@@ -1,0 +1,136 @@
+{%- macro itemPerson(params) -%}
+
+{# 
+Parameters received by this partial:
+
+name
+job-title
+phone-nr
+mobile-nr
+email
+bio
+isOpen
+isArticle
+press-img-low
+press-img-high
+ #}
+
+{% from "macros/button.njk" import button %}
+{% from "macros/image.njk" import image %}
+
+{% macro dl(params) %}
+  {% if params.press_img_high %}
+    {{
+			button({
+				type: 'download-secondary',
+				url: params.press_img_high,
+				txt: 'Høy oppløsning'
+			})      
+    }}
+  {% endif %}
+{% endmacro %}
+
+<li class="section__persons--list__item">
+  <button class="clickable toggler {% if params.isOpen %}toggler-on{% else %}toggler-off{% endif %}">
+    <span class="row">
+      <span class="col-12 col-xl-4">
+        <h3 class="section__persons--name">{{ params.name | safe }}</h3>
+      </span>
+      <span class="col-12 col-xl-8 section__persons--job-title">
+        <h4 class="section__persons--job-title__title">{{ params.job_title | safe }}</h4>
+      </span>
+    </span>
+  </button>
+  <div class="toggle-item {% if params.isOpen %}toggle-show{% else %}toggle-hide{% endif %}">
+    <div class="row m-t-50">
+      <div class="col-12 col-lg-5 col-xl-4">
+        <div class="section__persons--image-wrapper">
+          {% if params.press_img_low %}
+            {% if params.press_img_position %}
+              {{
+								image({
+									imgAltText: params.name,
+									imgUrl: params.press_img_low,
+									classes: "aspect aspect__ratio-3-4",
+									backgroundPosition: params.press_img_position
+								})                
+              }}
+            {% else %}
+              {{
+								image({
+									imgAltText: params.name,
+									imgUrl: params.press_img_low,
+									classes: "aspect aspect__ratio-3-4"
+								})                
+              }}
+            {% endif %}
+          {% else %}
+            {% if params.press_img_high %}
+              {% if params.press_img_position %}
+                {{
+									image({
+										imgAltText: params.name,
+										imgUrl: params.press_img_high,
+										classes: "aspect aspect__ratio-3-4",
+										backgroundPosition: params.press_img_position
+									})                  
+                }}
+              {% else %}
+                {{
+									image({
+										imgAltText: params.name,
+										imgUrl: params.press_img_high,
+										classes: "aspect aspect__ratio-3-4"
+									})                  
+                }}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div>
+        {% if params.press_img_low or params.press_img_high %}
+          <p class="section__persons--contact-info press-img m-t-30">
+            {{
+							dl({
+								press_img_high: params.press_img_high
+							})
+						}}
+            {{
+							button({
+								type: 'secondary',
+								url: 'a1',
+								txt: 'Flere bilder (vedlagt)'
+							})              
+            }}
+          </p>
+        {% endif %}
+      </div>
+      <div class="col-12 col-lg-7">
+        {% if params.bio %}
+          <div class="section__persons--bio">
+            {{ params.bio | safe }}
+          </div>
+        {% endif %}
+        <div class="section__persons--content">
+            {% if params.phone_nr %}
+            <p>
+              <span>Telefon: </span><a href="tel:{{ params.phone_nr | safe }}" title="{{ params.phone_nr | safe }}">{{ params.phone_nr | safe }}</a>
+            </p>
+          {% endif %}
+          {% if params.mobile_nr %}
+            <p>
+              <span>Mobil: </span><a href="tel:{{ params.mobile_nr | safe }}" title="{{ params.mobile_nr | safe }}">{{ params.mobile_nr | safe }}</a>
+            </p>
+          {% endif %}
+          {% if params.email %}
+            <p>
+              <span>E-post: </span> <a class="email" href="mailto:{{ params.email | safe }}" title="Kontakt {{ params.name | safe }} på e-post">{{ params.email | safe }}</a>
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+
+
+{%- endmacro -%}

@@ -1,10 +1,11 @@
 {% extends "../_layouts/_layout.njk" %}
 
-{% from "sections/section-top.njk"        import sectionTop %}
-{% from "sections/section-split.njk"      import sectionSplit %}
-{% from "sections/section-sec-4.njk"      import sectionSec4 %}
-{% from "sections/section-offices.njk"    import sectionOffices %}
-{% from "sections/section-contact.njk"    import sectionContact %}
+{% from "sections/section-top.njk"     import sectionTop     %}
+{% from "sections/section-split.njk"   import sectionSplit   %}
+{% from "sections/section-sec-4.njk"   import sectionSec4    %}
+{% from "sections/section-offices.njk" import sectionOffices %}
+{% from "sections/section-contact.njk" import sectionContact %}
+{% from "sections/section-persons.njk" import sectionPersons %}
 
 {% block main %}
   {{
@@ -67,7 +68,7 @@
 			links: section_split_jobbe_i_oljefondet_links
 		})    
   }}
-	
+
   {{
 		sectionContact({
 			headline: section_contact_kontakt_headline,
@@ -77,12 +78,15 @@
 		})    
   }}
 
-  {# {{> sections/section-persons
-    isAlt=true
-    id=section-contacts-pressekontakter-id
-    headline=section-contacts-pressekontakter-headline
-    ingress=section-contacts-pressekontakter-ingress
-    contacts=section-contacts-pressekontakter-contacts
-    footer=section-contacts-pressekontakter-department
-  }} #}
+  {{
+		sectionPersons({
+			isAlt: true,
+			id: section_contacts_pressekontakter_id,
+			headline: section_contacts_pressekontakter_headline,
+			ingress: section_contacts_pressekontakter_ingress,
+			contacts: section_contacts_pressekontakter_contacts,
+			footer: section_contacts_pressekontakter_department
+		})    
+  }}
+
 {% endblock %}
