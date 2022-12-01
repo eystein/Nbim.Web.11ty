@@ -1,0 +1,55 @@
+{%- macro sectionOffices(params) -%}
+
+{# 
+Parameters received by this partial:
+
+isAlt
+isShort
+isArticle
+spacingTop [ie. '2', '5', '10', '15', '20', '30', '40', '50', '60', '70', '80', '90', '100']
+id
+offices 
+#}
+
+{% from "sections/item-offices.njk" import itemOffices %}
+
+{% if params.isArticle %}
+  <article id={{ params.id | safe }} class="section {% if params.isAlt %}section--alt {% endif %}section__offices">
+{% else %}
+  <section id={{ params.id | safe }} class="section {% if params.isAlt %}section--alt {% endif %}section__offices">
+{% endif %}
+    <div class="{% if not params.isArticle %}container {% endif %}m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+      <div class="section__offices--lists">
+        <ul class="section__offices--list line-top m-b-40">
+          {% for office in params.offices %}						
+            {{
+							itemOffices({
+								town: office.town,
+								town_img: office.town_img,
+								name: office.name,
+								address: office.address,
+								phone_nr: office.phone_nr,
+								fax_nr: office.fax_nr,
+								email: office.email	
+							})              
+            }}
+          {% endfor %}
+        </ul>
+      </div>
+      {% if params.footer %}
+        <div class="row">
+          <div class="col-12">
+            <p class="section__offices--footer">
+              {{ params.footer | safe }}
+            </p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+{% if params.isArticle %}
+  </article>
+{% else %}
+  </section>
+{% endif %}
+
+{%- endmacro -%}

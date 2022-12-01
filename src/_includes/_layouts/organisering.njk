@@ -3,6 +3,7 @@
 {% from "sections/section-top.njk"        import sectionTop %}
 {% from "sections/section-split.njk"      import sectionSplit %}
 {% from "sections/section-sec-4.njk"      import sectionSec4 %}
+{% from "sections/section-offices.njk"    import sectionOffices %}
 
 {% block main %}
   {{
@@ -21,7 +22,7 @@
 			links: section_sec_4_hvem_bestemmer_hva_links
 		})    
   }}
-	
+
   {{
 		sectionSplit({
 			isAlt: true,
@@ -44,12 +45,17 @@
 			ingress: section_split_vaare_kontorer_ingress
 		})    
   }}
-  {# {{> sections/section-offices
-    spacingTop='60'
-    id=section-offices-list-id
-    offices=section-offices-list-offices
-    footer=section-offices-list-footer
-  }} #}
+
+  {{
+		sectionOffices({
+			spacingTop: '60',
+			id: section_offices_list_id,
+			offices: section_offices_list_offices,
+			footer: section_offices_list_footer
+		})
+    
+  }}
+
   {{
 		sectionSplit({
 			isAlt: true,
