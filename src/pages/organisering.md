@@ -1,62 +1,62 @@
 ---
-layout: organisering.html
+layout: organisering.njk
 title: Oljefondet - Organisering
 
 # Section Top - Organisering
 
-section-top-organising-imgUrl: '../../images/Organisering.jpg'
-section-top-organising-imgAltText: 'Organisering'
-section-top-organising-headline: 'Organisering'
-section-top-organising-breadcrumbs:
+section_top_organising_imgUrl: '/assets/images/Organisering.jpg'
+section_top_organising_imgAltText: 'Organisering'
+section_top_organising_headline: 'Organisering'
+section_top_organising_breadcrumbs:
   -
     txt: 'Forside'
     url: '#a1'
 
 # Section - Hvem bestemmer hva (4 columns)
 
-section-sec-4-hvem-bestemmer-hva-headline: 'Hvem bestemmer hva'
-section-sec-4-hvem-bestemmer-hva-items:
+section_sec_4_hvem_bestemmer_hva_headline: 'Hvem bestemmer hva'
+section_sec_4_hvem_bestemmer_hva_items:
   -
-    imgUrl: '../../images/Ikon_stortinget.svg'
+    imgUrl: '/assets/images/Ikon_stortinget.svg'
     imgAltText: 'Stortinget'
     headline: 'Stortinget'
     ingress: 'Har fastsatt de formelle rammebetingelsene i loven om Statens pensjonsfond.'
   -
-    imgUrl: '../../images/Ikon_finansdepartementet.svg'
+    imgUrl: '/assets/images/Ikon_finansdepartementet.svg'
     imgAltText: 'Finansdepartementet'
     headline: 'Finansdepartementet'
     ingress: 'Har det overordnede ansvaret for fondet og fastsetter rammer for forvaltningen.'
   -
-    imgUrl: '../../images/Ikon_norges_bank.svg'
+    imgUrl: '/assets/images/Ikon_norges_bank.svg'
     imgAltText: 'Norges Bank'
     headline: 'Norges Bank'
     ingress: 'Har forvaltningsansvaret. Hovedstyret har delegert den operasjonelle forvaltningen til Norges Bank Investment Management.'
   -
-    imgUrl: '../../images/Ikon_NBIM.svg'
+    imgUrl: '/assets/images/Ikon_NBIM.svg'
     imgAltText: 'Norges Bank Investment Management'
     headline: 'Norges Bank Investment Management'
     ingress: 'Forvalter fondet. Oppdraget er å ivareta og utvikle finansielle verdier for fremtidige generasjoner.'
-section-sec-4-hvem-bestemmer-hva-links:
+section_sec_4_hvem_bestemmer_hva_links:
   -
     txt: 'Styringsmodellen'
     url: '#a'
 
 # Section - Om Norges Bank Investment Management
 
-section-split-investment-management-imgUrl: '../../images/long-term-growth.png'
-section-split-investment-management-imgAltText: 'Om Norges Bank Investment Management'
-section-split-investment-management-headline: 'Om Norges Bank Investment Management'
-section-split-investment-management-ingress: 'Norges Bank Investment Management er en enhet i Norges Bank som forvalter Oljefondet. Oppgaven er å sikre høyest mulig avkastning på fondet.'
-section-split-investment-management-links:
+section_split_investment_management_imgUrl: '/assets/images/long_term_growth.png'
+section_split_investment_management_imgAltText: 'Om Norges Bank Investment Management'
+section_split_investment_management_headline: 'Om Norges Bank Investment Management'
+section_split_investment_management_ingress: 'Norges Bank Investment Management er en enhet i Norges Bank som forvalter Oljefondet. Oppgaven er å sikre høyest mulig avkastning på fondet.'
+section_split_investment_management_links:
   -
     txt: 'Mer om Norges Bank Investment Management'
     url: '#a'
 
 # Section - Kontakt
 
-section-contact-kontakt-headline: 'Kontakt oss'
-section-contact-kontakt-ingress: 'Spørsmål om enkeltinvesteringer eller vurderinger av fremtidig markedsutvikling kan være markedssensitivt. Dette er derfor noe vi generelt ikke kan svare på.'
-section-contact-kontakt-form:
+section_contact_kontakt_headline: 'Kontakt oss'
+section_contact_kontakt_ingress: 'Spørsmål om enkeltinvesteringer eller vurderinger av fremtidig markedsutvikling kan være markedssensitivt. Dette er derfor noe vi generelt ikke kan svare på.'
+section_contact_kontakt_form:
   name: 'Navn'
   email: 'E-post'
   subject: 'Velg avdeling'
@@ -86,22 +86,22 @@ section-contact-kontakt-form:
       val: '#g'
   comment: 'Kommentar'
   submit: 'Send'
-section-contact-kontakt-links:
+section_contact_kontakt_links:
   -
     txt: 'Våre pressekontakter'
     url: 'press@nbim.no'
 
 # Section - Våre kontorer
 
-section-split-vaare-kontorer-imgUrl: '../../images/Skyline_new_york.jpg'
-section-split-vaare-kontorer-imgAltText: 'Våre kontorer'
-section-split-vaare-kontorer-headline: 'Våre kontorer'
-section-split-vaare-kontorer-ingress: 'Vi har kontorer i Oslo, London, New York, Singapore og Shanghai. Den globale tilstedeværelsen knytter oss tettere til markedene vi investerer i, og skaper sterkere bånd til partnere i ulike deler av verden.'
+section_split_vaare_kontorer_imgUrl: '/assets/images/Skyline_new_york.jpg'
+section_split_vaare_kontorer_imgAltText: 'Våre kontorer'
+section_split_vaare_kontorer_headline: 'Våre kontorer'
+section_split_vaare_kontorer_ingress: 'Vi har kontorer i Oslo, London, New York, Singapore og Shanghai. Den globale tilstedeværelsen knytter oss tettere til markedene vi investerer i, og skaper sterkere bånd til partnere i ulike deler av verden.'
 
 # Section - Offices
 
-section-offices-list-id: 'section-offices-vaare-kontorer'
-section-offices-list-offices:
+section_offices_list_id: 'section-offices-vaare-kontorer'
+section_offices_list_offices:
   -
     town: 'Oslo'
     town-img: 'https://wpstatic.idium.no/obe.no/2016/08/NB1.jpg'
@@ -152,15 +152,15 @@ section-offices-list-offices:
       street-c: 'Shanghai, PRC 200120'
     phone-nr: '+86 21 6109 7900'
     fax-nr: '+86 21 6109 7900'
-section-offices-list-footer: 'Vi har også eiendomskontorer i <a href="#">Luxembourg</a> og <a href="#">Tokyo</a>.'
+section_offices_list_footer: 'Vi har også eiendomskontorer i <a href="#">Luxembourg</a> og <a href="#">Tokyo</a>.'
 
 # Section - Jobbe i Oljefondet
 
-section-split-jobbe-i-oljefondet-imgUrl: '../../images/Organisering_jobbe_i_Oljefondet.jpg'
-section-split-jobbe-i-oljefondet-imgAltText: 'Jobb i Oljefondet'
-section-split-jobbe-i-oljefondet-headline: 'Jobb i Oljefondet'
-section-split-jobbe-i-oljefondet-ingress: 'Som et av verdens største fond tilbyr vi spennende karrieremuligheter i en rekke disipliner innen kapitalforvaltning. Hos oss kan du bryne deg på store utfordringer, et givende arbeidsmiljø og svært gode muligheter for karriereutvikling og personlig vekst.'
-section-split-jobbe-i-oljefondet-links:
+section_split_jobbe_i_oljefondet_imgUrl: '/assets/images/Organisering_jobbe_i_Oljefondet.jpg'
+section_split_jobbe_i_oljefondet_imgAltText: 'Jobb i Oljefondet'
+section_split_jobbe_i_oljefondet_headline: 'Jobb i Oljefondet'
+section_split_jobbe_i_oljefondet_ingress: 'Som et av verdens største fond tilbyr vi spennende karrieremuligheter i en rekke disipliner innen kapitalforvaltning. Hos oss kan du bryne deg på store utfordringer, et givende arbeidsmiljø og svært gode muligheter for karriereutvikling og personlig vekst.'
+section_split_jobbe_i_oljefondet_links:
   -
     txt: 'Karrieremuligheter'
     url: '/jobb.html'
@@ -170,9 +170,9 @@ section-split-jobbe-i-oljefondet-links:
 
 # Section - Pressekontakter
 
-section-contacts-pressekontakter-id: 'section-contacts-pressekontakter'
-section-contacts-pressekontakter-headline: 'Pressekontakter'
-section-contacts-pressekontakter-contacts:
+section_contacts_pressekontakter_id: 'section-contacts-pressekontakter'
+section_contacts_pressekontakter_headline: 'Pressekontakter'
+section_contacts_pressekontakter_contacts:
 #TODO: pressekontakter
   -
     name: 'Thomas Sevang'
@@ -206,7 +206,7 @@ section-contacts-pressekontakter-contacts:
     email: 'lhl@nbrem.no'
     press-img-low: 'https://www.nbim.no/no/apenhet/pressebilder/line-aaltvedt/getfile/?id=6634'
     press-img-high: 'https://www.nbim.no/no/apenhet/pressebilder/line-aaltvedt/getfile/?id=6622'
-section-contacts-pressekontakter-department:
+section_contacts_pressekontakter_department:
   title: 'Kommunikasjonsavdelingen'
   email: 'press@nbim.no'
   ingress: 'Spørsmål om enkeltinvesteringer eller vurderinger av fremtidig markedsutvikling kan være markedssensitivt. Dette er derfor noe Norges Bank Investment Management generelt ikke kan svare på.'
