@@ -1,0 +1,63 @@
+{{#extend "_layout"}}
+{{#content "main"}}
+  {{> sections/section-top
+    imgAltText=section-top-organising-imgAltText
+    imgUrl=section-top-organising-imgUrl
+    headline=section-top-organising-headline
+    breadcrumbs=section-top-organising-breadcrumbs
+  }}
+  {{> sections/section-sec-4
+    headline=section-sec-4-hvem-bestemmer-hva-headline
+    items=section-sec-4-hvem-bestemmer-hva-items
+    links=section-sec-4-hvem-bestemmer-hva-links
+  }}
+  {{> sections/section-split
+    isAlt=true
+    pictureToLeft=true
+    imgUrl=section-split-investment-management-imgUrl
+    imgAltText=section-split-investment-management-imgAltText
+    headline=section-split-investment-management-headline
+    ingress=section-split-investment-management-ingress
+    links=section-split-investment-management-links
+  }}
+  {{> sections/section-split
+    pictureToLeft=true
+    isShort=true
+    imgUrl=section-split-vaare-kontorer-imgUrl
+    imgAltText=section-split-vaare-kontorer-imgAltText
+    headline=section-split-vaare-kontorer-headline
+    ingress=section-split-vaare-kontorer-ingress
+  }}
+  {{> sections/section-offices
+    spacingTop='60'
+    id=section-offices-list-id
+    offices=section-offices-list-offices
+    footer=section-offices-list-footer
+  }}
+  {{> sections/section-split
+    isAlt=true
+    imgAltText=section-split-jobbe-i-oljefondet-imgAltText
+    imgUrl=section-split-jobbe-i-oljefondet-imgUrl
+    headline=section-split-jobbe-i-oljefondet-headline
+    ingress=section-split-jobbe-i-oljefondet-ingress
+    links=section-split-jobbe-i-oljefondet-links
+  }}
+  {{> sections/section-contact
+    headline=section-contact-kontakt-headline
+    ingress=section-contact-kontakt-ingress
+    form=section-contact-kontakt-form
+    links=section-contact-kontakt-links
+  }}
+  {{> sections/section-persons
+    isAlt=true
+    id=section-contacts-pressekontakter-id
+    headline=section-contacts-pressekontakter-headline
+    ingress=section-contacts-pressekontakter-ingress
+    contacts=section-contacts-pressekontakter-contacts
+    footer=section-contacts-pressekontakter-department
+  }}
+{{/content}}
+{{#content "footer"}}
+  {{> base/footer }}
+{{/content}}
+{{/extend}}
