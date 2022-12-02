@@ -15,7 +15,7 @@ quote
 {% from "sections/section-content-top.njk" import sectionContentTop %}
 {% from "macros/image.njk" import image %}
 {% from "macros/button.njk" import button %}
-{% from "macros/storySmall.njk" import storySmall %}
+{% from "macros/story-small.njk" import storySmall %}
 
 <section class="section {% if params.isAlt %}section--alt {% endif %}section__sec-4">
   <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">

@@ -14,9 +14,9 @@ id
  #}
 
 {% from "sections/section-content-top.njk" import sectionContentTop %}
-{% from "_base/_heading.njk" import heading %}
-{% from "sections/item-reports.njk" import itemReports %}
+{% from "items/item-reports.njk" import itemReports %}
 {% from "macros/button.njk" import button %}
+{% from "macros/heading.njk" import heading %}
 
 {% if not params.isWrappedContent %}
   <section class="section {% if params.isAlt %}section--alt {% endif %}section__reports">

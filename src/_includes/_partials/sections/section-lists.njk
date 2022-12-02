@@ -12,9 +12,9 @@ lists
 #}
 
 {% from "sections/section-content-top.njk" import sectionContentTop %}
-{% from "_base/_heading.njk" import heading %}
+{% from "macros/heading.njk" import heading %}
 {% from "macros/button.njk" import button %}
-{% from "sections/item-list.njk" import itemList %}
+{% from "items/item-list.njk" import itemList %}
 
 <section class="section {% if params.isAlt %}section--alt {% endif %}section__lists">
   <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">

@@ -11,7 +11,7 @@ id
 offices 
 #}
 
-{% from "sections/item-offices.njk" import itemOffices %}
+{% from "items/item-offices.njk" import itemOffices %}
 
 {% if params.isArticle %}
   <article id={{ params.id | safe }} class="section {% if params.isAlt %}section--alt {% endif %}section__offices">

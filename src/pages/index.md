@@ -2,16 +2,6 @@
 layout: index.njk
 title: Oljefondet
 
-# Section - Test colors
-blabla: 'colours are blblabbla'
-colors:
-  detail: 'colours are nice'
-
-colorSwatch:
-  colorName: 'brandColor'
-  colorValue: '#f06d06'
-  colorNotes: 'Our main color'
-
 # Section - Oljefondets markedsverdi
 
 section_top_oljefondet_imgUrl: '/assets/images/Oljefondet_Toppfelt_1.jpg'
@@ -22,7 +12,7 @@ section_top_oljefondet_headlineSub: 'For deg og fremtidige generasjoner'
 
 # Section - Fondets utvikling
 
-section-wide-development-chart:
+section_wide_development_chart:
   height: '600'
   type: 'area'
   showFilter: false
@@ -42,12 +32,12 @@ section-wide-development-chart:
     id: 'theFundsDevelopmentUSDChart'
     value: 'Dollar'
     series: null
-section-wide-development-imgUrl: '/assets/images/graph.svg'
-section-wide-development-imgAltText: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
-section-wide-development-headline: 'Fondets utvikling'
-section-wide-development-ingressTop: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
-section-wide-development-ingress: 'Fondets markedsverdi sank i løpet av første kvartal 2018 med 364 milliarder kroner til 8124 milliarder kroner. Fra etableringen av Norges Bank Investment Management 1. januar 1998 og frem til utgangen av første kvartal 2018 har fondet hatt en årlig avkastning på 5,9 prosent.'
-section-wide-development-links:
+section_wide_development_imgUrl: '/assets/images/graph.svg'
+section_wide_development_imgAltText: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
+section_wide_development_headline: 'Fondets utvikling'
+section_wide_development_ingressTop: 'Markedsverdiens utvikling, oppgitt i milliarder kroner.'
+section_wide_development_ingress: 'Fondets markedsverdi sank i løpet av første kvartal 2018 med 364 milliarder kroner til 8124 milliarder kroner. Fra etableringen av Norges Bank Investment Management 1. januar 1998 og frem til utgangen av første kvartal 2018 har fondet hatt en årlig avkastning på 5,9 prosent.'
+section_wide_development_links:
   - txt: 'Markedsverdiens utvikling'
     url: '#a'
   - txt: 'Avkastningen'
@@ -155,7 +145,7 @@ section_timeline_oljefondet_history_items:
   - year: '2017'
     txt: 'Verdien på Oljefondet når 1000 milliarder dollar'
 
-section-timeline-oljefondet-history-links:
+section_timeline_oljefondet_history_links:
   - txt: 'Se hele tidslinjen'
     url: 'https://www.nbim.no/no/fondet/oljefondets-historie/'
 
@@ -183,8 +173,8 @@ section_news_home_links:
 
 # Section - Nyheter (vertical)
 
-section-newsvertical-home-headline: 'Nyheter'
-section-newsvertical-home-items:
+section_newsvertical_home_headline: 'Nyheter'
+section_newsvertical_home_items:
   - title: 'Støtte til aksjonærforslag om rapportering av metanutslipp'
     date: '8. mai 2018'
     ingress: 'Vi forventer at selskaper involvert i aktiviteter som leder til klimagassutslipp, inkludert metan, har en strategi for overgangen til et energisystem med lavere utslipp, samt overvåker og rapporterer om utslipp.'
@@ -198,7 +188,7 @@ section-newsvertical-home-items:
     ingress: 'Statens pensjonsfond utland fikk i første kvartal 2018 en avkastning på -1,5 prosent, tilsvarende -171 milliarder kroner.'
     url: '#b'
 
-section-newsvertical-home-links:
+section_newsvertical_home_links:
   - txt: 'Se flere nyheter'
     url: '#a'
 ---

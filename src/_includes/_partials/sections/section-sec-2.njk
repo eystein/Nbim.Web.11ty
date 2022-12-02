@@ -19,11 +19,12 @@ For the sake of convenience while setting up a 'col-x' section,
 the ['imageUrl' or 'ingress'] logic is meant to be appliable in any of the
 'col-x' sections, but in the prototype context, it's used only within 'sec-2'. #}
 
-{% from "_base/_heading.njk" import heading %}
+
+{% from "macros/heading.njk" import heading %}
 {% from "macros/quote.njk" import quote %}
 {% from "macros/image.njk" import image %}
 {% from "macros/ingress.njk" import ingress %}
-{% from "macros/storySmall.njk" import storySmall %}
+{% from "macros/story-small.njk" import storySmall %}
 {% from "macros/button.njk" import button %}
 {% from "macros/ingress.njk" import ingress %}
 

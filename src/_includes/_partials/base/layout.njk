@@ -25,13 +25,13 @@
 </head>
 <body class="font-azo-light">
   {% block header %}
-    {% include "../_partials/_base/_header.njk" %}
+    {% include "base/header.njk" %}
   {% endblock %}
   {% block main %}
     {{ content | safe }}
   {% endblock %}
   {% block footer %}
-    {% include "../_partials/_base/_footer.njk" %}
+    {% include "base/footer.njk" %}
   {% endblock %}
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>

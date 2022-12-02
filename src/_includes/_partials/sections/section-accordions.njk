@@ -15,9 +15,9 @@ items
 #}
 
 {% from "sections/section-content-top.njk" import sectionContentTop %}
-{% from "_base/_heading.njk" import heading %}
+{% from "macros/heading.njk" import heading %}
 {% from "macros/button.njk" import button %}
-{% from "sections/item-accordion.njk" import itemAccordion %}
+{% from "items/item-accordion.njk" import itemAccordion %}
 
 
 <section id={{ params.id | safe }} class="section {% if params.isAlt %}section--alt {% endif %}section__accordions">
