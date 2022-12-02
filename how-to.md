@@ -22,12 +22,12 @@ All the layout files refer to `_layout.njk` for the master layout.
 - At the bottom:
   - replace `{{/content}}` with `{% endblock %}`.
   - delete 
-	```
-	{{#content "footer"}}
+  ```
+  {{#content "footer"}}
     {{> base/footer }}
   {{/content}}
   {{/extend}}
-	```
+  ```
 ### Change Handlebars partials to Nunjucks macros
 Handlebars allows for variables to parsed into partials, but in Nunjucks we have to use Macros for the same functionality. 
 
@@ -48,11 +48,11 @@ The structure is the same, but the Macro needs to be imported before it is used.
 ```njk
 {% from "sections/section-top.njk" import sectionTop %}
 {{
-	sectionTop({
-  	imgAltText: section_top_organising_imgAltText,
-  	imgUrl: section_top_organising_imgUrl,
-  	headline: section_top_organising_headline,
-  	breadcrumbs: section_top_organising_breadcrumbs
+  sectionTop({
+    imgAltText: section_top_organising_imgAltText,
+    imgUrl: section_top_organising_imgUrl,
+    headline: section_top_organising_headline,
+    breadcrumbs: section_top_organising_breadcrumbs
   })    
 }}
 ```
@@ -123,10 +123,10 @@ Select the first item in a loop. Used in `contact.njk` macro.
 Sometimes there are inline partials as well. They work the same way as regular macros, but without the import, since it's in the same file.
 ```
 {{#*inline "dl"}}
-	some handlebars code
+  some handlebars code
 {{/inline}}
 
 {% macro dl(params) %}
-	some nunjucks code
+  some nunjucks code
 {% endmacro %}
 ```
