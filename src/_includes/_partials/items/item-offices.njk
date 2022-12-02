@@ -1,0 +1,125 @@
+{%- macro itemOffices(params) -%}
+
+{# 
+Parameters received by this partial:
+
+town
+town_img
+name
+address
+phone_nr
+fax_nr
+email
+emails_heading
+emails 
+#}
+
+{% from "macros/image.njk" import image %}
+
+<li
+  class="section__offices--list__item line-bottom"
+>
+  <button class="clickable toggler toggler-off">
+    <span class="toggle-item toggle-show">
+      <span class="row">
+        <span class="col-12">
+          <span class="section__offices--delimiter">
+            {% if params.town %}
+              <span class="section__offices--town__town">
+                <h3>{{ params.town | safe }}</h3>
+              </span>
+            {% endif %}
+          </span>
+        </span>
+      </span>
+    </span>
+  </button>
+  <div class="section__offices--list__item--office toggle-item toggle-hide">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="section__offices--delimiter">
+          {% if params.town %}
+            <div class="section__offices--town__town m-b-20">
+              <h3>{{ params.town | safe }}</h3>
+            </div>
+          {% endif %}
+          {% if params.name %}
+            <div class="section__offices--office-name m-b-20">
+              {{ params.name | safe }}
+            </div>
+          {% endif %}
+          {% if params.address %}
+            <div class="m-b-40">
+              {% if params.address.street_a %}
+                <div>
+                  {{ params.address.street_a | safe }}
+                </div>
+              {% endif %}
+              {% if params.address.street_b %}
+                <div>
+                  {{ params.address.street_b | safe }}
+                </div>
+              {% endif %}
+              {% if params.address.street_c %}
+                <div>
+                  {{ params.address.street_c | safe }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if params.phone_nr or params.fax_nr %}
+            <div{% if params.emails-heading or params.emails %} class="m-b-40"{% endif %}>
+              {% if params.phone_nr %}
+                <div>
+                  Telefon: {{ params.phone_nr | safe }}
+                </div>
+              {% endif %}
+              {% if params.fax_nr %}
+                <div>
+                  Faks: {{ params.fax_nr | safe }}
+                </div>
+              {% endif %}
+              {% if params.email %}
+                <div>
+                  E-post: <a class="email" href="mailto:{{ params.email | safe }}">{{ params.email | safe }}</a>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if params.emails-heading %}
+            <div class="section__offices--emails-heading m-b-20">
+              {{ params.emails_heading | safe }}
+            </div>
+          {% endif %}
+          {% if params.emails %}
+            <div class="section__offices--emails">
+              <div class="row">
+                {% for email in params.emails %}
+                  <div class="section__offices--email col-12 col-md-6">
+                    <p>{{ email.name }}</p>
+                    <a class="email" href="mailto:{{ email.email }}" title="Send e-post til {{ email.name }}">{{ email.email }}</a>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        {% if params.town_img %}
+          <div class="section__offices--town__img">
+            {{
+							image({
+								imgAltText: params.town,
+								imgUrl: params.town_img,
+								classes: 'aspect aspect__ratio-1-1--md aspect__ratio-16-10--lg aspect__ratio-2-1--xl'
+							})              
+            }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</li>
+
+{%- endmacro -%}

@@ -1,0 +1,97 @@
+{% extends "base/layout.njk" %}
+
+{% from "sections/section-top.njk"      import sectionTop %}
+{% from "sections/section-wide.njk"     import sectionWide %}
+{% from "sections/section-reports.njk"  import sectionReports %}
+{% from "sections/section-calendar.njk" import sectionCalendar %}
+{% from "sections/section-lists.njk"    import sectionLists %}
+{% from "sections/section-info.njk"     import sectionInfo %}
+
+
+{% block main %}
+  {{
+		sectionTop({
+			imgAltText: section_top_publikasjoner_imgAltText,
+			imgUrl: section_top_publikasjoner_imgUrl,
+			headline: section_top_publikasjoner_headline,
+			breadcrumbs: section_top_publikasjoner_breadcrumbs,
+			date: "25.02.18"
+		})    
+  }}
+
+  {{
+		sectionWide({
+			isShort: true,
+			isImage: true,
+			imgAltText: section_wide_avkastning_3_kvartal_imgAltText,
+			imgUrl: section_wide_avkastning_3_kvartal_imgUrl,
+			headlinePre: section_wide_avkastning_3_kvartal_headlinePre,
+			headline: section_wide_avkastning_3_kvartal_headline,
+			ingress: section_wide_avkastning_3_kvartal_ingress,
+			links: section_wide_avkastning_3_kvartal_links
+		})
+  }}
+
+  {{
+		sectionReports({
+			headline: section_reports_rapporter_headline,
+			ingress: section_reports_rapporter_ingress,
+			items: section_reports_rapporter_items
+		})
+  }}
+
+  {{
+		sectionCalendar({
+			isAlt: true,
+			headline: section_calendar_lanseringer_headline,
+			items: section_calendar_lanseringer_items,
+			links: section_calendar_lanseringer_links
+		})    
+  }}
+
+  {{
+		sectionReports({
+			isShort: true,
+			headline: section_reports_forventningsdokumenter_headline,
+			ingress: section_reports_forventningsdokumenter_ingress,
+			items: section_reports_forventningsdokumenter_items
+		})
+  }}
+
+  {{
+		sectionLists({
+			spacingTop: '40',
+			isShort: true,
+			headline: section_lists_stemmegivning_headline,
+			ingress: section_lists_stemmegivning_ingress,
+			lists: section_lists_stemmegivning_lists
+		})
+  }}
+
+  {{
+		sectionLists({
+			isShort: true,
+			headline: section_lists_analyser_headline,
+			ingress: section_lists_analyser_ingress,
+			lists: section_lists_analyser_lists
+		})    
+  }}
+
+  {{
+		sectionLists({
+			headline: section_lists_raad_headline,
+			ingress: section_lists_raad_ingress,
+			lists: section_lists_raad_lists
+		})    
+  }}
+
+  {{
+		sectionInfo({
+			isAlt: true,
+			headline: section_info_paamelding_nyhetsbrev_headline,
+			ingress: section_info_paamelding_nyhetsbrev_ingress,
+			links: section_info_paamelding_nyhetsbrev_links
+		})    
+  }}
+
+{% endblock %}

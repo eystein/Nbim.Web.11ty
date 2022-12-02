@@ -1,0 +1,22 @@
+{%- macro image(params) -%}
+
+	{% if params.isInline %}
+		<img
+			src="./assets/images/loadingpixel.png"
+			alt="{{ params.imgAltText | safe }}"
+			data-lazy="{{ params.imgUrl | safe }}"
+			class="nbim-lazy-image{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.hasBorder %} has-border{% endif %}"
+		/>
+	{% else %}
+		<div
+			role="img"
+			aria-label="{{ params.imgAltText | safe }}"
+			data-lazy="{{ params.imgUrl | safe }}"
+			class="img nbim-lazy-image{% if params.classes %} {{ params.classes | safe }}{% endif %}{% if params.hasBorder %} has-border{% endif %}{% if params.backgroundPosition %} background-position--{{ params.backgroundPosition | safe }}{% endif %}"
+		></div>
+	{% endif %}
+
+
+
+
+{%- endmacro -%}

@@ -1,0 +1,32 @@
+{%- macro itemAccordion(params) -%}
+
+{# 
+Parameters received by this partial:
+
+title
+body
+details 
+#}
+
+
+<li
+  class="section__accordions--list__item"
+>
+  <button class="clickable toggler toggler-off">
+    <span class="font-azo-medium">{{ params.title | safe }}</span>
+    {% if params.details %}
+      <span class="section__lists--list__item--details">
+        {% for detail in params.details %}
+          {{ detail.place | safe }}&nbsp;&nbsp;{{ params.deadline | safe }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </button>
+  {% if params.body %}
+    <div class="toggle-item toggle-hide">
+      {{ params.body | safe }}
+    </div>
+  {% endif %}
+</li>
+
+{%- endmacro -%}

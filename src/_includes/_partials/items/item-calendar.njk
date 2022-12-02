@@ -1,0 +1,63 @@
+{%- macro itemCalendar(params) -%}
+
+{# 
+Parameters received by this partial:
+
+title
+date
+url
+links
+isFullWidth 
+#}
+
+{% from "macros/number.njk" import number %}
+{% from "macros/ingress.njk" import ingress %}
+
+<li
+  class="section__calendar--list__item"
+>
+  {% if not params.isFullWidth %}
+    <div class="row">
+      <div class="col-12 col-md-8">
+  {% endif %}
+  {{
+		number({
+			num: params.day,
+			txt: params.month
+		})    
+  }}
+  <div class="section__calendar--list__item--title">
+    <a href="{{ params.url | safe }}">
+      {{ params.title | safe }}
+    </a>
+  </div>
+  {% if params.ingress %}
+    {{
+			ingress({
+				txt: params.ingress
+			})      
+    }}
+  {% endif %}
+  {% if params.links %}
+    <div class="section__calendar--list__item--links m-b-10">
+      {% for link in params.links %}
+        {{
+					button({
+						isButton: true,
+						type: 'secondary',
+						url: link.url,
+						txt: link.txt
+					})          
+        }}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if not params.isFullWidth %}
+      </div>
+    </div>
+  {% endif %}
+</li>
+
+
+{%- endmacro -%}
+

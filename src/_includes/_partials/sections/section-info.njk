@@ -1,0 +1,65 @@
+{%- macro sectionInfo(params) -%}
+
+{# 
+Parameters received by this partial:
+
+isAlt
+isCentered
+isShort
+spacingTop [ie. '2', '5', '10', '15', '20', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+ingress
+isArticle 
+#}
+
+{% from "sections/section-content-top.njk" import sectionContentTop %}
+{% from "macros/button.njk" import button %}
+
+{% macro theContent(params) %}
+  {{
+		sectionContentTop({
+			isLead: true,
+			headline: params.headline,
+			ingress: params.ingress
+		})
+  }}
+  {% for link in params.links %}
+    {{
+			button({
+				type: 'secondary',
+				url: link.url,
+				txt: link.txt
+			})      
+    }}
+  {% endfor %}
+{% endmacro %}
+
+{% if params.isArticle %}
+  <div class="m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {{
+			theContent({
+				headline: params.headline,
+				ingress:params.ingress,
+				links: params.links
+			})
+		}}
+  </div>
+{% else %}
+  <section class="section {% if params.isAlt %}section--alt {% endif %}section__info{% if params.isCentered %} centered{% endif %}">
+    <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+      <div class="row">
+        <div class="col-12 col-md-8 section__info--wrapper">
+          {{
+						theContent({
+							headline: params.headline,
+							ingress:params.ingress,
+							links: params.links
+						})
+					}}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{%- endmacro -%}

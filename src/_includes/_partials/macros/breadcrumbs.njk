@@ -1,0 +1,23 @@
+{%- macro breadcrumbs(params) -%}
+
+{# 
+Parameters received by this partial:
+
+breadcrumbs
+
+This partial supports up to 5 levels deep 
+#}
+
+
+<ol class="breadcrumbs">
+  {% for crumb in params.breadcrumbs %}
+    <li class="breadcrumb">
+      <a href="{{ crumb.url }}"><!-- add aria-current="page" to last link -->
+        {{ crumb.txt }}
+      </a>
+      <span class="breadcrumb-separator">&nbsp;/&nbsp;</span>
+    </li>
+  {% endfor %}
+</ol>
+
+{%- endmacro -%}

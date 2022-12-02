@@ -1,0 +1,55 @@
+{%- macro sectionContact(params) -%}
+
+{# 
+Parameters received by this partial:
+
+isAlt
+isShort
+spacingTop [ie. '2', '5', '10', '15', '20', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+form
+ #}
+
+{% from "sections/section-content-top.njk" import sectionContentTop %}
+{% from "macros/contact.njk" import contact %}
+{% from "macros/button.njk" import button %}
+
+<section class="section {% if params.isAlt %}section--alt {% endif %}section__contact">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {{
+			sectionContentTop({
+				isBig: true,
+				isThreeFourths: true,
+				headline: params.headline,
+				ingress: params.ingress
+			})      
+    }}
+    <div class="row">
+      <div class="col-12 col-md-8">
+        {{
+					contact({
+						form: params.form
+					})          
+        }}
+      </div>
+    </div>
+    {% if params.links %}
+      <div class="row m-t-60">
+        <div class="col-12">
+          {% for link in params.links %}
+            {{
+							button({
+								isEmail: true,
+								type: 'secondary',
+								url: link.url,
+								txt: link.txt
+							})              
+            }}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{%- endmacro -%}

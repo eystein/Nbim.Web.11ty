@@ -1,0 +1,19 @@
+{%- macro quote(params) -%}
+{#
+  Parameters received by this partial:
+  txt
+#}
+
+
+  {% if params.txt %}
+    <div class="quote__wrapper m-b-20">
+      <h3>
+          <span class="quote--quote">
+            {{ params.txt | safe }}
+          </span>
+        </h3>
+    </div>
+  {% endif %}
+
+
+{%- endmacro -%}

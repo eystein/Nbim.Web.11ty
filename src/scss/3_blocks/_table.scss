@@ -1,0 +1,776 @@
+/* Table css refactored for now. Rewrite when new design is in scope of production */
+
+// Basic table css globally.
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-collapse: inherit;
+  border-spacing: 0;
+  border-color: inherit;
+  vertical-align: inherit;
+  font-weight: inherit;
+  -webkit-border-horizontal-spacing: 0;
+  -webkit-border-vertical-spacing: 0;
+}
+table,
+thead {
+  display: table;
+  width: 100%;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+tr {
+  width: 100%;
+  display: table-row;
+}
+th, td {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+  overflow: hidden;
+  thead {
+    tr {
+      background-color: $cl-blue;
+    }
+    display: table-header-group;
+
+    th, td {
+      display: table-cell;
+      padding: 15px 20px;
+      text-align: right;
+      text-transform: uppercase;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: 'AzoSansMedium';
+      font-weight: normal;
+      color: $cl-white;
+    }
+  }
+  tbody {
+    tr {
+      background-color: $cl-white;
+      &:nth-child(even) {
+        background-color: rgba(73,145,184,.1);
+      }
+    }
+    th, td {
+      display: table-cell;
+      padding: 15px 20px;
+      text-align: right;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: 'AzoSansLight';
+      color: $cl-black;
+      white-space: pre;
+      border-right: 1px solid $cl-white;
+
+      &:last-child {
+        border: none;
+      }
+    }
+    td.number {
+      font-size: 16px !important;
+      line-height: 20px !important;
+      font-family: 'AzoSansLight';
+    }
+    strong {
+      font-family: 'AzoSansMedium';
+      font-weight: normal;
+    }
+  }
+
+  tfoot {
+    td {
+      padding: 15px 0;
+    }
+    p {
+      @extend .smaller-text;
+      margin-bottom: 5px!important;
+    }
+  }
+  // Align all table content.
+  &.text-align--left {
+    thead,
+    tbody,
+    tfoot {
+      th, td {
+        text-align: left;
+      }
+    }
+  }
+  &.text-align--right {
+    thead,
+    tbody,
+    tfoot {
+      th, td {
+        text-align: right;
+      }
+    }
+  }
+  // Override existing alignment for specific column.
+  th.text-align--left,
+  td.text-align--left {
+    text-align: left !important;
+  }
+  th.text-align--right,
+  td.text-align--right {
+    text-align: right !important;
+  }
+}
+
+// Extend table with classes from cms.
+.nbim-table--pre-wrapped,
+.nbim-table--pre-wrapped table {
+  thead,
+  tbody {
+    th, td, .number, .text {
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.nbim-table--small-font,
+.nbim-table--small-font table {
+  tbody {
+    th, td, .number, .text {
+      font-size: 14px !important;
+      line-height: 18px !important;
+    }
+  }
+}
+
+.nbim-table-container {
+  width: 100%;
+  overflow: auto;
+  table {
+    width: 100%;
+    display: table;
+
+    th, td {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+  .nbim-folded-table {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 80px;
+    transition: max-height 0.3s ease-in;
+    overflow-x: auto;
+
+    &--minimize {
+      transition: max-height 0.3s ease-in-out;
+
+    }
+    &--table-overlay {
+      height: 118px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to top,$cl-white, transparent);
+    }
+  }
+  &--button {
+    width: 100%;
+    display: block;
+    margin-bottom: 65px;
+    padding: 10px;
+    border: 1px solid #999;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      opacity: 0.7;
+    }
+  }
+}
+
+// Table in combination with highchart.
+.chart-table-container {
+  @include visually-hidden();
+  &.selected {
+    width: auto;
+    height: auto;
+    position: static;
+
+    .nbim-responsive-table__scroll-indicator {
+      display: none;
+    }
+  }
+}
+
+$cl-blue-3: #A1C8DB;
+$bp: 'sm';
+
+.nbim-responsive-table {
+  overflow-y: hidden;
+
+  @mixin icon($size, $type) {
+    width: $size;
+    height: $size;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all 0.2s ease-in-out;
+    @if $type == up {
+      background-image: url('#{$path-images}/chevron-up-blue.svg');
+    }
+    @if $type == down {
+      background-image: url('#{$path-images}/chevron-down-blue.svg');
+    }
+    @if $type == download {
+      background-image: url('#{$path-images}/arrow-down-blue.svg');
+    }
+  }
+
+  &--head {
+    h2, p {
+        margin-bottom: 0 !important;
+    }
+    p {
+      margin-top: 5px;
+    }
+    h2 + p {
+      margin-top: 10px;
+    }
+  }
+
+  &__scroll-indicator {
+    display: none;
+
+    &--icon {
+      width: 11px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      background-image: url('#{$path-images}/chevron-right-blue.svg');
+    }
+
+    &--visible {
+      display: block;
+
+      @include media-breakpoint-down($bp) {
+        display: none;
+      }
+
+      width: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: -1px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      border-left: 1px solid $cl-blue-3;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+
+  &__outer-container {
+    @include media-breakpoint-down($bp) {
+      border-right: 1px solid $cl-blue-3;
+      border-left: 1px solid $cl-blue-3;
+    }
+  }
+  &__inner-container {
+    position: relative;
+  }
+
+  // For mobile column toggling.
+  &__toggler {
+    outline: none;
+    display: none !important;
+
+    @include media-breakpoint-down($bp) {
+      width: 40px;
+      height: 45px;
+      padding: 0;
+      display: block !important;
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+      position: absolute !important;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      transition: all 0.3s ease-in-out;
+      &:after {
+        display: none;
+      }
+
+      &--icon {
+        @include icon(14px, down);
+        position: absolute;
+        top: 20px;
+        right: 10px;
+      }
+
+      &.is-selected i {
+        @include icon(14px, up);
+      }
+
+      &:hover,
+      &.is-focused {
+        @include animate-icon(true);
+      }
+    }
+  }
+
+  // Visible column key on mobile
+  &--key {
+    display: none;
+    @include media-breakpoint-down($bp) {
+      display: inline;
+      margin-right: 5px;
+      font-family: 'AzoSansMedium';
+      font-weight: normal;
+      font-size: 14px;
+      color: $cl-black;
+      line-height: 20px;
+    }
+  }
+
+  &--value {
+    display: block;
+    white-space: pre-line;
+    @include media-breakpoint-down($bp) {
+      &:not(:first-of-type) {
+        display: inline;
+        margin-right: 5px;
+        line-height: 20px;
+        font-family: 'AzoSansLight';
+        font-weight: normal;
+        strong {
+          font-family: 'AzoSansLight';
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  &--is-empty {
+    @include media-breakpoint-down($bp) {
+      height: 3px !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      background-color: $cl-blue-3 !important;
+    }
+  }
+
+  // Column separator
+  &--separator {
+    background-color: $cl-blue-3 !important;
+    padding: 0 !important;
+    border: none;
+
+    @include media-breakpoint-down($bp) {
+      background-color: $cl-blue-3 !important;
+      max-width: 100% !important;
+      padding: 12px 0 !important;
+      td {
+        min-height: auto !important;
+        height: auto !important;
+      }
+    }
+    td {
+      min-height: 40px;
+      font-family: 'AzoSansMedium' !important;
+      font-weight: normal !important;
+      padding: 10px 15px;
+    }
+  }
+
+  &--unfolded,
+  &--folded {
+    @include media-breakpoint-down($bp) {
+      table {
+        tr {
+          padding: 0;
+        }
+        td:not(.nbim-responsive-table--separator) {
+          padding: 0 10px !important;
+          &:first-child {
+            span {
+              max-width: 90%;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Column toggler only.
+  &--unfolded {
+    @include media-breakpoint-down($bp) {
+      border-top: 1px solid $cl-blue-3;
+      border-bottom: 1px solid $cl-blue-3;
+
+      table {
+        tr:first-child {
+          border-top: none !important;
+        }
+        tr:last-child {
+          border-bottom: none !important;
+        }
+      }
+    }
+  }
+  // Columm toggler and row toggler.
+  &--folded {
+    position: relative;
+
+    &__toggler,
+    &__download {
+      width: 100%;
+      height: 50px;
+      margin-top: -1px;
+      padding: 0 15px;
+      border-top: 1px solid $cl-blue-3;
+      border-right: none;
+      border-bottom: 1px solid $cl-blue-3;
+      border-left: none;
+      outline: 0;
+      text-align: left;
+      font-weight: normal;
+      font-size: 16px;
+      background-color: $cl-white;
+      position: relative;
+      cursor: pointer;
+
+      &:after {
+        content: '';
+        @include icon(18px, down);
+        position: absolute;
+        top: 20px;
+        right: 15px;
+      }
+
+      &.up:after {
+        @include icon(18px, up);
+      }
+
+      &:hover:after,
+      &.is-focused:after {
+        @include animate-icon(true);
+      }
+
+      @include media-breakpoint-down($bp) {
+        height: 40px;
+        padding: 0 10px;
+        font-size: 14px;
+
+        &:after {
+          @include icon(14px, down);
+          top: 15px;
+          right: 10px;
+        }
+        &.up:after {
+          @include icon(14px, up);
+        }
+      }
+    }
+
+    &__download {
+      &:after {
+        content: '';
+        @include icon(18px, download);
+        position: absolute;
+        top: 14px;
+        right: 13px;
+      }
+      &:hover:after,
+      &.is-focused:after {
+        @include animate-icon(true);
+      }
+    }
+
+    table.nbim-responsive-table--static {
+      td {
+        @include media-breakpoint-down($bp) {
+          &:first-child {
+            border-left: 0 !important;
+          }
+          &:last-child {
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  table {
+    max-width: 100%;
+    display: table;
+    overflow: auto hidden;
+
+    @include media-breakpoint-down($bp) {
+      overflow: hidden;
+      display: block;
+    }
+
+    thead {
+      tr {
+        min-height: auto;
+      }
+
+      @include media-breakpoint-down($bp) {
+        display: none;
+      }
+    }
+
+    tbody {
+      @include media-breakpoint-down($bp) {
+        max-width: 100%;
+        overflow: hidden;
+        display: block;
+      }
+
+      tr:not(.nbim-responsive-table--separator) {
+        height: 50px;
+        @include media-breakpoint-down($bp) {
+          height: auto;
+          min-height: 50px;
+        }
+      }
+    }
+
+    tr {
+      max-width: 100%;
+      display: table-row;
+      position: relative;
+      padding: 10px 0;
+
+      &.visually-hidden {
+        @include visually-hidden();
+      }
+
+      @include media-breakpoint-down($bp) {
+        display: block;
+        min-height: 45px;
+        max-width: 100%;
+        padding: 13px 0;
+        border-bottom: 1px solid $cl-blue-3;
+        white-space: nowrap;
+        background-color: transparent;
+
+        &:first-child {
+          border-top: 1px solid $cl-blue-3;
+        }
+
+        &.is-selected {
+          background-color: rgba($cl-blue-3, 0.1) !important;
+          padding-bottom: 0;
+
+          td {
+            border-bottom: 1px solid $cl-blue-3;
+          }
+          td:first-child {
+            @include media-breakpoint-down($bp) {
+              padding-bottom: 12px !important;
+              min-height: 32px;
+            }
+          }
+          td:not(:first-child) {
+            width: 100%;
+            display: block;
+            text-align: left !important;
+            border: none;
+            padding: 10px !important;
+          }
+          strong {
+            display: inline-block;
+            font-family: AzoSansLight;
+            font-weight: normal;
+          }
+        }
+        &:nth-child(even) {
+          background-color: transparent;
+        }
+      }
+    }
+
+    th {
+      padding: 10px 15px;
+      text-transform: unset;
+    }
+
+    td {
+      height: 50px;
+      max-width: 30%;
+      font-size: 16px;
+      line-height: 22px;
+      padding: 15px;
+      border-right: 1px solid $cl-blue-3;
+      border-bottom: 1px solid $cl-blue-3;
+      font-family: 'AzoSansLight';
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 18px;
+      vertical-align: bottom;
+      z-index: 0;
+
+      &:last-child {
+        border-bottom: 1px solid $cl-blue-3 !important; // Remove important when all tables are refactored
+      }
+      @include media-breakpoint-down($bp) {
+        height: auto;
+        min-width: auto;
+        max-width: 100%;
+        display: block;
+        border-bottom: none;
+
+        &:nth-child(2) {
+          border-left: 1px solid $cl-blue-3;
+        }
+        &:last-child {
+          border-right: 1px solid $cl-blue-3;
+          border-bottom: none !important; // Remove important when all tables are refactored
+        }
+      }
+
+      span {
+        min-width: 60px;
+        white-space: normal;
+
+        @include media-breakpoint-down($bp) {
+          min-width: auto;
+        }
+      }
+    }
+    td, th {
+      display: table-cell;
+      white-space: nowrap;
+
+      &:first-child {
+        text-align: left;
+        @include media-breakpoint-down($bp) {
+          width: 100%;
+          display: block;
+          border-right: none;
+          white-space: normal;
+          word-break: break-word;
+          padding-right: 40px;
+        }
+      }
+
+      &.align-right {
+        text-align: right;
+      }
+      &.align-left {
+        text-align: left;
+      }
+      @include media-breakpoint-down($bp) {
+        padding: 0;
+        display: none;
+      }
+    }
+    td.vertical-top {
+      vertical-align: top;
+    }
+    th {
+      white-space: normal;
+    }
+    // Check if this is working without fold.
+    tfoot {
+      &.visually-hidden {
+        @include visually-hidden();
+      }
+      tr {
+        border: none;
+      }
+      td,
+      td:last-child {
+        height: auto;
+        padding: 30px 0;
+        border: none !important;
+        white-space: normal;
+        word-wrap: none;
+      }
+      p {
+        margin-bottom: 15px !important;
+        line-height: 18px !important;
+      }
+    }
+    // Extend styles to static styles for mobile..
+    &.nbim-responsive-table--static {
+      @include media-breakpoint-down($bp) {
+        thead {
+          display: table-header-group;
+          tr {
+            background-color: $cl-blue !important;
+          }
+        }
+        tr {
+          width: 100%;
+          height: 45px;
+          min-height: auto;
+          display: table-row;
+          background-color: $cl-white;
+          &:nth-child(even) {
+            background-color: rgba(73,145,184,.1);
+          }
+        }
+        td, th {
+          padding: 10px;
+          display: table-cell;
+        }
+        td {
+          padding: 12px 10px !important;
+          border-bottom: 1px solid $cl-blue-3 !important;
+          &:last-child {
+            border-right: none;
+          }
+          &:not(.nbim-responsive-table--separator) {
+            padding: 10px !important;
+          }
+        }
+      }
+    }
+  }
+
+  &--restricted-width {
+    overflow: hidden;
+    table {
+      display: table;
+      overflow: hidden;
+      @include media-breakpoint-down($bp) {
+        display: block;
+      }
+
+      thead, tbody, tfoot {
+
+        th, td {
+          word-break: break-all;
+          hyphens: auto;
+          .nbim-responsive-table--value {
+            display: initial;
+          }
+        }
+      }
+    }
+  }
+}

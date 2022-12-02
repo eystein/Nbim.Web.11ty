@@ -1,0 +1,135 @@
+.section__split,
+.section__video,
+.article__video {
+  position: relative;
+
+  &--wide {
+    @include media-breakpoint-up(sm) {
+      margin-left: -26.6%;
+      margin-right: -26.6%;
+    }
+  }
+  &__caption {
+    margin-top: 5px;
+    margin-bottom: 0; // because it's a paragraph
+    font-size: 16px;
+    @extend .font-azo-light-italic;
+    &.wide {
+      @include media-breakpoint-up(sm) {
+        width: 65.2%;
+        max-width: 832px;
+        margin: 5px auto 0;
+      }
+    }
+  }
+}
+
+.video {
+  width: 100%;
+  max-width: 100%;
+  video {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  // With background
+  &--background {
+    width: 100%;
+    height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background: gray;
+    background-attachment: fixed;
+    background-size: cover;
+    &__wrapper {
+      overflow: hidden;
+    }
+  }
+  &--button {
+    &:before {
+      content: '';
+      width: 80px;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.8) !important;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 20px solid $cl-blue;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-40%, -50%);
+    }
+    &:hover:before {
+      background-color: rgba(255, 255, 255, 0.6) !important;
+    }
+  }
+}
+
+.bc-player-HyjqVofa_default .vjs-big-play-button,
+.video-js .vjs-big-play-button,
+.vjs-big-play-button {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+  }
+}
+
+.vjs-icon-play:before,
+.video-js .vjs-big-play-button:before,
+.video-js .vjs-play-control:before {
+  color: $cl-blue;
+}
+
+// Brightcove video CSS, former 'brightcove.css' at Nbim.Web
+@media (min-width: 768px) and (max-width: 991px) {
+  .BrightcoveExperience {
+    max-height: 200px; // tablet portrait og ned til det brekkes over to rader
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .BrightcoveExperience {
+    width: 400px;
+    height: 100%; // her blir 494 for bredt igjen. Sett bredde til 400px? og passende høyde??
+  }
+}
+
+.outer-video-container {
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+
+.BrightcoveExperience {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.SCTV-wrapper {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.SCTV-wrapper iframe {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}

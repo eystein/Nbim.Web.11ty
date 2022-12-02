@@ -1,0 +1,26 @@
+// This 'edit' styles compiles to a file named 'proto-edit.css' and is included with:
+//
+// <link rel="stylesheet" type="text/css" href="/static/css/proto-edit.css" media="print">
+
+@import './main';
+
+// Overrides all main css.
+body {
+  background-color: white !important;
+}
+
+.mce-content-body {
+  h1, 
+  h2, 
+  h3,
+  h4 {
+    font-family: "AzoSansMedium",arial,sans-serif;
+    font-weight: normal;
+  }
+
+  li, 
+  p {
+    font-family: "AzoSansLight",arial,sans-serif;
+    font-weight: normal;
+  }
+}

@@ -1,0 +1,78 @@
+{%- macro story(params) -%}
+
+{#
+Parameters received by this partial:
+
+headline
+ingress
+links
+quote
+ #}
+
+ {% from "macros/ingress.njk" import ingress %}
+ {% from "macros/quote.njk" import quote %}
+ {% from "macros/button.njk" import button %}
+
+
+{% if params.number %}
+<div class="number__wrapper m-b-30">
+  <div class="number--number m-b-10">
+    {{ params.number | safe }}
+  </div>
+{% endif %}
+{% if params.headline %}
+  <h2 class="section--headline{% if not params.number %} m-b-10{% endif %}">
+    {{ params.headline | safe }}
+  </h2>
+{% endif %}
+{% if params.number %}
+</div>
+{% endif %}
+{% if params.ingress %}	
+  {{
+		ingress({
+			txt: params.ingress,
+    	isLead: params.isLead
+		})
+  }}
+{% endif %}
+{% if params.quote %}
+  <div class="row">
+    <div class="col-12">			
+      {{
+				quote({
+					txt: params.quote
+				})
+      }}
+    </div>
+  </div>
+{% endif %}
+
+{% if params.links %}
+  <div class="row">
+    <div class="col-12">
+      {% for link in params.links %}
+        {% if link.download %}
+          {{
+						button({
+							type: 'download-secondary',
+							url: link.url,
+							txt: link.txt
+						})            
+          }}
+        {% else %}				
+          {{
+						button({
+							type: 'secondary',
+							url: link.url,
+							txt: link.txt
+						})
+            
+          }}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{%- endmacro -%}
