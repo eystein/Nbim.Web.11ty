@@ -1,0 +1,66 @@
+{%- macro sectionContentTop(params) -%}
+{# 
+Parameters received by this partial:
+
+headline
+ingress
+isBig (if 'true', it's passed further to 'ingress' to give it 'm-b-50')
+isLead (if 'true', it's passed further to 'ingress' to give it 'm-b-30')
+isOneHalf
+isOneThird
+isOneFourth
+quote 
+#}
+{% from "_base/_heading.njk" import heading %}
+{% from "macros/ingress.njk" import ingress %}
+{% from "macros/quote.njk" import quote %}
+
+{% macro responsive(params) %}
+	{% if params.isThreeFourths %} col-md-9{% endif %}
+	{% if params.isOneHalf %} col-md-6{% endif %}
+	{% if params.isOneThird %} col-md-4{% endif %}
+	{% if params.isOneFourth %} col-md-3{% endif %}
+{% endmacro %}
+
+{% macro headlineSpacing(params) %}
+	{% if params.ingress %} m-b-10{% elif params.isLead %} m-b-22{% else %} m-b-40{% endif %}
+{% endmacro %}
+
+{% if params.headline %}
+  <div class="row">
+    <div class="col-12 heading-spacing{{ headlineSpacing(params) }}">
+      {{ 
+				heading({
+					txt: params.headline,
+					hType: '2',
+					classes: 'section--headline' 
+				})        
+      }}
+    </div>
+  </div>
+{% endif %}
+{% if params.ingress %}
+  <div class="row">
+    <div class="col-12{{ responsive(params) }}">
+      {{ 
+				ingress({
+					txt: params.ingress,
+					isBig: params.isBig,
+					isLead: params.isLead
+				})        
+      }}
+    </div>
+  </div>
+{% endif %}
+{% if params.quote %}
+  <div class="row">
+    <div class="col-12 col-lg-6 m-b-20">
+      {{
+				quote({
+					txt: params.quote
+				})        
+      }}
+    </div>
+  </div>
+{% endif %}
+{%- endmacro -%}

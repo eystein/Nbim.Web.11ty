@@ -1,0 +1,41 @@
+/**
+ * Starter by Netlife Research
+ * ---------------------------
+ * https://github.com/netliferesearch/starter
+ * ------------------------------------------
+ */
+
+@import '1_tools/functions';
+@import '1_tools/variables';
+@import '1_tools/mixins';
+@import '2_base/fonts';
+html {
+	height: 100%;
+	font-size: $base-font-size;
+}
+// Very important to normalize those nasty browser defaults!!
+@import '1_tools//modern-normalize';
+// Import styles
+@import '1_tools/bootstrap-grid-settings';
+@import '1_tools/helpers';
+
+@import '1_tools/docs';
+@import '2_base/body';
+@import '2_base/checkboxes';
+@import '2_base/typography';
+@import '2_base/images';
+@import '2_base/radio-buttons';
+@import '2_base/pagination';
+@import '2_base/hr';
+@import '3_blocks/header';
+@import '3_blocks/footer';
+@import '3_blocks/button';
+@import '3_blocks/card';
+@import '3_blocks/charts';
+@import '3_blocks/section';
+@import '3_blocks/article';
+@import '3_blocks/video';
+@import '3_blocks/table';
+@import '3_blocks/search';
+// Default bootstrap grid. This can be configured, maybe even replaced by another grid.
+@import '4_grid/grid';

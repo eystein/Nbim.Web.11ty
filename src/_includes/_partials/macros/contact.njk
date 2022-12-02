@@ -1,0 +1,56 @@
+{%- macro contact(params) -%}
+
+{# 
+Parameters received by this partial:
+
+form
+ #}
+
+<div class="{% if params.classes %} {{ params.classes | safe }}{% endif %}">
+  {% if params.form %}
+    <form action="#">
+      <div class="Form__MainBody">   
+        <div class="Form__Element FormStep Form__Element--NonData">
+          <div class="Form__Element_Wrapper">
+            {% if params.form.name %}
+            <div class="Form__Element FormTextbox">
+              <label class="Form__Element__Caption">{{ params.form.name | safe }}</label>
+              <input type="text" class="FormTextbox__Input" name="name" value="">
+              <span class="Form__Element__ValidationError" style="display:none">Name field is mandatory.</span>
+            </div>
+            {% endif %}
+            {% if params.form.email %}
+            <div class="Form__Element FormTextbox">
+              <label class="Form__Element__Caption">{{ params.form.email | safe }}</label>
+              <input type="email" class="FormTextbox__Input" name="email" value="">
+              <span class="Form__Element__ValidationError" style="display:none">Email field is mandatory.</span>
+            </div>
+            {% endif %}
+          </div>
+          {% if params.form.subject %}
+            <div class="Form__Element FormSelection">
+              <label class="Form__Element__Caption">{{ params.form.subject | safe }}</label>
+              <select name="department">
+                {% for subject in params.form.subjects %}
+                  <option value="{{ subject.val | safe }}"{{ 'selected' if subject.first }}>{{ subject.txt | safe }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+          {% if params.form.comment %}
+            <div class="Form__Element FormTextbox FormTextbox--Textarea">
+              <label class="Form__Element__Caption">{{ params.form.comment | safe }}</label>
+              <textarea name="comment" class="FormTextbox__Input"></textarea>
+              <span class="Form__Element__ValidationError" style="display:none">Comment is mandatory.</span>
+            </div>
+          {% endif %}
+          <button name="submit" type="submit" value="{{ params.form.submit | safe }}" class="Form__Element FormExcludeDataRebind FormSubmitButton">
+              {{ params.form.submit | safe }}
+          </button>
+        </div>
+      </div>
+    </form>
+  {% endif %}
+</div>
+
+{%- endmacro -%}

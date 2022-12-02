@@ -1,0 +1,94 @@
+{%- macro sectionWideSec2(params) -%}
+
+{# 
+Parameters received by this partial:
+
+isAlt
+isShort
+spacingTop [ie. '2', '5', '10', '15', '17', '20', '22', '30', '40', '50', '60', '70', '80', '90', '100']
+chart
+imgAltText
+imgUrl
+headlinePre
+headline
+ingressTop
+items
+links
+quote 
+#}
+
+{% from "macros/sectionContentTop.njk" import sectionContentTop %}
+{% from "macros/chart.njk" import chart %}
+{% from "macros/image.njk" import image %}
+{% from "macros/storySmall.njk" import storySmall %}
+{% from "macros/button.njk" import button %}
+
+<section class="section {% if params.isAlt %}section--alt {% endif %}section__wide">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    <div class="row">
+      <div class="col-12">
+        {% if params.headlinePre %}
+          <div class="section--headline-pre">
+            {{ params.headlinePre | safe }}
+          </div>
+        {% endif %}
+        {{
+					sectionContentTop({
+						isBig: true,
+						headline: params.headline,
+						ingress: params.ingressTop,
+						quote: params.quote
+					})          
+        }}
+				{% if params.chart %}
+          {{
+						chart({
+							chart: params.chart,
+            	classes: 'm-b-80'
+						})            
+          }}
+        {% else %}
+          {{
+						image({
+							isInline: true,
+							imgAltText: params.imgAltText,
+							imgUrl: params.imgUrl,
+							classes: 'm-b-40'
+						})            
+          }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      {% for item in params.items %}
+        <div class="col-12 col-md-6">
+          {{
+						storySmall({
+							headline: item.headline,
+							ingress: item.ingress,
+							links: item.links,
+							ingressMargin: 'm-b-22'
+						})            
+          }}
+        </div>
+      {% endfor %}
+      {% if params.links %}
+        <div class="row">
+          <div class="col-12">
+            {% for link in params.links %}
+              {{
+								button({
+									type: 'secondary',
+									url: link.url,
+									txt: link.txt
+								})                
+              }}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{%- endmacro -%}

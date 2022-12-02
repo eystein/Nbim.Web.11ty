@@ -1,0 +1,101 @@
+// This 'print' styles compiles to a file named 'proto-print.css' and is included with:
+//
+// <link rel="stylesheet" type="text/css" href="/static/css/proto-print.css" media="print">
+//
+// To keep it simple and easy to separate from the living 'main' styles,
+// it consists of overrides to 'main' styles, nothing more.
+// Compiled when using yarn build first.
+
+@import './main';
+
+// Hide everything on 'header-proto' but the logo
+.no-print, // Used to hide generic sections, like 'section-list'
+.header-proto,
+#menu-mobile,
+footer.footer-proto,
+.toggleTableViewBtn,
+.tableOverlay,
+.section__graph-table__footer__links,
+.nbim-table-container--button,
+.nbim-folded-table--table-overlay {
+  display: none !important;
+}
+
+// Collapse videos and all lazy-loaded images
+// (much cheaper than trying to get them to show)
+video,
+.video,
+.nbim-lazy-image {
+  height: 0 !important;
+  padding-top: 0 !important;
+}
+
+.tableContainer .hidden,
+.tableMinimize {
+  height: auto;
+  max-height: auto;
+}
+
+.nbim-table-container table,
+.highchart-table {
+  overflow: visible !important;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+th {
+  font-family: 'AzoSansLight';
+}
+
+th,
+td {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 10px;
+  border: solid 1px;
+  text-align: left;
+  color: $cl-black;
+}
+
+table thead {
+  tr {
+    background-color: $cl-blue !important;
+  }
+
+  th {
+    text-align: left;
+    text-transform: none !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    color: $cl-white;
+    word-break: break-all;
+  }
+}
+
+// Hide share section (social media links, email, print)
+.section__share {
+  display: none !important;
+}
+
+// Hide download links and buttons
+*[class*='download'] {
+  display: none !important;
+}

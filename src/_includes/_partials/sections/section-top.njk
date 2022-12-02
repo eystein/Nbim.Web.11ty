@@ -1,0 +1,64 @@
+{%- macro sectionTop(params) -%}
+
+{% from "macros/breadcrumbs.njk" import breadcrumbs %}
+
+	<section
+			{% if params.isBig %}
+				class="section section__top--big"
+			{% else %}
+				class="section section__top"
+			{% endif %}
+	>
+		{% if params.hasArrowDown %}
+			<button id="nbimScrollDownButton" class="section__top--arrow-down" aria-label="Scroll ned"><span></span></button>
+		{% endif %}
+		<div
+			role="img"
+			aria-label="{{ params.imgAltText | safe }}"
+			class="img"
+			style="background-image: url('{{ params.imgUrl | safe }}')"
+		>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="page-title-wrapper">
+						<div class="page-title">
+							{% if headlinePre %}
+								<p>
+									<span class="page-title__headline--pre">
+										{{ params.headlinePre | safe }}
+									</span>
+								</p>
+							{% endif %}
+							{% if params.headlineHasCurrency %}
+								<span class="page-title__headline">
+									<span id="liveNavNumber">
+										{{ params.headline | safe }}
+									</span>
+									<span class="currency">NOK</span>
+								</span>
+							{% else %}
+								<h1 class="page-title__headline">
+									{{ params.headline | safe }}
+								</h1>
+							{% endif %}
+							<span class="separator"></span>
+							{% if params.breadcrumbs %}
+								{{
+									breadcrumbs({
+										breadcrumbs: params.breadcrumbs
+									})									
+								}}
+							{% elif params.headlineSub %}
+									<div class="page-title__headline--sub">
+										{{ params.headlineSub | safe }}
+									</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+{%- endmacro -%}

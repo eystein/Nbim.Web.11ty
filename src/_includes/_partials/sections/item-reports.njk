@@ -1,0 +1,80 @@
+{%- macro itemReports(params) -%}
+
+{# 
+Parameters received by this partial:
+
+name
+date
+img
+url
+urlDownload
+fileSize
+fileExtension 
+#}
+
+{% from "macros/button.njk" import button %}
+{% from "macros/image.njk" import image %}
+
+{% macro downloadTxt(params) %}
+  {% if params.fileSize and params.fileExtension %}
+    <span class="txt">Last ned rapport ({{ params.fileSize | safe }}, {{ params.fileExtension | safe }})</span>
+  {% else %}
+    {% if params.fileSize %}
+      <span class="txt">Last ned rapport ({{ params.fileSize | safe }})</span>
+    {% endif %}
+    {% if params.fileExtension %}
+      <span class="txt">Last ned rapport ({{ params.fileExtension | safe }})</span>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+
+<div
+  class="col-12 col-sm-6 col-lg-4 col-xl-3 section__reports--list__item has-image"
+>
+  <div class="m-b-15">
+    <a href="{% if params.url %}{{ params.url | safe }}{% else %}{{ params.urlDownload | safe }}{% endif %}" title="{{ params.name | safe }}" class="{% if params.url %}has-image--link{% else %}{% if params.urlDownload %}has-image--download{% endif %}{% endif %}">
+      {{
+				image({
+					isInline: true,
+					imgAltText: params.imgAltText,
+					imgUrl: params.img
+				})        
+      }}
+    </a>
+  </div>
+  <div>
+    <h4>{{ params.name | safe }}</h4>
+    <div class="section__reports--list__item--date">{{ params.date | safe }}</div>
+  </div>
+  {% if params.url %}
+    <div class="m-b-5">
+      {{
+				button({
+					type: 'secondary',
+					txt: 'Les sammendrag',
+					url: params.url
+				})        
+      }}
+    </div>
+  {% endif %}
+  {% if params.urlDownload %}
+    <div>
+      <a
+        href={{ params.urlDownload | safe }}
+        class="button button--download-secondary"
+      >
+        <span class="before"></span>
+        {{
+					downloadTxt({
+						fileSize: params.fileSize,
+						fileExtension: params.fileExtension
+					}) 
+				}}
+        <span class="after"></span>
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+
+{%- endmacro -%}

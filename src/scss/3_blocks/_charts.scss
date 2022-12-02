@@ -1,0 +1,127 @@
+@import './../1_tools/variables';
+
+.chart {
+  min-width: 310px;
+  min-height: 400px;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  // Styles below are the same as '.container', which is set at grid level
+  // Small screen / phone
+  @media (min-width: 576px) {
+    max-width: 576px;
+  }
+  // Medium screen / tablet
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+  // Large screen / desktop
+  @media (min-width: 980px) {
+    max-width: 980px;
+  }
+  // Extra large screen / wide desktop
+  @media (min-width: 1276px) {
+    max-width: 1276px;
+  }
+}
+
+.chartContainer {
+  svg > * {
+    @extend .font-azo-light;
+  }
+  svg .highcharts-legend-title {
+    @extend .font-azo-medium;
+  }
+}
+
+.highcharts-button-box {
+  rx: 0;
+  ry: 0;
+  stroke: $cl-gray-2;
+  stroke-width: 2;
+}
+.highcharts-button {
+  rect {
+    fill: none;
+  }
+}
+.highcharts-button-pressed {
+  rect {
+    stroke: $cl-blue-2;
+    fill: none;
+  }
+}
+// These are overrides to inline styles, so they need the '!important' property
+.highcharts-legend {
+  background-color: red !important;
+  &-title {
+    font-size: 19px !important;
+    transform: translate(5px, 0);
+    text {
+      font-weight: normal !important;
+    }
+  }
+  &-item {
+    text {
+      font-size: 20px !important;
+      border-bottom: 1px solid black !important;
+      font-weight: normal !important;
+      transform: translate(5px, 3px);
+    }
+    .highcharts-point {
+      $theSize: 15px;
+      height: $theSize !important;
+      width: $theSize !important;
+      rx: $theSize * 0.5;
+      ry: $theSize * 0.5;
+    }
+    .highcharts-graph {
+      stroke-width: 5px !important;
+    }
+  }
+}
+
+.highcharts-pie-series {
+  .highcharts-label {
+    text {
+      @extend .font-azo-light;
+      font-size: 20px !important;
+      font-weight: normal !important;
+      color: $cl-black !important;
+      fill: $cl-black !important;
+    }
+  }
+}
+
+.currency-selector {
+  @media (max-width: 576px) {
+    &__title {
+      flex-basis: 100%;
+    }
+    flex-basis: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+.range-selector {
+  &__wrapper {
+    margin-left: 20px;
+  }
+  &__title {
+    @extend .font-azo-light;
+  }
+  @include media-breakpoint-down(md) {
+    &__title {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+    &__btn {
+      margin-bottom: 5px;
+    }
+  }
+
+  @media (max-width: 1404px) {
+    flex-basis: 100%;
+    flex-wrap: wrap;
+  }
+}

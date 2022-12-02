@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }}</title>
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/print.css" media="print">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <script src="/assets/js/11ty-main.js"></script>
+
+  <script type="text/javascript">
+    // TODO: Will be removed and replaced with API traslations.
+    window.netlife = window.netlife || {};
+    window.netlife.togglers = ['section-contacts-pressekontakter', 'section-contacts-konferanser'];
+    window.netlife.inCMSPreview = false; // True will not lazyload charts in CMS preview.
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+</head>
+<body class="font-azo-light">
+  {% block header %}
+    {% include "../_partials/_base/_header.njk" %}
+  {% endblock %}
+  {% block main %}
+    {{ content | safe }}
+  {% endblock %}
+  {% block footer %}
+    {% include "../_partials/_base/_footer.njk" %}
+  {% endblock %}
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>
+  {# <script src="./static/js/proto-main.js"></script> #}
+
+</body>
+</html>
+
+
+

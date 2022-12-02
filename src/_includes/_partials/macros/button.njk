@@ -1,0 +1,78 @@
+{%- macro button(params) -%}
+
+{#
+Parameters received by this partial:
+
+id
+type [primary, secondary, download, backbutton]
+isButton [true, false] (shows a 'button' input instead of an 'anchor tag')
+isEmail [true, false] (prepends a 'mailto:' within the 'anchor tag's 'href')
+hasToggler
+toggleStatus (only used on prototype, it will eventually be set dynamically)
+url
+txt
+txtActive
+txtInactive
+classes
+btnType #}
+
+
+{% macro theClasses(params) %}
+  {% if params.type %}class="button button--{{ params.type | safe }}
+		{% if params.classes %} {{ params.classes | safe }}{% endif %}
+		{% if params.hasToggler %} toggler toggler-{{ params.toggleStatus | safe }}
+	{% endif %}"
+  {% else %}
+    class="button button--primary
+		{% if params.classes %}
+			{{ params.classes | safe }}
+		{% endif %}"
+  {% endif %}
+{% endmacro %}
+
+{% if params.isButton %}
+  {% if params.id %}
+    <button
+			{% if params.btnType %}
+				type="{{ params.btnType | safe }}"
+			{% endif %}
+			{{
+				theClasses({
+					id: "{{ params.id | safe }}"
+				}) 
+			}}
+    >
+  {% else %}
+  <button
+		{% if params.btnType %}
+			type="{{ params.btnType | safe }}"
+		{% endif %}
+		{{
+			theClasses({
+				name: "{{ params.name | safe }}"
+			})
+		}}
+	>
+  {% endif %}
+  	<span class="before"></span>
+    {% if params.txtActive %}
+      <span class="txt-active">{{  params.txtActive | safe }}</span>
+      <span class="txt-inactive">{{  params.txtInactive | safe }}</span>
+    {% else %}
+      <span>{{ params.txt | safe }}</span>
+    {% endif %}
+    <span class="after"></span>
+  </button>
+{% else %}
+  <a href="{% if params.isEmail %}mailto:{% endif %}{{ params.url | safe }}" title="{{ params.txt }}"
+    {{
+			theClasses(params) 
+		}}
+  	>
+    <span class="before"></span>
+    <span class="txt">{{ params.txt | safe }}</span>
+    <span class="after"></span>
+  </a>
+{% endif %}
+
+{%- endmacro -%}
