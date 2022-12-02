@@ -1,5 +1,5 @@
 module.exports = function (eleventyConfig) {
-	// Also watch for changes in these folders in dev mode
+	// Watch for changes in these folders in dev mode
 	eleventyConfig.addWatchTarget('./src/scss/');
 	eleventyConfig.addWatchTarget('./src/js/');
 
@@ -9,10 +9,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ './src/icons': './assets/icons' });
 	eleventyConfig.addPassthroughCopy({ './src/images': './assets/images' });
 	eleventyConfig.addPassthroughCopy({ './src/videos': './assets/videos' });
-
-	eleventyConfig.addFilter('testFilter', function (text) {
-		return '***' + text + '***';
-	});
 
 	return {
 		// Set Nunjucks as default
