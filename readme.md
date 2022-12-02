@@ -16,7 +16,7 @@ Nbim.Web.Proto can be viewed at [https://nbim-proto-2018.firebaseapp.com/alle-si
 
 ### Eleventy
 
-Eleventy, a.k.a 11ty, is a static site builder. It handles serving the site on localhost, and building the `docs/` folder.
+Eleventy, a.k.a 11ty, is a static site builder. It handles serving the site on localhost, via the built-in Browsersync, and building the `docs/` folder.
 
 View the [.eleventy.js](.eleventy.js) file for the Eleventy config.
 
@@ -57,6 +57,7 @@ Run local dev server with live reload.
 npm run dev
 ```
 
+Localhost: [http://localhost:8080](http://localhost:8080).
 
 ## Developers
 

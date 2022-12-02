@@ -23,9 +23,9 @@ module.exports = function (eleventyConfig) {
 			output: 'docs',
 			// Specify where partials and layouts are
 			// Path relative to Pages directory
-			includes: '../../src/_includes/_partials',
-			layouts: '../../src/_includes/_layouts',
-			data: '../../src/_data',
+			includes: '../../src/_includes/partials',
+			layouts: '../../src/_includes/layouts',
 		},
 	};
 };
+
