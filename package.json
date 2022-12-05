@@ -2,12 +2,11 @@
 	"name": "@eystein/nbim_web_11ty",
 	"version": "1.0.5",
 	"description": "Static HTML library for NBIM",
-	"scripts": {
-		"webpack": "webpack",
+	"scripts": { 
+		"watch:webpack": "webpack --config webpack.config.js",
+		"build:webpack": "webpack --config webpack.config.js",
 		"watch:sass": "sass --watch --update --style=expanded src/scss:docs/assets/css",
 		"build:sass": "sass --no-source-map --style=compressed src/scss:static/css",
-		"watch:js": "npx webpack --config-name siteConfig",
-		"build:js": "npm run webpack --config-name packageConfig",
 		"watch:eleventy": "npx @11ty/eleventy --serve",
 		"build:eleventy": "env NODE_ENV=production npx @11ty/eleventy --pathprefix 'nbim.web.11ty'",
 		"dev": "npm-run-all --parallel watch:*",
