@@ -1,6 +1,6 @@
 {
 	"name": "@eystein/nbim_web_11ty",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "Static HTML library for NBIM",
 	"scripts": {
 		"watch:webpack": "webpack --config webpack.config.js",
