@@ -1,5 +1,5 @@
 {
-	"name": "nbim_web_11ty",
+	"name": "@eystein/nbim_web_11ty",
 	"version": "1.0.3",
 	"description": "Static HTML library for NBIM",
 	"scripts": {
@@ -45,10 +45,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/makingwaves/noa-nbim-frontend.git"
+		"url": "https://github.com/eystein/noa-nbim-frontend.git"
 	},
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
+		"registry": "https://npm.pkg.github.com/@eystein"
 	},
 	"files": [
 		"static/*"
