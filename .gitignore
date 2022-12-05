@@ -24,3 +24,6 @@ static/
 # Ignore test files
 .cache
 test/stubs-layout-cache/_includes/*.js
+
+gh-pages
+gh-pages.pub
