@@ -1,6 +1,6 @@
 {
 	"name": "nbim_web_11ty",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Static HTML library for NBIM",
 	"scripts": {
 		"watch:sass": "sass --watch --update --style=expanded src/scss:docs/assets/css",
