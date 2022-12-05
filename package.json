@@ -43,5 +43,15 @@
 		"intersection-observer-polyfill": "^0.1.0",
 		"regenerator-runtime": "^0.13.11",
 		"terser": "^5.15.1"
-	}
+	},
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/makingwaves/noa-nbim-frontend.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "static/*"
+  ]
 }
