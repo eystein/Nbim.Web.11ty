@@ -1,6 +1,6 @@
 {
 	"name": "nbim_web_11ty",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Static HTML library for NBIM",
 	"scripts": {
 		"watch:sass": "sass --watch --update --style=expanded src/scss:docs/assets/css",
@@ -44,13 +44,13 @@
 		"terser": "^5.15.1"
 	},
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/makingwaves/noa-nbim-frontend.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "files": [
-    "static/*"
-  ]
+		"type": "git",
+		"url": "https://github.com/makingwaves/noa-nbim-frontend.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"files": [
+		"static/*"
+	]
 }
