@@ -8,7 +8,7 @@
 		"watch:sass": "sass --watch --update --style=expanded src/scss:docs/assets/css",
 		"build:sass": "sass --no-source-map --style=compressed src/scss:static/css",
 		"watch:eleventy": "npx @11ty/eleventy --serve",
-		"build:eleventy": "env NODE_ENV=production npx @11ty/eleventy --pathprefix '/Nbim.Web.11ty/'",
+		"build:eleventy": "env NODE_ENV=production npx @11ty/eleventy'",
 		"dev": "npm-run-all --parallel watch:*",
 		"build": "APP_VERSION=$npm_package_version npm-run-all build:*",
 		"test": "npx @11ty/eleventy --dryrun"
