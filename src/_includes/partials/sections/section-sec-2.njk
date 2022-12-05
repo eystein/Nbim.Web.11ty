@@ -1,0 +1,181 @@
+{%- macro sectionSec2(params) -%}
+
+{# 
+Parameters received by this partial:
+
+isAlt
+isShort
+isCard (if columns should have opposite background color)
+spacingTop [ie. '2', '5', '10', '15', '17', '20', '22', '30', '40', '50', '60', '70', '80', '90', '100']
+headline
+imageUrl
+imageAltText
+ingress (if 'imageUrl' is defined at the section level, it will override 'ingress')
+items
+links
+quote
+
+For the sake of convenience while setting up a 'col-x' section,
+the ['imageUrl' or 'ingress'] logic is meant to be appliable in any of the
+'col-x' sections, but in the prototype context, it's used only within 'sec-2'. #}
+
+
+{% from "macros/heading.njk" import heading %}
+{% from "macros/quote.njk" import quote %}
+{% from "macros/image.njk" import image %}
+{% from "macros/ingress.njk" import ingress %}
+{% from "macros/story-small.njk" import storySmall %}
+{% from "macros/button.njk" import button %}
+{% from "macros/ingress.njk" import ingress %}
+
+{%- macro responsive(params) -%}
+	{% if params.isOneHalf %} col-md-6{% endif %}
+	{% if params.isOneThird %} col-md-4{% endif %}
+	{% if params.isOneFourth %} col-md-3{% endif %}
+{%- endmacro -%}
+
+{%- macro headlineSpacing(params) -%}
+	{% if params.ingress %} m-b-10{% else %} m-b-40{% endif %}
+{%- endmacro -%}
+
+<section {% if params.id %}id={{ params.id }} {% endif %}class="section {% if params.isAlt %}section--alt {% endif %}section__sec-2">
+  <div class="container m-t-{% if params.spacingTop %}{{ params.spacingTop | safe }}{% else %}80{% endif %}{% if not params.isShort %} m-b-80{% endif %}">
+    {% if params.headline %}
+      <div class="row">
+        <div class="col-12 heading-spacing{{
+						headlineSpacing(params)
+					}}">
+          {{
+						heading({
+							txt: params.headline,
+							hType: '2',
+							classes: 'section--headline'
+						})
+          }}
+        </div>
+      </div>
+    {% endif %}
+    {%if params.quote %}
+      <div class="row">
+        <div class="col-12 col-lg-6 m-b-20">
+          {{
+						quote({
+							txt: params.quote
+						})            
+          }}
+        </div>
+      </div>
+    {% endif %}
+    {% if params.imgUrl %}
+      {{
+				image({
+					imgAltText: imgAltText,
+					imgUrl: imgUrl,
+					classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+				})        
+      }}
+    {% else %}
+      {% if params.ingress %}
+        <div class="row">
+          <div class="col-12{{
+							responsive() 
+						}}">
+            {{
+							ingress({
+								txt: params.ingress,
+								isBig: params.isBig,
+								isLead: params.isLead
+							})              
+            }}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+    <div class="row">
+      {% for item in params.items %}
+        <div class="col-12 {% if item.isCard %}col-lg-6{% else %}col-md-6{% endif %} m-b-{% if item.links %}20{% else %}10{% endif %}">
+          {% if item.isCard %}
+            <div class="card__column">
+              {{
+								storySmall({
+									headline: item.headline,
+                	ingress: item.ingress
+								})                
+              }}
+              {% if item.imgUrl %}
+                {{
+									image({
+										imgAltText: item.imgAltText,
+										imgUrl: item.imgUrl,
+										classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+									})                  
+                }}
+              {% endif %}
+              {% if item.cardLinks %}
+                <div class="row">
+                  <div class="col-12">
+                    {% for link in item.cardLinks %}
+                      {{
+												button({
+													type: 'secondary',
+													url: link.url,
+													txt: link.txt
+												})                        
+                      }}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% else %}
+            {% if item.imgUrl %}
+              {{
+								image({
+									imgAltText: imgAltText,
+									imgUrl: imgUrl,
+									classes: 'aspect aspect__ratio-panorama--sm aspect__ratio-16-9--md aspect__ratio-1-1--lg aspect__ratio-16-9--xl m-b-40'
+								})                
+              }}
+            {% endif %}
+            {% if item.links %}
+              {{
+								storySmall({
+									headline: item.headline,
+									ingress: item.ingress,
+									links: item.links,
+									ingressMargin: 'm-b-22'
+								})                
+              }}
+            {% else %}
+              {{
+								storySmall({
+									headline: item.headline,
+									ingress: item.ingress,
+									links: item.links
+								})                
+              }}
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    {% if params.links %}
+      <div class="row m-t-2">
+        <div class="col-12">
+          {% for link in params.links %}
+            {{
+							button({
+								type: 'secondary',
+								url: link.url,
+								txt: link.txt
+							})              
+            }}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+
+{%- endmacro -%}

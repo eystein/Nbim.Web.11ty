@@ -1,17 +1,16 @@
 {
-	"name": "nbim_web_11ty",
-	"version": "1.0.0",
+	"name": "@eystein/nbim_web_11ty",
+	"version": "1.0.6",
 	"description": "Static HTML library for NBIM",
-	"main": "index.njk",
 	"scripts": {
+		"watch:webpack": "webpack --config webpack.config.js",
+		"build:webpack": "webpack --config webpack.config.js",
 		"watch:sass": "sass --watch --update --style=expanded src/scss:docs/assets/css",
 		"build:sass": "sass --no-source-map --style=compressed src/scss:static/css",
-		"watch:js": "npx webpack",
-		"build:js": "npx webpack",
 		"watch:eleventy": "npx @11ty/eleventy --serve",
-		"build:eleventy": "npx @11ty/eleventy",
+		"build:eleventy": "env NODE_ENV=production npx @11ty/eleventy --pathprefix 'Nbim.Web.11ty'",
 		"dev": "npm-run-all --parallel watch:*",
-		"build": "npm-run-all build:*",
+		"build": "APP_VERSION=$npm_package_version npm-run-all build:*",
 		"test": "npx @11ty/eleventy --dryrun"
 	},
 	"author": "NoA Ignite",
@@ -21,7 +20,10 @@
 			"name": "Eystein Mack Alnæs"
 		},
 		{
-			"name": "Sabina Strömmer-Marchewka"
+			"name": "Knut Sorknes"
+		},
+		{
+			"name": "Hanne Edfelt"
 		}
 	],
 	"devDependencies": {
@@ -40,5 +42,15 @@
 		"intersection-observer-polyfill": "^0.1.0",
 		"regenerator-runtime": "^0.13.11",
 		"terser": "^5.15.1"
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/eystein/Nbim.Web.11ty.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/@eystein"
+	},
+	"files": [
+		"static/*"
+	]
 }

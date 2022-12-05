@@ -1,0 +1,78 @@
+{% extends "base/layout.njk" %}
+
+{% from "sections/section-top.njk"        import sectionTop %}
+{% from "sections/section-sec-2.njk"      import sectionSec2 %}
+{% from "sections/section-sec-3.njk"      import sectionSec3 %}
+{% from "sections/section-split.njk"      import sectionSplit %}
+{% from "sections/section-lists.njk"      import sectionLists %}
+{% from "sections/section-accordions.njk" import sectionAccordions %}
+
+
+{% block main %}
+  {{
+		sectionTop({
+			imgAltText: section_top_work_imgAltText,
+			imgUrl: section_top_work_imgUrl,
+			headline: section_top_work_headline,
+			breadcrumbs: section_top_work_breadcrumbs
+		})    
+  }}
+
+  {{
+		sectionSec2({
+			isAlt: true,
+			quote: section_sec_2_quote,
+			headline: section_sec_2_quote_in_section_headline,
+			items: section_sec_2_quote_in_section_items
+		})    
+  }}
+
+  {{
+		sectionSplit({
+			pictureToLeft: true,
+			imgAltText: section_split_employee_quote_imgAltText,
+			imgUrl: section_split_employee_quote_imgUrl,
+			quote: section_split_employee_quote_quote,
+			links: section_split_investment_management_links
+		})    
+  }}
+
+  {{
+		sectionSec3({
+			isBig: true,
+			headline: section_sec_3_work_about_headline,
+			ingress: section_sec_3_work_about_ingress,
+			items: section_sec_3_work_about_items
+		})    
+  }}
+
+  {{
+		sectionSec3({
+			isAlt: true,
+			headline: section_sec_3_work_headline,
+			items: section_sec_3_work_items
+		})    
+  }}
+
+  {{
+		sectionLists({
+			isShort: true,
+			headline: section_lists_vacancies_headline,
+			ingress: section_lists_vacancies_ingress,
+			lists: section_lists_vacancies_lists
+		})    
+  }}
+
+  {{
+		sectionAccordions({
+			spacingTop: '40',
+			id: section_accordions_jobs_id,
+			headline: section_accordions_jobs_headline,
+			ingress: section_accordions_jobs_ingress,
+			accordions: section_accordions_jobs_accordions,
+			links: section_accordions_jobs_links
+		})    
+  }}
+
+
+{% endblock %}

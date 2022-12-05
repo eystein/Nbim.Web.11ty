@@ -1,5 +1,5 @@
 module.exports = function (eleventyConfig) {
-	// Also watch for changes in these folders in dev mode
+	// Watch for changes in these folders in dev mode
 	eleventyConfig.addWatchTarget('./src/scss/');
 	eleventyConfig.addWatchTarget('./src/js/');
 
@@ -9,10 +9,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ './src/icons': './assets/icons' });
 	eleventyConfig.addPassthroughCopy({ './src/images': './assets/images' });
 	eleventyConfig.addPassthroughCopy({ './src/videos': './assets/videos' });
-
-	eleventyConfig.addFilter('testFilter', function (text) {
-		return '***' + text + '***';
-	});
 
 	return {
 		// Set Nunjucks as default
@@ -27,9 +23,9 @@ module.exports = function (eleventyConfig) {
 			output: 'docs',
 			// Specify where partials and layouts are
 			// Path relative to Pages directory
-			includes: '../../src/_includes/_partials',
-			layouts: '../../src/_includes/_layouts',
-			data: '../../src/_data',
+			includes: '../../src/_includes/partials',
+			layouts: '../../src/_includes/layouts',
 		},
 	};
 };
+

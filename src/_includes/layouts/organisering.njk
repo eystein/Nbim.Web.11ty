@@ -1,0 +1,93 @@
+{% extends "base/layout.njk" %}
+
+{% from "sections/section-top.njk"     import sectionTop     %}
+{% from "sections/section-split.njk"   import sectionSplit   %}
+{% from "sections/section-sec-4.njk"   import sectionSec4    %}
+{% from "sections/section-offices.njk" import sectionOffices %}
+{% from "sections/section-contact.njk" import sectionContact %}
+{% from "sections/section-persons.njk" import sectionPersons %}
+
+{% block main %}
+  {{
+		sectionTop({
+			imgAltText: section_top_organising_imgAltText,
+			imgUrl: section_top_organising_imgUrl,
+			headline: section_top_organising_headline,
+			breadcrumbs: section_top_organising_breadcrumbs
+		})    
+  }}
+
+  {{
+		sectionSec4({
+			headline: section_sec_4_hvem_bestemmer_hva_headline,
+			items: section_sec_4_hvem_bestemmer_hva_items,
+			links: section_sec_4_hvem_bestemmer_hva_links
+		})    
+  }}
+
+  {{
+		sectionSplit({
+			isAlt: true,
+			isLead: true,
+			pictureToLeft: true,
+			imgUrl: section_split_investment_management_imgUrl,
+			imgAltText: section_split_investment_management_imgAltText,
+			headline: section_split_investment_management_headline,
+			ingress: section_split_investment_management_ingress,
+			links: section_split_investment_management_links
+		})    
+  }}
+
+  {{
+		sectionSplit({
+			pictureToLeft: true,
+			isShort: true,
+			imgUrl: section_split_vaare_kontorer_imgUrl,
+			imgAltText: section_split_vaare_kontorer_imgAltText,
+			headline: section_split_vaare_kontorer_headline,
+			ingress: section_split_vaare_kontorer_ingress
+		})    
+  }}
+
+  {{
+		sectionOffices({
+			spacingTop: '60',
+			id: section_offices_list_id,
+			offices: section_offices_list_offices,
+			footer: section_offices_list_footer
+		})
+    
+  }}
+
+  {{
+		sectionSplit({
+			isAlt: true,
+			imgAltText: section_split_jobbe_i_oljefondet_imgAltText,
+			imgUrl: section_split_jobbe_i_oljefondet_imgUrl,
+			headline: section_split_jobbe_i_oljefondet_headline,
+			ingress: section_split_jobbe_i_oljefondet_ingress,
+			links: section_split_jobbe_i_oljefondet_links
+		})    
+  }}
+
+  {{
+		sectionContact({
+			headline: section_contact_kontakt_headline,
+			ingress: section_contact_kontakt_ingress,
+			form: section_contact_kontakt_form,
+			links: section_contact_kontakt_links
+		})    
+  }}
+
+  {{
+		sectionPersons({
+			isAlt: true,
+			id: section_contacts_pressekontakter_id,
+			headline: section_contacts_pressekontakter_headline,
+			ingress: section_contacts_pressekontakter_ingress,
+			contacts: section_contacts_pressekontakter_contacts,
+			footer: section_contacts_pressekontakter_department
+		})    
+  }}
+
+{% endblock %}
