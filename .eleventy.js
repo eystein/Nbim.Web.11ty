@@ -17,6 +17,7 @@ module.exports = function (eleventyConfig) {
 		htmlTemplateEngine: 'njk',
 		templateFormats: ['njk', 'md'],
 		passthroughFileCopy: true,
+		pathPrefix: "/Nbim.Web.11ty/",
 		dir: {
 			// Custom paths for in- and output
 			input: 'src/pages',

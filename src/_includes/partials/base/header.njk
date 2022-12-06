@@ -1,7 +1,7 @@
 <header id="header-proto" class="header-proto search-inactive menu-mobile-inactive headroom">
   <nav id="menu">
     <div class="header-proto__mobile-wrapper">
-      <a class="header-proto__logo" href="index.html" aria-current="page">
+      <a class="header-proto__logo" href="{{ '/' | url }}" aria-current="page">
         <img src="/assets/images/logo.svg" alt="Oljefondet, Norges Bank Investment Management" width="222" height="39" />
       </a>
       <button id="menu-mobile" class="header-proto menu-button menu-button--hamburger" aria-haspopup="true" aria-expanded="false">
@@ -10,13 +10,13 @@
     </div>
     <ul>
       <li class="selected-item">
-        <a href="/index.html" aria-current="page">Oljefondet</a>
+        <a href="{{ '/' | url }}" aria-current="page">Oljefondet</a>
       </li>
       <li>
-        <a href="/publikasjoner.html">Publikasjoner</a>
+        <a href="{{ '/publikasjoner/' | url }}">Publikasjoner</a>
       </li>
       <li>
-        <a href="/organisering.html">Organisering</a>
+        <a href="{{ '/organisering/' | url }}">Organisering</a>
       </li>
       <li class="header-proto__search-field">
           <form action="/en/search/" method="get">
