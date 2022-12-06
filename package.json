@@ -1,6 +1,6 @@
 {
 	"name": "@makingwaves/noa-nbim-frontend",
-	"version": "1.0.13",
+	"version": "1.0.14",
 	"description": "Static HTML library for NBIM",
 	"scripts": {
 		"watch:webpack": "webpack --config webpack.config.js",
