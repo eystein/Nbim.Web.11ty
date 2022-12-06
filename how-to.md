@@ -130,3 +130,30 @@ Sometimes there are inline partials as well. They work the same way as regular m
   some nunjucks code
 {% endmacro %}
 ```
+
+## URLs in Eleventy with Github pages
+
+All URLs need the Eleventy `url` filter. Eleventy expects to be in the root folder, but thanks to the `pathPrefix` setting in the  [.eleventy.js](.eleventy.js) config, we can adjust for this. However this syntax is then need for URL:
+
+```njk
+{# With variable from markdown #}
+{{ params.img | url }}
+
+{# Using a string #}
+{{ '/assets/images/some-image.png' | url }}
+
+{# Example with a link #}
+<a
+  href={{ params.urlDownload | url }}
+  class="button button--download-secondary"
+>
+```
+
+
+
+Use this anywhere a URL is used, such as:
+- links
+- images
+- video
+- script
+- css 

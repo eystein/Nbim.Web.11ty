@@ -60,7 +60,7 @@ fileExtension
   {% if params.urlDownload %}
     <div>
       <a
-        href={{ params.urlDownload | safe }}
+        href={{ params.urlDownload | url }}
         class="button button--download-secondary"
       >
         <span class="before"></span>

@@ -34,11 +34,11 @@ type [ie. 'documents']
     <div class="row">
       <div class="col-12 col-md-3">
         {% if params.url or params.urlDownload %}
-          <a class="has-image--{% if params.url %}link{% else %}download{% endif %}" href="{% if params.url %}{{ params.url | safe }}{% else %}{{ params.urlDownload | safe }}{% endif %}">
-            <img src="{{ params.img | safe }}" alt="{{ params.name | safe }}">
+          <a class="has-image--{% if params.url %}link{% else %}download{% endif %}" href="{% if params.url %}{{ params.url | url }}{% else %}{{ params.urlDownload | url }}{% endif %}">
+            <img src="{{ params.img | url }}" alt="{{ params.name | safe }}">
           </a>
         {% else %}
-          <img src="{{ params.img | safe }}" alt="{{ params.name | safe }}">
+          <img src="{{ params.img | url }}" alt="{{ params.name | safe }}">
         {% endif %}
       </div>
       <div class="col-12 col-md-9">
@@ -63,7 +63,7 @@ type [ie. 'documents']
         {% if params.urlDownload %}
           <div>
             <a
-              href={{ params.urlDownload | safe }}
+              href={{ params.urlDownload | url }}
               class="button button--download-secondary"
             >
               <span class="before"></span>
@@ -84,7 +84,7 @@ type [ie. 'documents']
   <li
     class="section__lists--list__item{% if params.type %} {{ params.type | safe }}{% endif %}"
   >
-    <a class="clickable" href="{{ params.url | safe }}">
+    <a class="clickable" href="{{ params.url | url }}">
       <span class="font-azo-medium">{{ params.name | safe }}</span>{% if params.date %} <span class="section__lists--list__item--date">{{ params.date | safe }}</span>{% endif %}
       <div>
         {% if params.ingress %}

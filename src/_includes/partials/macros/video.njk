@@ -23,7 +23,7 @@ videoURL:
     <div class="video {% if params.classes %} {{ params.classes | safe }}{% endif %}">
       <video
         class="video--background"
-        src="{{ params.video.videoUrl }}"
+        src="{{ params.video.videoUrl | url }}"
         autoplay
         loop
         muted
@@ -36,7 +36,7 @@ videoURL:
 			<div class="video video--button">
 				<video
 					class="{% if params.classes %} {{ params.classes | safe }}{% endif %}"
-					src="{{ params.video.videoUrl }}"
+					src="{{ params.video.videoUrl | url }}"
 					height="auto"
 					{% if params.video.isMuted %} muted="true"{% endif %}
 					onclick="this.paused?this.play():this.pause()"
